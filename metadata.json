@@ -1,0 +1,7 @@
+{
+  "name": "Infographic Tương Tác 159 Điểm Ngập",
+  "description": "Trang thông tin Infographic tương tác và bản đồ số hóa 159 điểm ngập tại TPHCM, Bình Dương, Bà Rịa - Vũng Tàu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
