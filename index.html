@@ -2588,16 +2588,15 @@
             map.attributionControl.setPrefix('<a href="https://leafletjs.com" title="A JavaScript library for interactive maps" target="_blank">Leaflet</a>');
           }
 
-          const osmTile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          const osmTile = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             minZoom: 9,
             maxZoom: 18,
-            subdomains: ['a', 'b', 'c'],
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
           });
 
           osmTile.on('tileerror', (error) => {
             if (error.tile && error.coords) {
-              const fallbackUrl = `https://a.basemaps.cartocdn.com/rastertiles/voyager/${error.coords.z}/${error.coords.x}/${error.coords.y}.png`;
+              const fallbackUrl = `https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/${error.coords.z}/${error.coords.y}/${error.coords.x}`;
               if (error.tile.src !== fallbackUrl) {
                 error.tile.src = fallbackUrl;
               }
