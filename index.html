@@ -1,34 +1,22 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth">
+<html lang="vi" class="h-full bg-[#f1f5f9] text-slate-800 antialiased selection:bg-sky-500 selection:text-white scroll-smooth">
 <head>
-  <!-- ==========================================================================
-       THÔNG TIN META & SEO CƠ BẢN
-       ========================================================================== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Infographic Tương Tác: Danh Sách 159 Điểm Ngập Tại TPHCM, Bình Dương, Bà Rịa - Vũng Tàu</title>
-  <meta name="description" content="Trang thông tin infographic tương tác và bản đồ số hóa 159 điểm ngập trên địa bàn TPHCM, Bình Dương, Bà Rịa - Vũng Tàu theo thống kê của Sở Xây dựng." />
-  <meta name="keywords" content="159 điểm ngập, ngập nước TPHCM, điểm ngập Bình Dương, điểm ngập Vũng Tàu, bản đồ ngập, Sở Xây dựng, triều cường" />
-  <meta name="author" content="Sở Xây dựng / Ban Chỉ đạo Thoát nước & Phòng chống ngập" />
-  <meta property="og:title" content="Infographic Tương Tác: Danh Sách 159 Điểm Ngập" />
-  <meta property="og:description" content="Theo dõi trực quan 159 vị trí ngập do mưa và triều cường trên nền bản đồ OpenStreetMap miễn phí." />
-  <meta property="og:type" content="website" />
+  <title>Bản Đồ Số 159 Điểm Ngập: TPHCM, Thủ Đức, Bình Dương, Bà Rịa - Vũng Tàu</title>
+  <meta name="description" content="Hệ thống GIS tương tác và thống kê 159 điểm ngập đô thị tại TPHCM, Thủ Đức, Bình Dương và Bà Rịa - Vũng Tàu theo dữ liệu của Sở Xây dựng." />
+  <meta property="og:title" content="Bản Đồ Số 159 Điểm Ngập: TPHCM, Bình Dương, Bà Rịa - Vũng Tàu" />
+  <meta property="og:description" content="Tra cứu và giám sát trực quan 159 vị trí ngập do mưa và triều cường trên nền bản đồ số mở OpenStreetMap." />
 
-  <!-- ==========================================================================
-       FONTS & THƯ VIỆN BÊN NGOÀI (CDN MIỄN PHÍ)
-       - Google Font: Be Vietnam Pro (chuẩn tiếng Việt có dấu, sắc nét, hiện đại)
-       - Leaflet CSS & JS: Thư viện bản đồ OpenStreetMap mượt mà, nhẹ, 100% miễn phí
-       - Tailwind CSS: Thư viện tiện ích giao diện
-       ========================================================================== -->
+  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  
-  <!-- Leaflet Map CSS (Cloudflare CDN tốc độ cao, không dùng SRI để tránh lỗi cache mạng) -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet Map CSS & JS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-  <!-- Leaflet Map JS tải ngay trong HEAD đảm bảo sẵn sàng cho ứng dụng -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-  
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -36,15 +24,16 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Be Vietnam Pro"', 'system-ui', '-apple-system', 'sans-serif'],
+            sans: ["\"Plus Jakarta Sans\"", "system-ui", "-apple-system", "sans-serif"],
+            mono: ["\"JetBrains Mono\"", "monospace"],
           },
           colors: {
-            flood: {
-              severe: '#dc2626',   // Đỏ: Ngập nặng/thường xuyên (>=30cm)
-              moderate: '#ea580c', // Cam: Ngập vừa (15-30cm)
-              light: '#ca8a04',    // Vàng: Ngập nhẹ (10-15cm)
-              tide: '#2563eb',     // Xanh biển đậm: Ngập do triều
-              safe: '#059669',     // Xanh lá: Không ngập / an toàn
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
             }
           }
         }
@@ -52,2502 +41,240 @@
     }
   </script>
 
-  <!-- ==========================================================================
-       TÙY CHỈNH CSS & HIỆU ỨNG MOTION GRAPHIC
-       ========================================================================== -->
   <style>
-    /* Kiểu cuộn mượt và font cơ bản */
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
     }
     body {
-      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
-      background-color: #0b1325;
-      color: #e2e8f0;
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      background-color: #f1f5f9;
+      color: #1e293b;
       overflow-x: hidden;
     }
+    .font-mono-num {
+      font-family: "JetBrains Mono", monospace;
+      font-variant-numeric: tabular-nums;
+    }
 
-    /* Hiệu ứng radar quét & sóng lan tỏa */
+    /* Pulse effect cho marker */
     @keyframes pulse-ring {
-      0% {
-        transform: scale(0.9);
-        opacity: 0.9;
-      }
-      80% {
-        transform: scale(2.2);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(2.4);
-        opacity: 0;
-      }
+      0% { transform: scale(0.9); opacity: 0.9; }
+      80% { transform: scale(2.2); opacity: 0; }
+      100% { transform: scale(2.4); opacity: 0; }
     }
-    .pulse-severe {
-      animation: pulse-ring 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-    }
-    .pulse-moderate {
-      animation: pulse-ring 2.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-    }
+    .pulse-severe { animation: pulse-ring 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite; }
+    .pulse-moderate { animation: pulse-ring 2.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite; }
 
-    /* Sóng nước mô phỏng cho tiêu chí ngập */
-    @keyframes wave-flow {
-      0% { transform: translateX(0) translateZ(0) scaleY(1); }
-      50% { transform: translateX(-25%) translateZ(0) scaleY(1.08); }
-      100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
-    }
-    .water-wave-anim {
-      animation: wave-flow 6s linear infinite;
-    }
-
-    /* Tùy chỉnh Leaflet Popup & Marker để đồng nhất giao diện */
+    /* Custom Leaflet Light & Neumorphic UI */
     .leaflet-popup-content-wrapper {
-      background: #0f172a !important;
-      color: #f1f5f9 !important;
-      border: 1px solid #334155 !important;
-      border-radius: 12px !important;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+      background: #ffffff !important;
+      color: #0f172a !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 16px !important;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04) !important;
       padding: 0 !important;
     }
     .leaflet-popup-content {
       margin: 14px 16px !important;
       line-height: 1.5 !important;
       font-size: 13px !important;
-      font-family: 'Be Vietnam Pro', sans-serif !important;
+      font-family: "Plus Jakarta Sans", sans-serif !important;
     }
     .leaflet-popup-tip {
-      background: #0f172a !important;
+      background: #ffffff !important;
     }
     .leaflet-container {
-      font-family: 'Be Vietnam Pro', sans-serif !important;
-      background-color: #0b1325 !important;
+      font-family: "Plus Jakarta Sans", sans-serif !important;
+      background-color: #e2e8f0 !important;
     }
 
-    /* Tùy chỉnh thanh cuộn thanh lịch */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
+    /* Tối ưu độ sắc nét cho tile bản đồ OpenStreetMap trên mọi màn hình */
+    .leaflet-tile {
+      image-rendering: -webkit-optimize-contrast;
     }
-    ::-webkit-scrollbar-track {
-      background: #0b1325;
+    .leaflet-control-layers {
+      border-radius: 14px !important;
+      border: 1px solid #cbd5e1 !important;
+      background: rgba(255, 255, 255, 0.96) !important;
+      backdrop-filter: blur(8px) !important;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07) !important;
+      font-size: 11.5px !important;
+      font-weight: 600 !important;
+      color: #1e293b !important;
+      padding: 6px 12px !important;
     }
-    ::-webkit-scrollbar-thumb {
-      background: #334155;
-      border-radius: 4px;
+    .leaflet-bar {
+      border-radius: 12px !important;
+      border: 1px solid #cbd5e1 !important;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #475569;
+    .leaflet-bar a {
+      background-color: #ffffff !important;
+      color: #334155 !important;
+      border-bottom: 1px solid #f1f5f9 !important;
+    }
+    .leaflet-bar a:hover {
+      background-color: #f0f9ff !important;
+      color: #0284c7 !important;
     }
 
-    /* Badge & Tag không theo kiểu pill rẻ tiền, mang phong cách báo chí dữ liệu */
-    .data-kicker {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #38bdf8;
-    }
-
-    /* Hiệu ứng hiển thị theo cuộn trang (Scroll reveal) */
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal-on-scroll.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* Scrollbars thanh lịch */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
   </style>
 </head>
 
-<body class="selection:bg-sky-500 selection:text-white">
+<body class="min-h-full flex flex-col bg-[#f1f5f9] text-slate-800">
 
-  <!-- ==========================================================================
-       CANVAS NỀN HIỆU ỨNG MƯA & DÒNG CHẢY (MOTION GRAPHIC LIGHTWEIGHT)
-       ========================================================================== -->
-  <canvas id="rain-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-25"></canvas>
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
-  <!-- ==========================================================================
-       1. THANH ĐIỀU HƯỚNG CHÍNH (TOP NAVIGATION BAR - CHUẨN DESIGN CONSTITUTION)
-       Zone 1: Tiêu đề thương hiệu
-       Zone 2: 4-5 liên kết điều hướng dạng text với gạch chân tinh tế
-       Zone 3: Nút tương tác nhanh
-       ========================================================================== -->
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/85 border-b border-slate-800 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      
-      <!-- Zone 1: Tiêu đề cơ quan / chủ đề -->
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400 group-hover:scale-105 transition-transform">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-          </svg>
-        </div>
-        <span class="text-base font-bold text-slate-100 tracking-tight">THỐNG KÊ 159 ĐIỂM NGẬP</span>
-      </a>
-
-      <!-- Zone 2: Các mục điều hướng -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
-        <a href="#tieu-chi" class="hover:text-sky-400 transition-colors">Tiêu chí phân loại</a>
-        <a href="#ban-do" class="hover:text-sky-400 transition-colors">Bản đồ số OpenStreetMap</a>
-        <a href="#danh-sach" class="hover:text-sky-400 transition-colors">Danh sách 4 khu vực</a>
-        <a href="#truc-quan" class="hover:text-sky-400 transition-colors">Biểu đồ tổng hợp</a>
-        <a href="#khuyen-cao" class="hover:text-sky-400 transition-colors">Khuyến cáo an toàn</a>
-      </nav>
-
-      <!-- Zone 3: Nút thao tác nhanh -->
-      <div class="flex items-center gap-3">
-        <a href="#ban-do" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-900 bg-sky-400 hover:bg-sky-300 rounded-lg transition-colors whitespace-nowrap shadow-sm shadow-sky-500/20">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-          Mở bản đồ số
-        </a>
-      </div>
-
+    <!-- Tiêu đề trang -->
+    <div class="pb-1">
+      <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+        Danh sách 159 điểm ngập
+      </h1>
     </div>
-  </header>
 
-  <!-- ==========================================================================
-       2. PHẦN HERO: INFOGRAPHIC MỞ ĐẦU & NỘI DUNG VĂN BẢN NGUYÊN GỐC
-       ========================================================================== -->
-  <main class="relative z-10">
-
-    <section id="hero" class="pt-16 pb-20 border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-slate-900/60 to-slate-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- BẢN ĐỒ TƯƠNG TÁC + BỘ LỌC + DANH SÁCH ĐIỂM NGẬP -->
+    <section id="ban-do" class="space-y-4">
+      
+      <!-- Thanh công cụ Tìm kiếm & Bộ lọc (Thẻ trắng sạch sẽ phong cách Neumorphic) -->
+      <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
         
-        <!-- Header Text -->
-        <div class="max-w-3xl">
-          <p class="data-kicker mb-3">Tài liệu thống kê chính thức · Sở Xây dựng</p>
-          <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight" style="text-wrap: balance;">
-            Danh sách 159 điểm ngập
-          </h1>
-          <p class="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed">
-            Theo thống kê của Sở Xây dựng, trên địa bàn TPHCM mới (sau hợp nhất), tổng hợp ghi nhận 159 vị trí ngập, phân bố tại bốn khu vực chính với các nguyên nhân và mức độ khác nhau.
-          </p>
+        <!-- Search Input -->
+        <div class="md:col-span-4 relative">
+          <input 
+            type="text" 
+            id="map-search-input" 
+            placeholder="Tìm theo tên đường (VD: Nguyễn Văn Quá, QL13, Calmette...)" 
+            class="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all pl-9"
+          />
+          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
         </div>
 
-        <!-- Metric Counter Grid (Infographic số liệu trực quan) -->
-        <div class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          
-          <!-- Thẻ 1 -->
-          <div class="p-6 rounded-xl bg-slate-900/90 border border-slate-800 backdrop-blur-sm relative overflow-hidden group hover:border-slate-700 transition-colors">
-            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Tổng vị trí ngập</div>
-            <div class="mt-2 text-4xl sm:text-5xl font-extrabold text-sky-400 tabular-nums" id="stat-total">159</div>
-            <p class="mt-2 text-xs text-slate-400">Ghi nhận trên địa bàn TPHCM mới</p>
-            <div class="absolute bottom-0 left-0 right-0 h-1 bg-sky-500/40"></div>
-          </div>
-
-          <!-- Thẻ 2 -->
-          <div class="p-6 rounded-xl bg-slate-900/90 border border-slate-800 backdrop-blur-sm relative overflow-hidden group hover:border-slate-700 transition-colors">
-            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Địa bàn trọng điểm</div>
-            <div class="mt-2 text-4xl sm:text-5xl font-extrabold text-indigo-400 tabular-nums">04</div>
-            <p class="mt-2 text-xs text-slate-400">TPHCM cũ, Thủ Đức, Bình Dương, BR-VT</p>
-            <div class="absolute bottom-0 left-0 right-0 h-1 bg-indigo-500/40"></div>
-          </div>
-
-          <!-- Thẻ 3 -->
-          <div class="p-6 rounded-xl bg-slate-900/90 border border-slate-800 backdrop-blur-sm relative overflow-hidden group hover:border-slate-700 transition-colors">
-            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Tuyến đường trục chính</div>
-            <div class="mt-2 text-4xl sm:text-5xl font-extrabold text-amber-400 tabular-nums">773</div>
-            <p class="mt-2 text-xs text-slate-400">Theo dõi ngập do mưa, triều & kết hợp</p>
-            <div class="absolute bottom-0 left-0 right-0 h-1 bg-amber-500/40"></div>
-          </div>
-
-          <!-- Thẻ 4 -->
-          <div class="p-6 rounded-xl bg-slate-900/90 border border-slate-800 backdrop-blur-sm relative overflow-hidden group hover:border-slate-700 transition-colors">
-            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Đỉnh triều cường ghi nhận</div>
-            <div class="mt-2 text-4xl sm:text-5xl font-extrabold text-rose-400 tabular-nums">+1,74m</div>
-            <p class="mt-2 text-xs text-slate-400">Thời gian mưa từ 30 phút - 2,5 giờ</p>
-            <div class="absolute bottom-0 left-0 right-0 h-1 bg-rose-500/40"></div>
-          </div>
-
+        <!-- Filter Region -->
+        <div class="md:col-span-3">
+          <select id="filter-region" class="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3 py-2.5 text-xs text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all cursor-pointer">
+            <option value="all">Tất cả địa bàn (159 điểm)</option>
+            <option value="hcm-old">TPHCM trước đây (57 điểm)</option>
+            <option value="thu-duc">TP Thủ Đức (19 điểm)</option>
+            <option value="binh-duong">Bình Dương (52 điểm)</option>
+            <option value="vung-tau">Bà Rịa - Vũng Tàu (31 điểm)</option>
+          </select>
         </div>
 
-        <!-- Trích đoạn bối cảnh khí tượng từ văn bản -->
-        <div class="mt-8 p-5 rounded-xl bg-slate-900/50 border border-slate-800/80 text-sm text-slate-300 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-sky-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <!-- Filter Cause -->
+        <div class="md:col-span-3">
+          <select id="filter-cause" class="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3 py-2.5 text-xs text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all cursor-pointer">
+            <option value="all">Tất cả nguyên nhân</option>
+            <option value="rain">Ngập do mưa (119)</option>
+            <option value="tide">Ngập do triều (10)</option>
+            <option value="rain-tide">Ngập do mưa và triều (30)</option>
+          </select>
+        </div>
+
+        <!-- Reset Button (Nút tươi sáng bo tròn) -->
+        <div class="md:col-span-2 flex items-center justify-end">
+          <button id="reset-map-filter" class="w-full md:w-auto px-4 py-2.5 text-xs font-semibold text-slate-700 hover:text-sky-700 bg-slate-100 hover:bg-sky-50 border border-slate-200 hover:border-sky-300 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap cursor-pointer shadow-xs">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
-            <span>
-              <strong>Dữ liệu theo dõi 2020 đến nay:</strong> Các trận mưa thường kéo dài từ 30 phút đến 2,5 giờ, với lượng mưa phổ biến từ 20mm đến 126,3mm. Triều cường đã đạt mức +1,74m.
-            </span>
-          </div>
-          <a href="#ban-do" class="shrink-0 text-xs font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1.5 transition-colors">
-            Khám phá 159 điểm trên bản đồ
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
+            Đặt lại lọc
+          </button>
         </div>
 
       </div>
-    </section>
 
-    <!-- ==========================================================================
-       3. PHẦN 1: TIÊU CHÍ PHÂN LOẠI MỨC ĐỘ NGẬP THEO SỞ XÂY DỰNG
-       (Nguyên bản 100% định nghĩa từ PDF kết hợp trực quan hóa thước đo nước)
-       ========================================================================== -->
-    <section id="tieu-chi" class="py-20 border-b border-slate-800/80">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Không gian làm việc: Bản đồ (Trái) + Danh sách tra cứu (Phải) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
         
-        <div class="max-w-3xl">
-          <p class="data-kicker mb-2">Quy chuẩn kỹ thuật</p>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            Các mức độ ngập được phân loại như sau:
-          </h2>
-          <p class="mt-3 text-slate-400 text-sm">
-            Trực quan hóa tiêu chuẩn kỹ thuật phân loại cấp độ ngập nước theo độ sâu và thời gian tiêu thoát.
-          </p>
-        </div>
-
-        <!-- 4 Cột phân loại tương ứng 4 mức độ ngập từ văn bản -->
-        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Bản đồ số OpenStreetMap tiêu chuẩn (Sắc nét, 100% miễn phí, không cần API key) -->
+        <div class="lg:col-span-8 rounded-3xl p-2.5 bg-white border border-slate-200/80 shadow-sm relative flex flex-col min-h-[580px] lg:min-h-[680px]">
           
-          <!-- Cấp độ 1: Ngập nặng/thường xuyên -->
-          <div class="rounded-2xl bg-slate-900 border border-rose-900/40 p-6 flex flex-col justify-between relative overflow-hidden group hover:border-rose-500/50 transition-all duration-300">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-rose-400">Cấp 1 · Mức nặng nhất</span>
-                <span class="text-xs font-mono px-2 py-0.5 rounded bg-rose-500/10 text-rose-300 border border-rose-500/20">≥ 30cm</span>
-              </div>
-              <h3 class="mt-4 text-lg font-bold text-white">Ngập nặng/thường xuyên</h3>
-              <p class="mt-3 text-sm text-slate-300 leading-relaxed">
-                nước tụ lại có độ sâu từ 30cm trở lên, không tiêu thoát hết sau hơn 120 phút kể từ khi mưa kết thúc.
-              </p>
-            </div>
-
-            <!-- Thước đo độ sâu mô phỏng -->
-            <div class="mt-8 pt-6 border-t border-slate-800">
-              <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
-                <span>Mực nước ngập</span>
-                <span class="text-rose-400 font-semibold">> 30 cm</span>
-              </div>
-              <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
-                <div class="bg-rose-500 h-full w-full rounded-full animate-pulse"></div>
-              </div>
-              <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
-                <span>Thời gian thoát:</span>
-                <span class="text-slate-200 font-medium">> 120 phút</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Cấp độ 2: Ngập vừa -->
-          <div class="rounded-2xl bg-slate-900 border border-amber-900/40 p-6 flex flex-col justify-between relative overflow-hidden group hover:border-amber-500/50 transition-all duration-300">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Cấp 2 · Trung bình</span>
-                <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">15cm - 30cm</span>
-              </div>
-              <h3 class="mt-4 text-lg font-bold text-white">Ngập vừa</h3>
-              <p class="mt-3 text-sm text-slate-300 leading-relaxed">
-                độ sâu nước từ 15cm đến 30cm, không tiêu thoát hết trong khoảng 30 đến 120 phút sau khi dứt mưa.
-              </p>
-            </div>
-
-            <!-- Thước đo độ sâu mô phỏng -->
-            <div class="mt-8 pt-6 border-t border-slate-800">
-              <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
-                <span>Mực nước ngập</span>
-                <span class="text-amber-400 font-semibold">15cm – 30cm</span>
-              </div>
-              <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
-                <div class="bg-amber-500 h-full w-3/4 rounded-full"></div>
-              </div>
-              <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
-                <span>Thời gian thoát:</span>
-                <span class="text-slate-200 font-medium">30 – 120 phút</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Cấp độ 3: Ngập nhẹ -->
-          <div class="rounded-2xl bg-slate-900 border border-yellow-900/40 p-6 flex flex-col justify-between relative overflow-hidden group hover:border-yellow-500/50 transition-all duration-300">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-yellow-400">Cấp 3 · Cục bộ nhẹ</span>
-                <span class="text-xs font-mono px-2 py-0.5 rounded bg-yellow-500/10 text-yellow-300 border border-yellow-500/20">> 10cm - 15cm</span>
-              </div>
-              <h3 class="mt-4 text-lg font-bold text-white">Ngập nhẹ</h3>
-              <p class="mt-3 text-sm text-slate-300 leading-relaxed">
-                độ sâu nước lớn hơn 10cm đến dưới 15cm, không tiêu thoát hết trong thời gian dưới 30 phút sau khi dứt mưa.
-              </p>
-            </div>
-
-            <!-- Thước đo độ sâu mô phỏng -->
-            <div class="mt-8 pt-6 border-t border-slate-800">
-              <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
-                <span>Mực nước ngập</span>
-                <span class="text-yellow-400 font-semibold">10cm – 15cm</span>
-              </div>
-              <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
-                <div class="bg-yellow-500 h-full w-2/5 rounded-full"></div>
-              </div>
-              <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
-                <span>Thời gian thoát:</span>
-                <span class="text-slate-200 font-medium">< 30 phút</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Cấp độ 4: Không ngập -->
-          <div class="rounded-2xl bg-slate-900 border border-emerald-900/40 p-6 flex flex-col justify-between relative overflow-hidden group hover:border-emerald-500/50 transition-all duration-300">
-            <div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Cấp 4 · An toàn</span>
-                <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">≤ 10cm</span>
-              </div>
-              <h3 class="mt-4 text-lg font-bold text-white">Không ngập</h3>
-              <p class="mt-3 text-sm text-slate-300 leading-relaxed">
-                độ sâu nước từ 10cm trở xuống, tiêu thoát hết trong thời gian dưới 30 phút sau khi mưa kết thúc.
-              </p>
-            </div>
-
-            <!-- Thước đo độ sâu mô phỏng -->
-            <div class="mt-8 pt-6 border-t border-slate-800">
-              <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
-                <span>Mực nước ngập</span>
-                <span class="text-emerald-400 font-semibold">≤ 10 cm</span>
-              </div>
-              <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
-                <div class="bg-emerald-500 h-full w-1/6 rounded-full"></div>
-              </div>
-              <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
-                <span>Thời gian thoát:</span>
-                <span class="text-slate-200 font-medium">< 30 phút</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-       4. PHẦN BẢN ĐỒ TƯƠNG TÁC OPENSTREETMAP (100% MIỄN PHÍ, SẮC NÉT, KHÔNG CẦN KEY)
-       ========================================================================== -->
-    <section id="ban-do" class="py-16 bg-slate-950 border-b border-slate-800/80">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Header phần bản đồ -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
-          <div>
-            <p class="data-kicker mb-1">Hệ thống thông tin địa lý số</p>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Bản đồ 159 điểm ngập tương tác (OpenStreetMap)
-            </h2>
-            <p class="mt-2 text-sm text-slate-400">
-              Bản đồ OpenStreetMap tiêu chuẩn miễn phí, hiển thị sắc nét vị trí các tuyến đường và khu vực ngập.
-            </p>
-          </div>
-
-          <!-- Bộ chỉ số nhanh của bản đồ -->
-          <div class="flex items-center gap-3 text-xs text-slate-400">
-            <span class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span> Ngập nặng/thường xuyên
-            </span>
-            <span class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> Ngập vừa
-            </span>
-            <span class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 inline-block"></span> Ngập nhẹ
-            </span>
-            <span class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span> Do triều cường
-            </span>
-          </div>
-        </div>
-
-        <!-- Khung tìm kiếm & Bộ lọc bản đồ -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 mb-6 grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+          <!-- Badge thông báo OpenStreetMap tiêu chuẩn -->
           
-          <!-- Ô tìm kiếm từ khóa -->
-          <div class="md:col-span-4 relative">
-            <input 
-              type="text" 
-              id="map-search-input" 
-              placeholder="Tìm theo tên đường (VD: Nguyễn Văn Quá, QL13, Calmette...)" 
-              class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors pl-9"
-            />
-            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+
+          <div id="map" class="w-full h-full flex-1 rounded-2xl overflow-hidden z-10 relative" style="min-height: 560px;">
+            <div id="map-initial-loader" class="absolute inset-0 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm z-0 text-slate-600">
+              <div class="w-8 h-8 border-3 border-sky-500/30 border-t-sky-500 rounded-full animate-spin mb-2.5"></div>
+              <p class="text-xs font-semibold text-slate-700">Đang đồng bộ bản đồ OpenStreetMap tiêu chuẩn...</p>
+            </div>
           </div>
 
-          <!-- Bộ lọc Địa bàn -->
-          <div class="md:col-span-3">
-            <select id="filter-region" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-sky-400">
-              <option value="all">Tất cả địa bàn (159 điểm)</option>
-              <option value="hcm-old">TPHCM cũ (57 điểm)</option>
-              <option value="thu-duc">TP Thủ Đức (19 điểm)</option>
-              <option value="binh-duong">Bình Dương (52 điểm)</option>
-              <option value="vung-tau">Bà Rịa - Vũng Tàu (31 điểm)</option>
-            </select>
+          <!-- Chú giải nổi động (Floating Dynamic Legend) tông trắng sạch đẹp -->
+          <div id="floating-map-legend" class="absolute top-5 right-5 z-20 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl shadow-xl p-3.5 max-w-[240px] sm:max-w-[280px] text-xs transition-all duration-300">
+            <div class="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-slate-100">
+              <div class="flex items-center gap-1.5 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 shrink-0"></span>
+                <span class="font-bold text-slate-800 tracking-tight text-[11px] uppercase truncate">Chú giải phân loại</span>
+              </div>
+              <div class="flex items-center gap-1.5 shrink-0">
+                <span id="legend-total-badge" class="font-mono-num text-[10px] text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full border border-sky-200 font-bold" title="Số điểm đang hiển thị">159</span>
+                <button id="toggle-legend-btn" aria-label="Thu gọn hoặc mở rộng chú giải" class="text-slate-400 hover:text-slate-700 p-0.5 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
+                  <svg id="legend-toggle-icon" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <div id="legend-items-container" class="space-y-1 transition-all duration-300 overflow-hidden">
+              <!-- Tự động cập nhật qua JS -->
+            </div>
           </div>
 
-          <!-- Bộ lọc Nguyên nhân -->
-          <div class="md:col-span-3">
-            <select id="filter-cause" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-sky-400">
-              <option value="all">Tất cả nguyên nhân</option>
-              <option value="rain">Ngập do mưa</option>
-              <option value="tide">Ngập do triều</option>
-              <option value="rain-tide">Ngập do mưa và triều</option>
-            </select>
-          </div>
-
-          <!-- Nút Reset -->
-          <div class="md:col-span-2 flex items-center justify-end">
-            <button id="reset-map-filter" class="w-full md:w-auto px-4 py-2 text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg transition-colors flex items-center justify-center gap-1.5">
-              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-              Đặt lại lọc
+          <!-- Nút di chuyển nhanh đến 4 khu vực (Floating bottom pill buttons) -->
+          <div class="absolute bottom-5 left-5 z-20 flex flex-wrap gap-2">
+            <button onclick="focusRegion('hcm')" class="px-3.5 py-1.5 text-xs font-semibold bg-white/95 text-slate-800 hover:text-sky-600 hover:bg-sky-50 rounded-full border border-slate-200/90 backdrop-blur shadow-md transition-all cursor-pointer">
+              TPHCM trước đây
+            </button>
+            <button onclick="focusRegion('thuduc')" class="px-3.5 py-1.5 text-xs font-semibold bg-white/95 text-slate-800 hover:text-sky-600 hover:bg-sky-50 rounded-full border border-slate-200/90 backdrop-blur shadow-md transition-all cursor-pointer">
+              TP Thủ Đức
+            </button>
+            <button onclick="focusRegion('binhduong')" class="px-3.5 py-1.5 text-xs font-semibold bg-white/95 text-slate-800 hover:text-sky-600 hover:bg-sky-50 rounded-full border border-slate-200/90 backdrop-blur shadow-md transition-all cursor-pointer">
+              Bình Dương
+            </button>
+            <button onclick="focusRegion('vungtau')" class="px-3.5 py-1.5 text-xs font-semibold bg-white/95 text-slate-800 hover:text-sky-600 hover:bg-sky-50 rounded-full border border-slate-200/90 backdrop-blur shadow-md transition-all cursor-pointer">
+              Vũng Tàu
             </button>
           </div>
-
         </div>
 
-        <!-- Bố cục Bản đồ + Thanh danh sách bên phải -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <!-- Danh sách điểm ngập kết quả lọc (Cột bên phải với thẻ trắng tinh tế) -->
+        <div class="lg:col-span-4 rounded-3xl border border-slate-200/80 bg-white shadow-sm flex flex-col max-h-[680px] overflow-hidden">
           
-          <!-- Cột Bản đồ OpenStreetMap (8 cột trên Desktop) -->
-          <div class="lg:col-span-8 rounded-2xl overflow-hidden border border-slate-800 relative bg-slate-900 shadow-2xl min-h-[550px] lg:min-h-[640px] flex flex-col">
-            <div id="map" class="w-full h-full flex-1 z-10 relative" style="min-height: 550px;">
-              <div id="map-initial-loader" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/70 backdrop-blur-sm z-0 text-slate-400">
-                <div class="w-9 h-9 border-2 border-sky-400/30 border-t-sky-400 rounded-full animate-spin mb-2.5"></div>
-                <p class="text-xs font-medium text-slate-300">Đang kết nối bản đồ OpenStreetMap...</p>
-              </div>
-            </div>
-            
-            <!-- Floating Dynamic Legend Widget on Map (Tự động cập nhật theo bộ lọc) -->
-            <div id="floating-map-legend" class="absolute top-3 right-3 z-20 bg-slate-950/92 backdrop-blur-md border border-slate-700/80 rounded-xl shadow-2xl p-3 max-w-[230px] sm:max-w-[270px] text-xs transition-all duration-300">
-              <div class="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-slate-800">
-                <div class="flex items-center gap-1.5 min-w-0">
-                  <span class="w-2 h-2 rounded-full bg-sky-400 shrink-0 animate-pulse"></span>
-                  <span class="font-bold text-slate-200 tracking-tight text-[11px] uppercase truncate">Chú giải phân loại</span>
-                </div>
-                <div class="flex items-center gap-1.5 shrink-0">
-                  <span id="legend-total-badge" class="font-mono text-[10px] text-sky-400 bg-sky-500/10 px-1.5 py-0.5 rounded border border-sky-500/20 tabular-nums font-semibold" title="Số điểm đang hiển thị">159</span>
-                  <button id="toggle-legend-btn" aria-label="Thu gọn hoặc mở rộng chú giải" class="text-slate-400 hover:text-white p-0.5 rounded hover:bg-slate-800 transition-colors">
-                    <svg id="legend-toggle-icon" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              
-              <!-- Container các mục chú giải tự động cập nhật theo bộ lọc -->
-              <div id="legend-items-container" class="space-y-1.5 transition-all duration-300 overflow-hidden">
-                <!-- Tự động cập nhật theo danh mục có điểm hiển thị -->
-              </div>
-            </div>
-
-            <!-- Floating Quick Navigation buttons on Map -->
-            <div class="absolute bottom-4 left-4 z-20 flex flex-wrap gap-2">
-              <button onclick="focusRegion('hcm')" class="px-3 py-1.5 text-xs font-semibold bg-slate-900/90 text-sky-300 hover:bg-slate-800 rounded-md border border-slate-700 backdrop-blur shadow transition-colors">
-                Xem TPHCM
-              </button>
-              <button onclick="focusRegion('thuduc')" class="px-3 py-1.5 text-xs font-semibold bg-slate-900/90 text-indigo-300 hover:bg-slate-800 rounded-md border border-slate-700 backdrop-blur shadow transition-colors">
-                Xem TP Thủ Đức
-              </button>
-              <button onclick="focusRegion('binhduong')" class="px-3 py-1.5 text-xs font-semibold bg-slate-900/90 text-amber-300 hover:bg-slate-800 rounded-md border border-slate-700 backdrop-blur shadow transition-colors">
-                Xem Bình Dương
-              </button>
-              <button onclick="focusRegion('vungtau')" class="px-3 py-1.5 text-xs font-semibold bg-slate-900/90 text-emerald-300 hover:bg-slate-800 rounded-md border border-slate-700 backdrop-blur shadow transition-colors">
-                Xem Vũng Tàu
-              </button>
-            </div>
-          </div>
-
-
-          <!-- Cột Danh mục điểm tương ứng kết quả lọc (4 cột trên Desktop) -->
-          <div class="lg:col-span-4 rounded-2xl border border-slate-800 bg-slate-900 flex flex-col max-h-[640px] overflow-hidden">
-            
-            <!-- Tiêu đề danh sách & số lượng -->
-            <div class="p-4 border-b border-slate-800 flex items-center justify-between">
-              <div>
-                <h3 class="text-sm font-bold text-white">Điểm ngập phù hợp</h3>
-                <p class="text-xs text-slate-400 mt-0.5" id="filtered-count-label">Hiển thị 159 / 159 vị trí</p>
-              </div>
-              <span class="text-xs px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20 font-mono" id="filtered-badge">159</span>
-            </div>
-
-            <!-- Danh sách cuộn các điểm ngập -->
-            <div id="map-point-list" class="flex-1 overflow-y-auto divide-y divide-slate-800/60 p-2 space-y-1">
-              <!-- Render tự động bởi JavaScript -->
-            </div>
-
-            <!-- Footer hướng dẫn -->
-            <div class="p-3 bg-slate-950/80 border-t border-slate-800 text-[11px] text-slate-400 text-center">
-              Nhấp vào một điểm để phóng to và xem chi tiết trên bản đồ
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-       5. PHẦN DANH SÁCH 4 KHU VỰC CHI TIẾT (NGUYÊN BẢN 100% THEO FILE PDF)
-       TUYỆT ĐỐI KHÔNG: Bịa thêm thông tin, tự ý tóm tắt, cắt xén, viết tắt,
-       thay đổi cấu trúc câu hay thêm bớt bất kỳ từ ngữ nào.
-       ========================================================================== -->
-    <section id="danh-sach" class="py-20 border-b border-slate-800/80">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- Header khu vực -->
-        <div class="max-w-3xl mb-8">
-          <p class="data-kicker mb-2">Văn bản chi tiết Sở Xây dựng</p>
-          <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-snug">
-            Tổng số vị trí ngập theo từng địa bàn như sau:
-          </h2>
-          <p class="mt-3 text-sm text-slate-400">
-            Dưới đây là toàn văn danh sách 159 vị trí ngập phân bố tại các khu vực, giữ nguyên 100% cấu trúc và câu từ chính xác.
-          </p>
-        </div>
-
-        <!-- ==================================================================
-             PLACEHOLDER IMAGE CAROUSEL: KHẢO SÁT HÌNH ẢNH 4 KHU VỰC
-             Mô phỏng trực quan tác động ngập nước tại từng địa bàn
-             ================================================================== -->
-        <div class="mb-14 rounded-2xl bg-slate-900 border border-slate-800 p-4 sm:p-6 shadow-xl relative overflow-hidden" id="flood-carousel-container">
-          
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-slate-800/80 gap-3">
+          <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
             <div>
-              <span class="data-kicker">Hình ảnh mô phỏng · Khảo sát thực địa</span>
-              <h3 class="text-lg sm:text-xl font-bold text-white mt-1">Trực quan hóa tác động ngập nước tại 4 khu vực</h3>
+              <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Danh sách điểm ngập</h3>
+              <p class="text-[11px] text-slate-500 mt-0.5" id="filtered-count-label">Hiển thị 159 / 159 vị trí</p>
             </div>
-            
-            <!-- Controls & Counter -->
-            <div class="flex items-center gap-3 self-end sm:self-auto">
-              <span class="text-xs font-mono text-slate-400 tabular-nums" id="carousel-counter">01 / 04</span>
-              <div class="flex items-center gap-1.5">
-                <button 
-                  id="carousel-prev-btn" 
-                  aria-label="Hình trước"
-                  class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 flex items-center justify-center transition-colors"
-                >
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button 
-                  id="carousel-next-btn" 
-                  aria-label="Hình kế tiếp"
-                  class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 flex items-center justify-center transition-colors"
-                >
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
-            </div>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200 font-mono-num font-bold" id="filtered-badge">159</span>
           </div>
 
-          <!-- Carousel Viewport -->
-          <div class="relative overflow-hidden rounded-xl bg-slate-950 border border-slate-800/80 aspect-[16/10] sm:aspect-[16/8] md:aspect-[21/9]">
-            <div id="carousel-track" class="flex h-full w-full transition-transform duration-500 ease-out">
-              
-              <!-- Slide 1: TPHCM Cũ -->
-              <div class="min-w-full h-full relative flex flex-col justify-end p-6 sm:p-8 select-none">
-                <!-- Visual Background Scene -->
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-900/60 z-10"></div>
-                <!-- Stylized vector artwork for HCM urban street flooding -->
-                <div class="absolute inset-0 bg-[#09152b] overflow-hidden">
-                  <svg class="w-full h-full object-cover opacity-45" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-                    <defs>
-                      <linearGradient id="skyGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#0f172a" />
-                        <stop offset="60%" stop-color="#1e293b" />
-                        <stop offset="100%" stop-color="#0369a1" />
-                      </linearGradient>
-                      <linearGradient id="waterGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#0284c7" stop-opacity="0.8"/>
-                        <stop offset="100%" stop-color="#0c4a6e" stop-opacity="0.95"/>
-                      </linearGradient>
-                    </defs>
-                    <rect width="800" height="400" fill="url(#skyGrad1)" />
-                    <!-- Urban skyline silhouette -->
-                    <path d="M0,260 L40,260 L40,200 L90,200 L90,260 L140,260 L140,150 L190,150 L190,260 L260,260 L260,180 L310,180 L310,260 L380,260 L380,130 L430,130 L430,260 L500,260 L500,210 L560,210 L560,260 L640,260 L640,170 L700,170 L700,260 L800,260 L800,400 L0,400 Z" fill="#091224" />
-                    <!-- Submerged roadway & Water surface -->
-                    <rect y="280" width="800" height="120" fill="url(#waterGrad1)" />
-                    <line x1="0" y1="280" x2="800" y2="280" stroke="#38bdf8" stroke-width="2" stroke-dasharray="8,6" opacity="0.6"/>
-                    <!-- Rain streaks -->
-                    <g stroke="#7dd3fc" stroke-width="1.2" opacity="0.35">
-                      <line x1="80" y1="40" x2="50" y2="130" /><line x1="180" y1="30" x2="150" y2="120" />
-                      <line x1="280" y1="50" x2="250" y2="140" /><line x1="380" y1="20" x2="350" y2="110" />
-                      <line x1="480" y1="60" x2="450" y2="150" /><line x1="580" y1="30" x2="550" y2="120" />
-                      <line x1="680" y1="40" x2="650" y2="130" /><line x1="780" y1="50" x2="750" y2="140" />
-                    </g>
-                    <!-- Streetlamp with light cone -->
-                    <circle cx="160" cy="220" r="18" fill="#fde047" opacity="0.3" filter="blur(6px)"/>
-                    <circle cx="520" cy="220" r="18" fill="#fde047" opacity="0.3" filter="blur(6px)"/>
-                  </svg>
-                </div>
-
-                <!-- Slide Content -->
-                <div class="relative z-20 max-w-2xl">
-                  <div class="flex items-center gap-2 text-xs font-semibold text-sky-400 mb-2">
-                    <span>KHU VỰC I</span>
-                    <span aria-hidden="true">·</span>
-                    <span>57 VỊ TRÍ (TPHCM CŨ)</span>
-                    <span aria-hidden="true">·</span>
-                    <span class="text-rose-400">NGẬP DO MƯA & TRIỀU</span>
-                  </div>
-                  <h4 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                    Ngập úng đường nội đô và trục chính tại TPHCM cũ
-                  </h4>
-                  <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-2 sm:line-clamp-none">
-                    Mưa lớn (20 – 126,3mm) kéo dài từ 30 phút đến 2,5 giờ gây ngập sâu trên 15 tuyến thường xuyên như Nguyễn Văn Quá, Ung Văn Khiêm, Bạch Đằng, Phan Huy Ích và 9 tuyến ngập do triều như Trần Xuân Soạn, Huỳnh Tấn Phát.
-                  </p>
-                  <div class="mt-4 flex items-center gap-3">
-                    <button onclick="focusRegion('hcm')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-slate-950 bg-sky-400 hover:bg-sky-300 rounded-lg transition-colors">
-                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      </svg>
-                      Định vị TPHCM trên bản đồ
-                    </button>
-                    <span class="text-xs text-slate-400 hidden sm:inline">Mực triều đỉnh +1,74m</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 2: TP Thủ Đức -->
-              <div class="min-w-full h-full relative flex flex-col justify-end p-6 sm:p-8 select-none">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-900/60 z-10"></div>
-                <!-- Stylized vector artwork for Thu Duc riverine tide surge -->
-                <div class="absolute inset-0 bg-[#091829] overflow-hidden">
-                  <svg class="w-full h-full object-cover opacity-45" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-                    <defs>
-                      <linearGradient id="riverGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#0284c7" stop-opacity="0.7"/>
-                        <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.95"/>
-                      </linearGradient>
-                    </defs>
-                    <rect width="800" height="400" fill="#0a1226" />
-                    <!-- Winding Saigon River & low-lying banks -->
-                    <path d="M0,220 Q200,270 400,210 T800,250 L800,400 L0,400 Z" fill="url(#riverGrad)" />
-                    <!-- River embankment & houses -->
-                    <path d="M0,230 L120,230 L120,180 L180,180 L180,230 L320,230 L320,160 L380,160 L380,230 L600,230 L600,190 L680,190 L680,230 L800,230" stroke="#334155" stroke-width="3" fill="none" />
-                    <!-- Water ripple waves -->
-                    <path d="M50,290 Q200,280 350,290 T650,290" stroke="#38bdf8" stroke-width="2" fill="none" opacity="0.6"/>
-                    <path d="M100,340 Q300,330 500,340 T750,340" stroke="#60a5fa" stroke-width="2" fill="none" opacity="0.4"/>
-                    <!-- Rain streaks -->
-                    <g stroke="#93c5fd" stroke-width="1.2" opacity="0.3">
-                      <line x1="120" y1="20" x2="90" y2="110" /><line x1="260" y1="40" x2="230" y2="130" />
-                      <line x1="440" y1="30" x2="410" y2="120" /><line x1="620" y1="50" x2="590" y2="140" />
-                    </g>
-                  </svg>
-                </div>
-
-                <div class="relative z-20 max-w-2xl">
-                  <div class="flex items-center gap-2 text-xs font-semibold text-indigo-400 mb-2">
-                    <span>KHU VỰC I (MỞ RỘNG)</span>
-                    <span aria-hidden="true">·</span>
-                    <span>19 VỊ TRÍ (TP THỦ ĐỨC)</span>
-                    <span aria-hidden="true">·</span>
-                    <span class="text-indigo-300">TÁC ĐỘNG KÉP MƯA & TRIỀU</span>
-                  </div>
-                  <h4 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                    Triều dâng ven sông Sài Gòn & lưu vực trũng tại TP Thủ Đức
-                  </h4>
-                  <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-2 sm:line-clamp-none">
-                    Ghi nhận 10 vị trí ngập thường xuyên tại phường An Khánh (Nguyễn Văn Hưởng, Quốc Hương, Thảo Điền), Tam Bình (Lê Thị Hoa, TL43) và Thủ Đức (Dương Văn Cam, Kha Vạn Cân, Tô Ngọc Vân) do kết hợp triều cường sông dâng cao và mưa to.
-                  </p>
-                  <div class="mt-4 flex items-center gap-3">
-                    <button onclick="focusRegion('thuduc')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-slate-950 bg-indigo-400 hover:bg-indigo-300 rounded-lg transition-colors">
-                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      </svg>
-                      Định vị Thủ Đức trên bản đồ
-                    </button>
-                    <span class="text-xs text-slate-400 hidden sm:inline">10 thường xuyên · 8 vừa · 1 nhẹ</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 3: Bình Dương -->
-              <div class="min-w-full h-full relative flex flex-col justify-end p-6 sm:p-8 select-none">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-900/60 z-10"></div>
-                <!-- Stylized vector artwork for Binh Duong highway flooding -->
-                <div class="absolute inset-0 bg-[#17120a] overflow-hidden">
-                  <svg class="w-full h-full object-cover opacity-45" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-                    <defs>
-                      <linearGradient id="roadWaterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#d97706" stop-opacity="0.4"/>
-                        <stop offset="100%" stop-color="#78350f" stop-opacity="0.9"/>
-                      </linearGradient>
-                    </defs>
-                    <rect width="800" height="400" fill="#140f08" />
-                    <!-- Highway perspective & industrial warehouses -->
-                    <polygon points="350,180 450,180 800,400 0,400" fill="#1e293b" />
-                    <polygon points="380,240 420,240 700,400 100,400" fill="url(#roadWaterGrad)" />
-                    <!-- Factory silhouette -->
-                    <rect x="60" y="160" width="140" height="60" fill="#292524" />
-                    <polygon points="60,160 130,130 200,160" fill="#292524" />
-                    <rect x="620" y="150" width="120" height="70" fill="#292524" />
-                    <!-- Road dividing lines submerged -->
-                    <line x1="400" y1="180" x2="400" y2="400" stroke="#f59e0b" stroke-width="3" stroke-dasharray="16,12" opacity="0.6"/>
-                    <!-- Rain streaks -->
-                    <g stroke="#fcd34d" stroke-width="1.2" opacity="0.25">
-                      <line x1="150" y1="20" x2="130" y2="120" /><line x1="320" y1="30" x2="300" y2="130" />
-                      <line x1="510" y1="20" x2="490" y2="120" /><line x1="680" y1="40" x2="660" y2="140" />
-                    </g>
-                  </svg>
-                </div>
-
-                <div class="relative z-20 max-w-2xl">
-                  <div class="flex items-center gap-2 text-xs font-semibold text-amber-400 mb-2">
-                    <span>KHU VỰC II</span>
-                    <span aria-hidden="true">·</span>
-                    <span>52 VỊ TRÍ (BÌNH DƯƠNG)</span>
-                    <span aria-hidden="true">·</span>
-                    <span class="text-amber-300">TRỤC ĐẠI LỘ & CỤM ĐÔ THỊ</span>
-                  </div>
-                  <h4 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                    Ngập cục bộ trên Đại lộ Bình Dương, QL13 & các tuyến tỉnh lộ
-                  </h4>
-                  <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-2 sm:line-clamp-none">
-                    Thống kê 44 điểm ngập do mưa (Bến Cát 19 điểm, Dĩ An 10 điểm, Thuận An 9 điểm, Thủ Dầu Một 5 điểm, Tân Uyên 1 điểm) cùng 8 điểm ngập kết hợp mưa và triều rạch Cái Cầu, suối Bình Thắng, rạch Bưng Cải.
-                  </p>
-                  <div class="mt-4 flex items-center gap-3">
-                    <button onclick="focusRegion('binhduong')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-slate-950 bg-amber-400 hover:bg-amber-300 rounded-lg transition-colors">
-                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      </svg>
-                      Định vị Bình Dương trên bản đồ
-                    </button>
-                    <span class="text-xs text-slate-400 hidden sm:inline">Bến Cát: 7 điểm QL13, 6 điểm ĐT 744</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 4: Bà Rịa - Vũng Tàu -->
-              <div class="min-w-full h-full relative flex flex-col justify-end p-6 sm:p-8 select-none">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-900/60 z-10"></div>
-                <!-- Stylized vector artwork for Vung Tau coastal surge & rain -->
-                <div class="absolute inset-0 bg-[#091b1a] overflow-hidden">
-                  <svg class="w-full h-full object-cover opacity-45" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-                    <defs>
-                      <linearGradient id="seaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#059669" stop-opacity="0.4"/>
-                        <stop offset="100%" stop-color="#064e3b" stop-opacity="0.95"/>
-                      </linearGradient>
-                    </defs>
-                    <rect width="800" height="400" fill="#061a16" />
-                    <!-- Mountain / Big Mountain Small Mountain silhouette -->
-                    <path d="M0,230 Q160,110 320,220 Q480,140 640,240 L800,240 L800,400 L0,400 Z" fill="#0f2922" />
-                    <!-- Sea water & coastal embankment -->
-                    <path d="M0,280 Q250,260 500,280 T800,280 L800,400 L0,400 Z" fill="url(#seaGrad)" />
-                    <!-- Ocean waves & sea spray -->
-                    <path d="M0,320 Q200,300 400,320 T800,320" stroke="#34d399" stroke-width="2.5" fill="none" opacity="0.6"/>
-                    <path d="M50,360 Q300,345 550,360 T800,360" stroke="#6ee7b7" stroke-width="2" fill="none" opacity="0.4"/>
-                    <!-- Rain streaks -->
-                    <g stroke="#a7f3d0" stroke-width="1.2" opacity="0.3">
-                      <line x1="100" y1="30" x2="70" y2="130" /><line x1="280" y1="20" x2="250" y2="120" />
-                      <line x1="490" y1="40" x2="460" y2="140" /><line x1="700" y1="25" x2="670" y2="125" />
-                    </g>
-                  </svg>
-                </div>
-
-                <div class="relative z-20 max-w-2xl">
-                  <div class="flex items-center gap-2 text-xs font-semibold text-emerald-400 mb-2">
-                    <span>KHU VỰC III</span>
-                    <span aria-hidden="true">·</span>
-                    <span>31 VỊ TRÍ (BÀ RỊA - VŨNG TÀU)</span>
-                    <span aria-hidden="true">·</span>
-                    <span class="text-emerald-300">ĐÔ THỊ VEN BIỂN & QUỐC LỘ 51</span>
-                  </div>
-                  <h4 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                    Ngập do mưa lớn & triều cường tại Bà Rịa - Vũng Tàu
-                  </h4>
-                  <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-2 sm:line-clamp-none">
-                    Ghi nhận 14 điểm ngập nặng/thường xuyên (dọc Quốc lộ 51 tại thị xã Phú Mỹ 8 điểm, Tam Thắng, Trưng Trắc - Trưng Nhị, Võ Nguyên Giáp) và 12 điểm ngập vừa, 1 ngập do triều tại Decoimex mở rộng.
-                  </p>
-                  <div class="mt-4 flex items-center gap-3">
-                    <button onclick="focusRegion('vungtau')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-slate-950 bg-emerald-400 hover:bg-emerald-300 rounded-lg transition-colors">
-                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      </svg>
-                      Định vị Vũng Tàu trên bản đồ
-                    </button>
-                    <span class="text-xs text-slate-400 hidden sm:inline">27 do mưa · 1 do triều · 3 kết hợp</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+          <!-- Scrollable List -->
+          <div id="map-point-list" class="flex-1 overflow-y-auto p-2.5 space-y-1.5">
+            <!-- Render tự động bởi JS -->
           </div>
 
-          <!-- Carousel Indicators Dots -->
-          <div class="flex items-center justify-center gap-2 mt-4" id="carousel-dots">
-            <button class="w-8 h-1.5 rounded-full bg-sky-400 transition-all duration-300" onclick="goToSlide(0)" aria-label="Slide 1"></button>
-            <button class="w-2.5 h-1.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all duration-300" onclick="goToSlide(1)" aria-label="Slide 2"></button>
-            <button class="w-2.5 h-1.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all duration-300" onclick="goToSlide(2)" aria-label="Slide 3"></button>
-            <button class="w-2.5 h-1.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all duration-300" onclick="goToSlide(3)" aria-label="Slide 4"></button>
-          </div>
-
-        </div>
-
-        <div class="space-y-12">
-
-
-          <!-- ==================================================================
-               1. KHU VỰC TPHCM CŨ (KHU VỰC I): 76 VỊ TRÍ
-               ================================================================== -->
-          <article class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-800 gap-3">
-              <h3 class="text-xl sm:text-2xl font-bold text-sky-400">
-                1. Khu vực TPHCM cũ (khu vực I): 76 vị trí
-              </h3>
-              <span class="text-xs font-semibold px-3 py-1 rounded bg-sky-500/10 text-sky-300 border border-sky-500/20 w-fit">
-                Khu vực I · 76 vị trí
-              </span>
-            </div>
-
-            <!-- 1.1 Khu vực TPHCM cũ, không bao gồm khu vực thành phố Thủ Đức: 57 vị trí -->
-            <div class="mt-8 space-y-6">
-              <h4 class="text-lg font-bold text-white">
-                1.1. Khu vực TPHCM cũ, không bao gồm khu vực thành phố Thủ Đức: 57 vị trí
-              </h4>
-              <p class="text-sm text-slate-300 leading-relaxed italic bg-slate-950/60 p-4 rounded-xl border border-slate-800/80">
-                Qua theo dõi tình hình mưa, ngập nước trên địa bàn thành phố từ năm 2020 đến nay, các trận mưa thường kéo dài từ 30 phút đến 2,5 giờ, với lượng mưa phổ biến từ 20mm đến 126,3mm. Triều cường đã đạt mức +1,74m. Trong tổng số 773 tuyến đường trục chính, các tuyến có khả năng bị ngập do mưa, do triều và do mưa kết hợp triều được thống kê cụ thể như sau:
-              </p>
-
-              <!-- a) Ngập do mưa: 48 vị trí -->
-              <div class="mt-6 pl-2 sm:pl-4 border-l-2 border-sky-500/40 space-y-6">
-                <h5 class="text-base font-bold text-sky-300">
-                  a) Ngập do mưa: 48 vị trí
-                </h5>
-
-                <!-- Ngập thường xuyên: 15 vị trí -->
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
-                    <h6 class="text-sm font-bold text-rose-400">
-                      Ngập thường xuyên: 15 vị trí (đối với những trận mưa có lượng mưa từ 30mm đến 50mm, mực triều dưới +1,0m).
-                    </h6>
-                  </div>
-                  <ul class="space-y-2 text-sm text-slate-200">
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Đông Hưng Thuận:</strong> đường Nguyễn Văn Quá, đường Phan Văn Hớn.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Thạnh Mỹ Tây:</strong> đường Bạch Đằng, đường Ung Văn Khiêm, đường Đinh Bộ Lĩnh.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường An Lạc:</strong> đường Hồ Học Lãm.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Phú Lâm:</strong> đường An Dương Vương.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Thông Tây Hội, An Hội Đông:</strong> đường Lê Văn Thọ, đường Lê Đức Thọ, đường Nguyễn Văn Khối, đường Phan Huy Ích, đường Phạm Văn Chiêu.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Đông Hưng Thuận:</strong> đường Phan Văn Hớn, đường Song hành Quốc lộ 22.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Bình Trị Đông:</strong> đường Phan Anh.</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <!-- Ngập vừa: 13 vị trí -->
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                    <h6 class="text-sm font-bold text-amber-400">
-                      Ngập vừa: 13 vị trí (ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút).
-                    </h6>
-                  </div>
-                  <ul class="space-y-2 text-sm text-slate-200">
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Bến Nghé:</strong> đường Calmette, đường Phạm Viết Chánh.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Đông Hưng Thuận:</strong> đường Nguyễn Văn Quá, đường Song hành Quốc lộ 22.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Bình Hưng:</strong> đường Phạm Hùng, Quốc lộ 50.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Thạnh Mỹ Tây, Bình Quới:</strong> đường Bình Quới, đường D5, đường Nguyễn Gia Trí.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Bình Trị Đông, Bình Hưng:</strong> đường Tân Hòa Đông, đường Tỉnh lộ 10, đường Võ Văn Kiệt.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Tân Sơn Nhất:</strong> đường Trường Sơn.</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <!-- Ngập nhẹ: 20 vị trí -->
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
-                    <h6 class="text-sm font-bold text-yellow-300">
-                      Ngập nhẹ: 20 vị trí (ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút).
-                    </h6>
-                  </div>
-                  <ul class="space-y-2 text-sm text-slate-200">
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Bến Nghé:</strong> đường Cống Quỳnh, đường Lê Lợi, đường Lê Thánh Tôn, đường Lê Thị Riêng, đường Nguyễn Cư Trinh, đường Nguyễn Trãi, đường Phạm Ngũ Lão, đường Trương Định.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Bàn Cờ:</strong> đường Nguyễn Thiện Thuật.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Khánh Hội:</strong> đường Hoàng Diệu, đường Tân Vĩnh, đường Tôn Thất Thuyết, đường Vĩnh Hội, đường Xóm Chiếu, đường Đoàn Văn Bơ.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Chợ Quán:</strong> đường Nguyễn Biểu, đường Nguyễn Văn Cừ, đường Trần Hưng Đạo.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Diên Hồng:</strong> đường Lê Hồng Phong, đường 3/2.</span>
-                    </li>
-                  </ul>
-                </div>
-
-              </div>
-
-              <!-- b) Ngập do triều: 9 vị trí -->
-              <div class="mt-6 pl-2 sm:pl-4 border-l-2 border-blue-500/40 space-y-4">
-                <h5 class="text-base font-bold text-blue-300">
-                  b) Ngập do triều: 9 vị trí
-                </h5>
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <ul class="space-y-2.5 text-sm text-slate-200">
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Bến Nghé (1 tuyến):</strong> đường Calmette.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Bình Quới (1 tuyến):</strong> đường Bình Quới.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Tân Thuận, Phú Thuận (2 tuyến):</strong> đường Trần Xuân Soạn, đường Huỳnh Tấn Phát.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Tân Thuận, Tân Mỹ, Nhà Bè (4 tuyến):</strong> đường Lê Văn Lương, đường Đào Sư Tích, đường Phạm Hữu Lầu, đường Nguyễn Bình.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Bình Hưng (1 tuyến):</strong> Quốc lộ 50.</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- 1.2. Thành phố Thủ Đức: 19 vị trí ngập do mưa và triều -->
-            <div class="mt-10 pt-8 border-t border-slate-800 space-y-6">
-              <h4 class="text-lg font-bold text-white">
-                1.2. Thành phố Thủ Đức: 19 vị trí ngập do mưa và triều
-              </h4>
-
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                
-                <!-- Ngập thường xuyên: 10 vị trí -->
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
-                    <h5 class="text-sm font-bold text-rose-400">Ngập thường xuyên: 10 vị trí.</h5>
-                  </div>
-                  <ul class="space-y-2 text-sm text-slate-200">
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường An Khánh:</strong> đường Nguyễn Văn Hưởng, đường Quốc Hương, đường Thảo Điền.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Tam Bình:</strong> đường Lê Thị Hoa, đường Tỉnh lộ 43.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Thủ Đức:</strong> đường Dương Văn Cam, đường Kha Vạn Cân, đường Tam Tam Xã, đường Tô Ngọc Vân, đường Đặng Thị Rành.</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <!-- Ngập vừa: 8 vị trí -->
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                    <h5 class="text-sm font-bold text-amber-400">Ngập vừa: 8 vị trí.</h5>
-                  </div>
-                  <ul class="space-y-2 text-sm text-slate-200">
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Bình Trưng:</strong> đường Nguyễn Duy Trinh.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Hiệp Bình:</strong> đường Hiệp Bình, Quốc lộ 13.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Phước Long:</strong> đường Dương Đình Hội, đường Đỗ Xuân Hợp.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Tam Bình:</strong> đường Đỗ Mười (Quốc lộ 1).</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Thủ Đức:</strong> đường Hồ Văn Tư.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Tăng Nhơn Phú:</strong> đường Lã Xuân Oai.</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <!-- Ngập nhẹ: 1 vị trí -->
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
-                    <h5 class="text-sm font-bold text-yellow-300">Ngập nhẹ: 1 vị trí.</h5>
-                  </div>
-                  <ul class="space-y-2 text-sm text-slate-200">
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500 mt-1">•</span>
-                      <span><strong>Phường Tăng Nhơn Phú:</strong> đường Lê Văn Việt.</span>
-                    </li>
-                  </ul>
-                </div>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- ==================================================================
-               2. KHU VỰC BÌNH DƯƠNG (KHU VỰC II): 52 VỊ TRÍ
-               ================================================================== -->
-          <article class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-800 gap-3">
-              <h3 class="text-xl sm:text-2xl font-bold text-amber-400">
-                2. Khu vực Bình Dương (khu vực II): 52 vị trí
-              </h3>
-              <span class="text-xs font-semibold px-3 py-1 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 w-fit">
-                Khu vực II · 52 vị trí
-              </span>
-            </div>
-
-            <!-- a) Ngập do mưa: 44 vị trí -->
-            <div class="mt-8 space-y-6">
-              <h4 class="text-base font-bold text-amber-300">
-                a) Ngập do mưa: 44 vị trí
-              </h4>
-
-              <div class="space-y-4">
-                
-                <!-- Thành phố Thủ Dầu Một (5 điểm) -->
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <h5 class="text-sm font-bold text-slate-200 mb-2">
-                    • Thành phố Thủ Dầu Một (5 điểm):
-                  </h5>
-                  <p class="text-sm text-slate-300 leading-relaxed">
-                    đại lộ Bình Dương, đoạn trước Trường Đại học Bình Dương, đường Nguyễn Văn Thành (ĐT 741), ngã ba đường Đoàn Trần Nghiệp - đường Hai Bà Trưng, đường Nguyễn Tri Phương, đường Nguyễn Đức Thuận.
-                  </p>
-                </div>
-
-                <!-- Thành phố Dĩ An (10 điểm) -->
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <h5 class="text-sm font-bold text-slate-200 mb-2">
-                    • Thành phố Dĩ An (10 điểm):
-                  </h5>
-                  <p class="text-sm text-slate-300 leading-relaxed">
-                    đường số 5, số 7 tại khu dân cư Nhị Đồng 1 (chợ Bà Diệp), đường Phạm Ngũ Lão - Phan Huy Ích, đường An Bình tại phường An Bình, đường Bế Văn Đàn tại phường An Bình, khu vực tổ 11 tại phường Hiệp Thắng, khu dân cư Tràng An, đường ĐT 743B, đường ĐT 747B, mương dọc đường sắt Bắc - Nam, khu dân cư Đông Hòa.
-                  </p>
-                </div>
-
-                <!-- Thành phố Thuận An (9 điểm) -->
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <h5 class="text-sm font-bold text-slate-200 mb-2">
-                    • Thành phố Thuận An (9 điểm):
-                  </h5>
-                  <p class="text-sm text-slate-300 leading-relaxed">
-                    đường Bùi Hữu Nghĩa, đại lộ Bình Dương (Quốc lộ 13) đoạn giáp suối Cát, đại lộ Bình Dương (Quốc lộ 13) đoạn trước Trường Dạy nghề Việt Nam - Singapore, đại lộ Bình Dương (Quốc lộ 13) đoạn trước siêu thị Lotte Thuận An, đường ĐT 743A, đường Bùi Thị Xuân, đường Lê Thị Trung, đường Thuận An Hòa, đường Thuận Giao 19.
-                  </p>
-                </div>
-
-                <!-- Thành phố Tân Uyên (1 điểm ngập cục bộ) -->
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <h5 class="text-sm font-bold text-slate-200 mb-2">
-                    • Thành phố Tân Uyên (1 điểm ngập cục bộ):
-                  </h5>
-                  <p class="text-sm text-slate-300 leading-relaxed">
-                    đường ĐT 747B.
-                  </p>
-                </div>
-
-                <!-- Thành phố Bến Cát (19 điểm ngập) -->
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <h5 class="text-sm font-bold text-slate-200 mb-3">
-                    • Thành phố Bến Cát (19 điểm ngập):
-                  </h5>
-                  <ul class="space-y-2 text-sm text-slate-300 pl-4">
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500">o</span>
-                      <span>Đường ĐT 741, đoạn từ nhà ông Chính đến nhà ông Hồng Sĩ.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500">o</span>
-                      <span>Đường ĐT 741, đoạn trước nhà thầy Bình.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500">o</span>
-                      <span>Đường 2-8-9.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500">o</span>
-                      <span>Quốc lộ 13, đoạn cổng Khu công nghiệp Hoàng Gia Tân Định.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500">o</span>
-                      <span>Quốc lộ 13, đoạn trước Trường Tiểu học Tân Định.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500">o</span>
-                      <span><strong>Bảy điểm ngập cục bộ trên Quốc lộ 13:</strong> trước UBND phường Mỹ Phước, trước chợ Mỹ Hạnh, trước khu dân cư Mỹ Phước 4, khu vực gần bến Chà Vi, trước Nghĩa trang Liệt sĩ Bến Cát, ngã ba cầu Suối Tre, trước Công an thị xã Bến Cát.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500">o</span>
-                      <span>Đường ĐT 748.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-slate-500">o</span>
-                      <span><strong>Sáu điểm ngập cục bộ trên đường ĐT 744:</strong> trước xã Phú An, tiệm rửa xe Minh Tâm, trước Công ty CP Greentech, trước Công ty TNHH Nhạc cụ Quang Hợp, trước cửa hàng xăng dầu Hồ Bửu, trước Công ty CP Bê tông Thủ Đức.</span>
-                    </li>
-                  </ul>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- b) Ngập do mưa và triều: 8 điểm -->
-            <div class="mt-8 pt-6 border-t border-slate-800 space-y-4">
-              <h4 class="text-base font-bold text-amber-300">
-                b) Ngập do mưa và triều: 8 điểm
-              </h4>
-
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <h5 class="text-sm font-bold text-slate-200 mb-2">• Thành phố Thủ Dầu Một (3 điểm):</h5>
-                  <p class="text-sm text-slate-300 leading-relaxed">
-                    ngã ba Cống, đường Thích Quảng Đức, đường ven rạch Bưng Cải, đường Hồ Văn Cống.
-                  </p>
-                </div>
-
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <h5 class="text-sm font-bold text-slate-200 mb-2">• Thành phố Dĩ An (2 điểm):</h5>
-                  <p class="text-sm text-slate-300 leading-relaxed">
-                    khu vực suối Bình Thắng, Quốc lộ 1K đoạn từ khu vực dốc Chú Hỏa đến rạch Cái Cầu.
-                  </p>
-                </div>
-
-                <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                  <h5 class="text-sm font-bold text-slate-200 mb-2">• Thành phố Thuận An (3 điểm):</h5>
-                  <p class="text-sm text-slate-300 leading-relaxed">
-                    đại lộ Bình Dương (Quốc lộ 13) đoạn trước Công ty TNHH Dịch vụ Thương mại Tân Hiệp Phát, đại lộ Bình Dương (Quốc lộ 13) đoạn trước Công ty Fito, đường Cách Mạng Tháng 8 đoạn cống ngang Cầu Nhỏ.
-                  </p>
-                </div>
-
-              </div>
-            </div>
-
-          </article>
-
-
-          <!-- ==================================================================
-               3. KHU VỰC BÀ RỊA - VŨNG TÀU (KHU VỰC III): 31 VỊ TRÍ
-               ================================================================== -->
-          <article class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-800 gap-3">
-              <h3 class="text-xl sm:text-2xl font-bold text-emerald-400">
-                3. Khu vực Bà Rịa - Vũng Tàu (khu vực III): 31 vị trí
-              </h3>
-              <span class="text-xs font-semibold px-3 py-1 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 w-fit">
-                Khu vực III · 31 vị trí
-              </span>
-            </div>
-
-            <!-- a) Ngập do mưa: 27 vị trí -->
-            <div class="mt-8 space-y-6">
-              <h4 class="text-base font-bold text-emerald-300">
-                a) Ngập do mưa: 27 vị trí
-              </h4>
-
-              <!-- Ngập nặng, thường xuyên: 14 vị trí -->
-              <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                <div class="flex items-center gap-2 mb-3">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
-                  <h5 class="text-sm font-bold text-rose-400">Ngập nặng, thường xuyên: 14 vị trí.</h5>
-                </div>
-                <ul class="space-y-2.5 text-sm text-slate-200">
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Tam Thắng:</strong> đường Thi Sách, đường Nguyễn Đình Thi, ngã ba Quang Trung - Hạ Long.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Vũng Tàu:</strong> đường Nguyễn Du, đường Trưng Trắc - Trưng Nhị, đường Lê Lợi tại ngã ba Lê Hồng Phong.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Phú Mỹ:</strong> đường Nguyễn Tất Thành, đường Lê Lợi, đường Nguyễn Trãi, Quốc lộ 51 giao với đường Huỳnh Thúc Kháng, Quốc lộ 51 giao với đường Lê Duẩn, Quốc lộ 51 giao với đường Phạm Văn Đồng, Quốc lộ 51 đoạn trước chung cư Hodeco - khu vực Miếu Cô Mai, Quốc lộ 51 đoạn từ ngã ba Mỹ Xuân đến ngã tư Mỹ Xuân B1.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Phước Thắng:</strong> đường Võ Nguyên Giáp.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Ngập vừa: 12 vị trí -->
-              <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                <div class="flex items-center gap-2 mb-3">
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                  <h5 class="text-sm font-bold text-amber-400">Ngập vừa: 12 vị trí.</h5>
-                </div>
-                <ul class="space-y-2.5 text-sm text-slate-200">
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Tam Thắng:</strong> đường Nguyễn Quyền.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Vũng Tàu:</strong> hẻm 99 đường Trương Công Định.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Phú Mỹ:</strong> đường Mỹ Xuân B1.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Tân Thành:</strong> đường Nguyễn Hữu Tiến.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Xã Long Hải:</strong> đường Nguyễn Lương Bằng.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Phước Thắng:</strong> hẻm 1 Trần Xuân Độ - 115 Lê Lợi.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Rạch Dừa:</strong> đường 30/4 đoạn từ đường Lê Quang Định đến đường Nguyễn Hữu Cảnh, đường 2/9 đoạn từ đường Lê Quang Định đến số 442 Bình Giã.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Bà Rịa:</strong> đường Cách Mạng Tháng 8 gồm 3 đoạn: từ ngã tư Tôn Đức Thắng đến ngã tư Nguyễn Tất Thành, ngã tư Cách Mạng Tháng 8 - Phạm Văn Đồng, ngã tư Trần Phú - Võ Văn Kiệt.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Phường Hắc Dịch:</strong> khu tái định cư.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Ngập nhẹ: 1 vị trí -->
-              <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                <div class="flex items-center gap-2 mb-3">
-                  <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
-                  <h5 class="text-sm font-bold text-yellow-300">Ngập nhẹ: 1 vị trí.</h5>
-                </div>
-                <ul class="space-y-2 text-sm text-slate-200">
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-slate-500 mt-1">•</span>
-                    <span><strong>Xã Long Điền:</strong> đường Nguyễn Tất Thành, đoạn giao với đường Hùng Vương.</span>
-                  </li>
-                </ul>
-              </div>
-
-            </div>
-
-            <!-- b) Ngập do triều: 1 vị trí & c) Ngập do mưa và triều: 3 vị trí -->
-            <div class="mt-8 pt-6 border-t border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-5">
-              
-              <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                <h4 class="text-base font-bold text-blue-300 mb-2">
-                  b) Ngập do triều: 1 vị trí
-                </h4>
-                <p class="text-sm text-slate-200">
-                  tại khu Decoimex mở rộng.
-                </p>
-              </div>
-
-              <div class="bg-slate-950/70 rounded-xl p-5 border border-slate-800">
-                <h4 class="text-base font-bold text-indigo-300 mb-2">
-                  c) Ngập do mưa và triều: 3 vị trí tại khu vực thành phố Vũng Tàu cũ:
-                </h4>
-                <p class="text-sm text-slate-200 leading-relaxed">
-                  khu Decoimex mở rộng thuộc phường 9 cũ, hẻm 646 đường 30/4 và cuối hẻm 842 đường Bình Giã.
-                </p>
-              </div>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-       6. PHẦN TRỰC QUAN HÓA & BIỂU ĐỒ TỔNG HỢP (ANIMATED INFOGRAPHIC)
-       ========================================================================== -->
-    <section id="truc-quan" class="py-20 bg-slate-950 border-b border-slate-800/80">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="max-w-3xl mb-12">
-          <p class="data-kicker mb-2">Trực quan hóa cấu trúc dữ liệu</p>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            Tỉ lệ phân bổ và cơ cấu nguyên nhân gây ngập
-          </h2>
-          <p class="mt-2 text-sm text-slate-400">
-            Tổng hợp cơ cấu 159 điểm ngập theo từng địa bàn và các yếu tố khí tượng thủy văn tác động.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
-          <!-- Biểu đồ phân bổ theo địa bàn -->
-          <div class="rounded-2xl bg-slate-900 border border-slate-800 p-6">
-            <h3 class="text-base font-bold text-white mb-6 flex items-center justify-between">
-              <span>Phân bổ 159 điểm theo địa bàn</span>
-              <span class="text-xs text-slate-400 font-normal">Sở Xây dựng</span>
-            </h3>
-
-            <!-- Thanh 1: TPHCM cũ (Khu vực I) -->
-            <div class="mb-5">
-              <div class="flex items-center justify-between text-sm mb-1.5">
-                <span class="text-slate-200 font-medium">1. TPHCM cũ (khu vực I)</span>
-                <span class="text-sky-400 font-bold tabular-nums">76 vị trí (47.8%)</span>
-              </div>
-              <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
-                <div class="bg-sky-500 h-full rounded-full transition-all duration-1000" style="width: 47.8%;"></div>
-              </div>
-              <div class="flex justify-between text-xs text-slate-400 mt-1">
-                <span>Không gồm Thủ Đức: 57 vị trí</span>
-                <span>TP Thủ Đức: 19 vị trí</span>
-              </div>
-            </div>
-
-            <!-- Thanh 2: Bình Dương (Khu vực II) -->
-            <div class="mb-5">
-              <div class="flex items-center justify-between text-sm mb-1.5">
-                <span class="text-slate-200 font-medium">2. Bình Dương (khu vực II)</span>
-                <span class="text-amber-400 font-bold tabular-nums">52 vị trí (32.7%)</span>
-              </div>
-              <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
-                <div class="bg-amber-500 h-full rounded-full transition-all duration-1000" style="width: 32.7%;"></div>
-              </div>
-              <div class="flex justify-between text-xs text-slate-400 mt-1">
-                <span>Do mưa: 44 vị trí</span>
-                <span>Do mưa & triều: 8 điểm</span>
-              </div>
-            </div>
-
-            <!-- Thanh 3: Bà Rịa - Vũng Tàu (Khu vực III) -->
-            <div>
-              <div class="flex items-center justify-between text-sm mb-1.5">
-                <span class="text-slate-200 font-medium">3. Bà Rịa - Vũng Tàu (khu vực III)</span>
-                <span class="text-emerald-400 font-bold tabular-nums">31 vị trí (19.5%)</span>
-              </div>
-              <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
-                <div class="bg-emerald-500 h-full rounded-full transition-all duration-1000" style="width: 19.5%;"></div>
-              </div>
-              <div class="flex justify-between text-xs text-slate-400 mt-1">
-                <span>Do mưa: 27 vị trí</span>
-                <span>Do triều & kết hợp: 4 vị trí</span>
-              </div>
-            </div>
-
-            <div class="mt-8 pt-6 border-t border-slate-800 grid grid-cols-3 gap-2 text-center">
-              <div class="p-3 bg-slate-950 rounded-xl">
-                <div class="text-2xl font-bold text-sky-400">76</div>
-                <div class="text-[11px] text-slate-400 mt-0.5">TPHCM cũ</div>
-              </div>
-              <div class="p-3 bg-slate-950 rounded-xl">
-                <div class="text-2xl font-bold text-amber-400">52</div>
-                <div class="text-[11px] text-slate-400 mt-0.5">Bình Dương</div>
-              </div>
-              <div class="p-3 bg-slate-950 rounded-xl">
-                <div class="text-2xl font-bold text-emerald-400">31</div>
-                <div class="text-[11px] text-slate-400 mt-0.5">Bà Rịa - Vũng Tàu</div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Biểu đồ phân bổ theo nguyên nhân gây ngập -->
-          <div class="rounded-2xl bg-slate-900 border border-slate-800 p-6 flex flex-col justify-between">
-            <div>
-              <h3 class="text-base font-bold text-white mb-6 flex items-center justify-between">
-                <span>Cơ cấu theo nguyên nhân gây ngập</span>
-                <span class="text-xs text-slate-400 font-normal">Thống kê khí tượng</span>
-              </h3>
-
-              <!-- Khối nguyên nhân 1: Ngập do mưa -->
-              <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 mb-4">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold">
-                      🌧️
-                    </div>
-                    <div>
-                      <h4 class="text-sm font-bold text-white">Ngập do mưa đơn thuần</h4>
-                      <p class="text-xs text-slate-400">TPHCM 48 + Bình Dương 44 + BRVT 27</p>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <span class="text-lg font-bold text-sky-400">119</span>
-                    <span class="text-xs text-slate-400 block">vị trí (~74.8%)</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Khối nguyên nhân 2: Ngập do mưa kết hợp triều -->
-              <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 mb-4">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold">
-                      ⛈️
-                    </div>
-                    <div>
-                      <h4 class="text-sm font-bold text-white">Ngập do mưa kết hợp triều</h4>
-                      <p class="text-xs text-slate-400">Thủ Đức 19 + Bình Dương 8 + BRVT 3</p>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <span class="text-lg font-bold text-indigo-400">30</span>
-                    <span class="text-xs text-slate-400 block">vị trí (~18.9%)</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Khối nguyên nhân 3: Ngập do triều cường -->
-              <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold">
-                      🌊
-                    </div>
-                    <div>
-                      <h4 class="text-sm font-bold text-white">Ngập do triều cường</h4>
-                      <p class="text-xs text-slate-400">TPHCM cũ 9 + Vũng Tàu 1</p>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <span class="text-lg font-bold text-blue-400">10</span>
-                    <span class="text-xs text-slate-400 block">vị trí (~6.3%)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ghi chú nguyên bản -->
-            <div class="mt-6 p-3.5 bg-slate-950/70 rounded-xl border border-slate-800 text-xs text-slate-400 leading-relaxed">
-              <strong>Ghi chú kỹ thuật:</strong> Đối với những trận mưa có lượng mưa từ 30mm đến 50mm khi mực triều dưới +1,0m, nguy cơ ngập thường xuyên vẫn xảy ra tại 15 vị trí thuộc TPHCM cũ do hạn chế về khả năng tự tiêu thoát của hệ thống cống rãnh.
-            </div>
-
+          <div class="p-3 bg-slate-50 border-t border-slate-100 text-[11px] text-slate-500 font-medium text-center">
+            Nhấp vào bất kỳ điểm nào để tự động định vị & xem thông tin
           </div>
 
         </div>
 
       </div>
-    </section>
 
-    <!-- ==========================================================================
-       7. PHẦN KHUYẾN CÁO AN TOÀN & HƯỚNG DẪN LƯU THÔNG
-       ========================================================================== -->
-    <section id="khuyen-cao" class="py-20 border-b border-slate-800/80">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="max-w-3xl mb-12">
-          <p class="data-kicker mb-2">Cẩm nang tuyên truyền cộng đồng</p>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            Khuyến cáo an toàn khi lưu thông qua vùng ngập
-          </h2>
-          <p class="mt-2 text-sm text-slate-400">
-            Các biện pháp phòng tránh tai nạn, bảo vệ phương tiện và xử lý khi gặp sự cố mưa lớn, triều cường.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold mb-4">
-              ⚠️
-            </div>
-            <h3 class="text-base font-bold text-white mb-2">Đánh giá mực nước an toàn</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Không cố gắng điều khiển xe máy qua vùng ngập trên 25cm (ngập nửa bánh xe hoặc ngang ống xả). Ô tô gầm thấp tuyệt đối không đi vào vùng nước ngập không thấy mặt đường để tránh hiện tượng thủy kích.
-            </p>
-          </div>
-
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-            <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold mb-4">
-              🏍️
-            </div>
-            <h3 class="text-base font-bold text-white mb-2">Kỹ năng điều khiển phương tiện</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Đi số thấp (số 1 hoặc 2 đối với xe số), giữ đều tay ga và không giảm ga đột ngột. Tránh đi sát mép đường nơi có cống thoát nước ngầm hoặc ổ gà khuất dưới làn nước đục.
-            </p>
-          </div>
-
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-            <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold mb-4">
-              🛑
-            </div>
-            <h3 class="text-base font-bold text-white mb-2">Xử lý khi xe bị tắt máy</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Tuyệt đối không cố gắng đề hoặc nổ máy lại ngay khi xe chết máy trong nước ngập vì sẽ làm nước tràn sâu vào buồng đốt, gây cong gãy tay biên động cơ. Dắt xe lên chỗ cao và tháo bugi kiểm tra.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
     </section>
 
   </main>
 
-  <!-- ==========================================================================
-       8. CHÂN TRANG (FOOTER)
-       ========================================================================== -->
-  <footer class="bg-slate-950 py-12 border-t border-slate-800/80 text-sm text-slate-400">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <p class="text-slate-200 font-semibold">Infographic Tương Tác: Thống Kê 159 Điểm Ngập</p>
-          <p class="text-xs text-slate-400 mt-1">
-            Nguồn tài liệu: Thống kê chính thức của Sở Xây dựng (TPHCM mới, Bình Dương, Bà Rịa - Vũng Tàu).
-          </p>
-        </div>
-
-        <div class="flex items-center gap-6 text-xs text-slate-400">
-          <a href="#hero" class="hover:text-slate-200 transition-colors">Về đầu trang</a>
-          <a href="#tieu-chi" class="hover:text-slate-200 transition-colors">Tiêu chí phân loại</a>
-          <a href="#ban-do" class="hover:text-slate-200 transition-colors">Bản đồ số</a>
-          <a href="#danh-sach" class="hover:text-slate-200 transition-colors">Danh sách đầy đủ</a>
-        </div>
-      </div>
-      <div class="mt-8 pt-8 border-t border-slate-900 text-xs text-center text-slate-400">
-        Nền tảng bản đồ sử dụng OpenStreetMap contributors (100% miễn phí, tiêu chuẩn GIS).
-      </div>
-    </div>
-  </footer>
-
-  <!-- ==========================================================================
-       TOÀN BỘ LOGIC JAVASCRIPT: KHỞI TẠO DỮ LIỆU, BẢN ĐỒ, BỘ LỌC, VÀ MOTION
-       (ĐƯỢC CHÚ THÍCH TỪNG PHÂN ĐOẠN RÕ RÀNG ĐỂ BẢO TRÌ & MỞ RỘNG)
-       ========================================================================== -->
-  <script>
-    /* ==========================================================================
-       PHÂN ĐOẠN 1: CƠ SỞ DỮ LIỆU ĐẦY ĐỦ 159 ĐIỂM NGẬP
-       Trích xuất chính xác 100% từ tài liệu Sở Xây dựng, gắn kèm tọa độ địa lý.
-       ========================================================================== */
-    const floodPoints = [
-      // ------------------------------------------------------------------------
-      // 1.1 TPHCM cũ: a) Ngập do mưa - Ngập thường xuyên (15 vị trí)
-      // ------------------------------------------------------------------------
-      { id: 1, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Đông Hưng Thuận', street: 'đường Nguyễn Văn Quá', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8441, lng: 106.6235, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 2, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Đông Hưng Thuận', street: 'đường Phan Văn Hớn', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8415, lng: 106.6190, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 3, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Thạnh Mỹ Tây', street: 'đường Bạch Đằng', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8038, lng: 106.7021, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 4, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Thạnh Mỹ Tây', street: 'đường Ung Văn Khiêm', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8082, lng: 106.7163, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 5, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Thạnh Mỹ Tây', street: 'đường Đinh Bộ Lĩnh', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8120, lng: 106.7100, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 6, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường An Lạc', street: 'đường Hồ Học Lãm', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.7235, lng: 106.6120, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 7, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Phú Lâm', street: 'đường An Dương Vương', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.7510, lng: 106.6295, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 8, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Thông Tây Hội, An Hội Đông', street: 'đường Lê Văn Thọ', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8465, lng: 106.6570, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 9, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Thông Tây Hội, An Hội Đông', street: 'đường Lê Đức Thọ', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8490, lng: 106.6710, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 10, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Thông Tây Hội, An Hội Đông', street: 'đường Nguyễn Văn Khối', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8420, lng: 106.6520, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 11, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Thông Tây Hội, An Hội Đông', street: 'đường Phan Huy Ích', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8285, lng: 106.6380, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 12, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Thông Tây Hội, An Hội Đông', street: 'đường Phạm Văn Chiêu', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8510, lng: 106.6450, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 13, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Đông Hưng Thuận', street: 'đường Phan Văn Hớn (đoạn 2)', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8430, lng: 106.6150, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 14, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Đông Hưng Thuận', street: 'đường Song hành Quốc lộ 22', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8495, lng: 106.6185, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-      { id: 15, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bình Trị Đông', street: 'đường Phan Anh', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.7680, lng: 106.6180, note: 'Lượng mưa từ 30mm đến 50mm, triều < +1,0m' },
-
-      // ------------------------------------------------------------------------
-      // 1.1 TPHCM cũ: a) Ngập do mưa - Ngập vừa (13 vị trí)
-      // ------------------------------------------------------------------------
-      { id: 16, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bến Nghé', street: 'đường Calmette', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.7685, lng: 106.6995, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 17, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bến Nghé', street: 'đường Phạm Viết Chánh', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.7660, lng: 106.6850, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 18, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Đông Hưng Thuận', street: 'đường Nguyễn Văn Quá (đoạn 2)', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8470, lng: 106.6260, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 19, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Đông Hưng Thuận', street: 'đường Song hành Quốc lộ 22 (đoạn 2)', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8530, lng: 106.6160, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 20, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bình Hưng', street: 'đường Phạm Hùng', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.7380, lng: 106.6730, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 21, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bình Hưng', street: 'Quốc lộ 50', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.7250, lng: 106.6610, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 22, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Thạnh Mỹ Tây, Bình Quới', street: 'đường Bình Quới', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8200, lng: 106.7280, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 23, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Thạnh Mỹ Tây, Bình Quới', street: 'đường D5', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8060, lng: 106.7140, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 24, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Thạnh Mỹ Tây, Bình Quới', street: 'đường Nguyễn Gia Trí', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8035, lng: 106.7155, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 25, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bình Trị Đông, Bình Hưng', street: 'đường Tân Hòa Đông', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.7620, lng: 106.6240, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 26, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bình Trị Đông, Bình Hưng', street: 'đường Tỉnh lộ 10', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.7580, lng: 106.6120, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 27, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bình Trị Đông, Bình Hưng', street: 'đường Võ Văn Kiệt', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.7420, lng: 106.6450, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-      { id: 28, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Tân Sơn Nhất', street: 'đường Trường Sơn', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8145, lng: 106.6625, note: 'Độ sâu 10cm - 15cm, nước rút < 30 phút' },
-
-      // ------------------------------------------------------------------------
-      // 1.1 TPHCM cũ: a) Ngập do mưa - Ngập nhẹ (20 vị trí)
-      // ------------------------------------------------------------------------
-      { id: 29, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bến Nghé', street: 'đường Cống Quỳnh', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7670, lng: 106.6880, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 30, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bến Nghé', street: 'đường Lê Lợi', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7745, lng: 106.7010, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 31, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bến Nghé', street: 'đường Lê Thánh Tôn', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7770, lng: 106.7020, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 32, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bến Nghé', street: 'đường Lê Thị Riêng', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7710, lng: 106.6910, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 33, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bến Nghé', street: 'đường Nguyễn Cư Trinh', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7635, lng: 106.6895, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 34, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bến Nghé', street: 'đường Nguyễn Trãi', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7690, lng: 106.6915, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 35, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bến Nghé', street: 'đường Phạm Ngũ Lão', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7680, lng: 106.6940, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 36, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bến Nghé', street: 'đường Trương Định', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7755, lng: 106.6935, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 37, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bàn Cờ', street: 'đường Nguyễn Thiện Thuật', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7695, lng: 106.6815, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 38, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Khánh Hội', street: 'đường Hoàng Diệu', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7625, lng: 106.7040, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 39, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Khánh Hội', street: 'đường Tân Vĩnh', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7595, lng: 106.7030, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 40, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Khánh Hội', street: 'đường Tôn Thất Thuyết', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7565, lng: 106.7085, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 41, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Khánh Hội', street: 'đường Vĩnh Hội', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7585, lng: 106.7050, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 42, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Khánh Hội', street: 'đường Xóm Chiếu', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7615, lng: 106.7080, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 43, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Khánh Hội', street: 'đường Đoàn Văn Bơ', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7610, lng: 106.7060, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 44, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Chợ Quán', street: 'đường Nguyễn Biểu', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7525, lng: 106.6820, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 45, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Chợ Quán', street: 'đường Nguyễn Văn Cừ', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7560, lng: 106.6830, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 46, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Chợ Quán', street: 'đường Trần Hưng Đạo', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7540, lng: 106.6790, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 47, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Diên Hồng', street: 'đường Lê Hồng Phong', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7690, lng: 106.6730, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-      { id: 48, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Diên Hồng', street: 'đường 3/2', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.7715, lng: 106.6745, note: 'Độ sâu < 10cm, nước rút < 30 phút' },
-
-
-      // ------------------------------------------------------------------------
-      // 1.1 TPHCM cũ: b) Ngập do triều (9 vị trí)
-      // ------------------------------------------------------------------------
-      { id: 49, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bến Nghé (1 tuyến)', street: 'đường Calmette', cause: 'tide', causeName: 'Ngập do triều', severity: 'tide', severityName: 'Ngập do triều', lat: 10.7675, lng: 106.6990, note: 'Tuyến chịu ảnh hưởng triều cường' },
-      { id: 50, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bình Quới (1 tuyến)', street: 'đường Bình Quới', cause: 'tide', causeName: 'Ngập do triều', severity: 'tide', severityName: 'Ngập do triều', lat: 10.8250, lng: 106.7320, note: 'Tuyến chịu ảnh hưởng triều cường' },
-      { id: 51, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Tân Thuận, Phú Thuận (2 tuyến)', street: 'đường Trần Xuân Soạn', cause: 'tide', causeName: 'Ngập do triều', severity: 'tide', severityName: 'Ngập do triều', lat: 10.7485, lng: 106.7110, note: 'Tuyến bờ kênh Tẻ, ảnh hưởng triều cường' },
-      { id: 52, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Tân Thuận, Phú Thuận (2 tuyến)', street: 'đường Huỳnh Tấn Phát', cause: 'tide', causeName: 'Ngập do triều', severity: 'tide', severityName: 'Ngập do triều', lat: 10.7430, lng: 106.7340, note: 'Tuyến chịu ảnh hưởng triều cường' },
-      { id: 53, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Tân Thuận, Tân Mỹ, Nhà Bè (4 tuyến)', street: 'đường Lê Văn Lương', cause: 'tide', causeName: 'Ngập do triều', severity: 'tide', severityName: 'Ngập do triều', lat: 10.7310, lng: 106.7050, note: 'Tuyến chịu ảnh hưởng triều cường' },
-      { id: 54, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Tân Thuận, Tân Mỹ, Nhà Bè (4 tuyến)', street: 'đường Đào Sư Tích', cause: 'tide', causeName: 'Ngập do triều', severity: 'tide', severityName: 'Ngập do triều', lat: 10.7020, lng: 106.7120, note: 'Tuyến chịu ảnh hưởng triều cường' },
-      { id: 55, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Tân Thuận, Tân Mỹ, Nhà Bè (4 tuyến)', street: 'đường Phạm Hữu Lầu', cause: 'tide', causeName: 'Ngập do triều', severity: 'tide', severityName: 'Ngập do triều', lat: 10.7130, lng: 106.7260, note: 'Tuyến chịu ảnh hưởng triều cường' },
-      { id: 56, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Tân Thuận, Tân Mỹ, Nhà Bè (4 tuyến)', street: 'đường Nguyễn Bình', cause: 'tide', causeName: 'Ngập do triều', severity: 'tide', severityName: 'Ngập do triều', lat: 10.6860, lng: 106.7240, note: 'Tuyến chịu ảnh hưởng triều cường' },
-      { id: 57, region: 'hcm-old', regionName: 'TPHCM cũ', ward: 'Phường Bình Hưng (1 tuyến)', street: 'Quốc lộ 50', cause: 'tide', causeName: 'Ngập do triều', severity: 'tide', severityName: 'Ngập do triều', lat: 10.7220, lng: 106.6600, note: 'Tuyến chịu ảnh hưởng triều cường' },
-
-      // ------------------------------------------------------------------------
-      // 1.2 Thành phố Thủ Đức: 19 vị trí ngập do mưa và triều
-      // ------------------------------------------------------------------------
-      { id: 58, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường An Khánh', street: 'đường Nguyễn Văn Hưởng', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8120, lng: 106.7340, note: 'Ngập thường xuyên do mưa và triều' },
-      { id: 59, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường An Khánh', street: 'đường Quốc Hương', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8040, lng: 106.7350, note: 'Ngập thường xuyên do mưa và triều' },
-      { id: 60, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường An Khánh', street: 'đường Thảo Điền', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8060, lng: 106.7320, note: 'Ngập thường xuyên do mưa và triều' },
-      { id: 61, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Tam Bình', street: 'đường Lê Thị Hoa', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8750, lng: 106.7410, note: 'Ngập thường xuyên do mưa và triều' },
-      { id: 62, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Tam Bình', street: 'đường Tỉnh lộ 43', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8790, lng: 106.7430, note: 'Ngập thường xuyên do mưa và triều' },
-      { id: 63, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Thủ Đức', street: 'đường Dương Văn Cam', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8520, lng: 106.7600, note: 'Ngập thường xuyên do mưa và triều' },
-      { id: 64, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Thủ Đức', street: 'đường Kha Vạn Cân', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8540, lng: 106.7620, note: 'Ngập thường xuyên do mưa và triều' },
-      { id: 65, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Thủ Đức', street: 'đường Tam Tam Xã', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8510, lng: 106.7580, note: 'Ngập thường xuyên do mưa và triều' },
-      { id: 66, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Thủ Đức', street: 'đường Tô Ngọc Vân', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8570, lng: 106.7590, note: 'Ngập thường xuyên do mưa và triều' },
-      { id: 67, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Thủ Đức', street: 'đường Đặng Thị Rành', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Ngập thường xuyên', lat: 10.8530, lng: 106.7595, note: 'Ngập thường xuyên do mưa và triều' },
-      { id: 68, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Bình Trưng', street: 'đường Nguyễn Duy Trinh', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.7920, lng: 106.7760, note: 'Ngập vừa do mưa và triều' },
-      { id: 69, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Hiệp Bình', street: 'đường Hiệp Bình', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8380, lng: 106.7250, note: 'Ngập vừa do mưa và triều' },
-      { id: 70, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Hiệp Bình', street: 'Quốc lộ 13', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8350, lng: 106.7210, note: 'Ngập vừa do mưa và triều' },
-      { id: 71, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Phước Long', street: 'đường Dương Đình Hội', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8240, lng: 106.7720, note: 'Ngập vừa do mưa và triều' },
-      { id: 72, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Phước Long', street: 'đường Đỗ Xuân Hợp', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8210, lng: 106.7760, note: 'Ngập vừa do mưa và triều' },
-      { id: 73, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Tam Bình', street: 'đường Đỗ Mười (Quốc lộ 1)', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8680, lng: 106.7350, note: 'Ngập vừa do mưa và triều' },
-      { id: 74, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Thủ Đức', street: 'đường Hồ Văn Tư', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8550, lng: 106.7640, note: 'Ngập vừa do mưa và triều' },
-      { id: 75, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Tăng Nhơn Phú', street: 'đường Lã Xuân Oai', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.8390, lng: 106.7880, note: 'Ngập vừa do mưa và triều' },
-      { id: 76, region: 'thu-duc', regionName: 'TP Thủ Đức', ward: 'Phường Tăng Nhơn Phú', street: 'đường Lê Văn Việt', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.8460, lng: 106.7820, note: 'Ngập nhẹ do mưa và triều' },
-
-      // ------------------------------------------------------------------------
-      // 2. KHU VỰC BÌNH DƯƠNG: a) Ngập do mưa (44 vị trí)
-      // ------------------------------------------------------------------------
-      { id: 77, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thủ Dầu Một', street: 'đại lộ Bình Dương, đoạn trước Trường Đại học Bình Dương', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9810, lng: 106.6710, note: 'Thủ Dầu Một (5 điểm)' },
-      { id: 78, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thủ Dầu Một', street: 'đường Nguyễn Văn Thành (ĐT 741)', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 11.0250, lng: 106.6980, note: 'Thủ Dầu Một (5 điểm)' },
-      { id: 79, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thủ Dầu Một', street: 'ngã ba đường Đoàn Trần Nghiệp - đường Hai Bà Trưng', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9780, lng: 106.6570, note: 'Thủ Dầu Một (5 điểm)' },
-      { id: 80, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thủ Dầu Một', street: 'đường Nguyễn Tri Phương', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9710, lng: 106.6620, note: 'Thủ Dầu Một (5 điểm)' },
-      { id: 81, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thủ Dầu Một', street: 'đường Nguyễn Đức Thuận', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9920, lng: 106.6680, note: 'Thủ Dầu Một (5 điểm)' },
-      
-      { id: 82, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'đường số 5 tại khu dân cư Nhị Đồng 1 (chợ Bà Diệp)', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9020, lng: 106.7620, note: 'Dĩ An (10 điểm)' },
-      { id: 83, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'đường số 7 tại khu dân cư Nhị Đồng 1 (chợ Bà Diệp)', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9040, lng: 106.7640, note: 'Dĩ An (10 điểm)' },
-      { id: 84, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'đường Phạm Ngũ Lão - Phan Huy Ích', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.8980, lng: 106.7690, note: 'Dĩ An (10 điểm)' },
-      { id: 85, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'đường An Bình tại phường An Bình', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.8870, lng: 106.7580, note: 'Dĩ An (10 điểm)' },
-      { id: 86, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'đường Bế Văn Đàn tại phường An Bình', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.8890, lng: 106.7595, note: 'Dĩ An (10 điểm)' },
-      { id: 87, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'khu vực tổ 11 tại phường Hiệp Thắng', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.8950, lng: 106.7920, note: 'Dĩ An (10 điểm)' },
-      { id: 88, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'khu dân cư Tràng An', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9120, lng: 106.7780, note: 'Dĩ An (10 điểm)' },
-      { id: 89, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'đường ĐT 743B', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9150, lng: 106.7650, note: 'Dĩ An (10 điểm)' },
-      { id: 90, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'đường ĐT 747B', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9320, lng: 106.7810, note: 'Dĩ An (10 điểm)' },
-      { id: 91, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'mương dọc đường sắt Bắc - Nam, khu dân cư Đông Hòa', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.8930, lng: 106.7750, note: 'Dĩ An (10 điểm)' },
-
-      { id: 92, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đường Bùi Hữu Nghĩa', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9230, lng: 106.7020, note: 'Thuận An (9 điểm)' },
-      { id: 93, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đại lộ Bình Dương (Quốc lộ 13) đoạn giáp suối Cát', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9420, lng: 106.6850, note: 'Thuận An (9 điểm)' },
-      { id: 94, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đại lộ Bình Dương (Quốc lộ 13) đoạn trước Trường Dạy nghề Việt Nam - Singapore', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9310, lng: 106.6980, note: 'Thuận An (9 điểm)' },
-      { id: 95, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đại lộ Bình Dương (Quốc lộ 13) đoạn trước siêu thị Lotte Thuận An', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9260, lng: 106.7030, note: 'Thuận An (9 điểm)' },
-      { id: 96, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đường ĐT 743A', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9180, lng: 106.7210, note: 'Thuận An (9 điểm)' },
-      { id: 97, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đường Bùi Thị Xuân', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9450, lng: 106.7320, note: 'Thuận An (9 điểm)' },
-      { id: 98, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đường Lê Thị Trung', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9510, lng: 106.7150, note: 'Thuận An (9 điểm)' },
-      { id: 99, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đường Thuận An Hòa', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9380, lng: 106.7100, note: 'Thuận An (9 điểm)' },
-      { id: 100, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đường Thuận Giao 19', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9520, lng: 106.7080, note: 'Thuận An (9 điểm)' },
-
-      { id: 101, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Tân Uyên', street: 'đường ĐT 747B', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập cục bộ', lat: 11.0450, lng: 106.7820, note: 'Tân Uyên (1 điểm ngập cục bộ)' },
-
-      // Bến Cát (19 điểm ngập)
-      { id: 102, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Đường ĐT 741, đoạn từ nhà ông Chính đến nhà ông Hồng Sĩ', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 11.1420, lng: 106.6450, note: 'Bến Cát (19 điểm ngập)' },
-      { id: 103, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Đường ĐT 741, đoạn trước nhà thầy Bình', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 11.1460, lng: 106.6490, note: 'Bến Cát (19 điểm ngập)' },
-      { id: 104, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Đường 2-8-9', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 11.1290, lng: 106.6080, note: 'Bến Cát (19 điểm ngập)' },
-      { id: 105, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Quốc lộ 13, đoạn cổng Khu công nghiệp Hoàng Gia Tân Định', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 11.0820, lng: 106.6340, note: 'Bến Cát (19 điểm ngập)' },
-      { id: 106, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Quốc lộ 13, đoạn trước Trường Tiểu học Tân Định', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 11.0870, lng: 106.6320, note: 'Bến Cát (19 điểm ngập)' },
-      { id: 107, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Quốc lộ 13: trước UBND phường Mỹ Phước', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1340, lng: 106.6120, note: '7 điểm ngập cục bộ trên QL13' },
-      { id: 108, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Quốc lộ 13: trước chợ Mỹ Hạnh', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1390, lng: 106.6100, note: '7 điểm ngập cục bộ trên QL13' },
-      { id: 109, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Quốc lộ 13: trước khu dân cư Mỹ Phước 4', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1250, lng: 106.6180, note: '7 điểm ngập cục bộ trên QL13' },
-      { id: 110, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Quốc lộ 13: khu vực gần bến Chà Vi', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1450, lng: 106.6050, note: '7 điểm ngập cục bộ trên QL13' },
-      { id: 111, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Quốc lộ 13: trước Nghĩa trang Liệt sĩ Bến Cát', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1180, lng: 106.6220, note: '7 điểm ngập cục bộ trên QL13' },
-      { id: 112, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Quốc lộ 13: ngã ba cầu Suối Tre', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1520, lng: 106.6020, note: '7 điểm ngập cục bộ trên QL13' },
-      { id: 113, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Quốc lộ 13: trước Công an thị xã Bến Cát', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1310, lng: 106.6140, note: '7 điểm ngập cục bộ trên QL13' },
-      { id: 114, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Đường ĐT 748', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập', lat: 11.1550, lng: 106.5750, note: 'Bến Cát (19 điểm ngập)' },
-      { id: 115, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Đường ĐT 744: trước xã Phú An', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1120, lng: 106.5450, note: '6 điểm ngập cục bộ trên ĐT 744' },
-      { id: 116, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Đường ĐT 744: tiệm rửa xe Minh Tâm', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1150, lng: 106.5420, note: '6 điểm ngập cục bộ trên ĐT 744' },
-      { id: 117, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Đường ĐT 744: trước Công ty CP Greentech', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1190, lng: 106.5380, note: '6 điểm ngập cục bộ trên ĐT 744' },
-      { id: 118, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Đường ĐT 744: trước Công ty TNHH Nhạc cụ Quang Hợp', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1220, lng: 106.5350, note: '6 điểm ngập cục bộ trên ĐT 744' },
-      { id: 119, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Đường ĐT 744: trước cửa hàng xăng dầu Hồ Bửu', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1260, lng: 106.5310, note: '6 điểm ngập cục bộ trên ĐT 744' },
-      { id: 120, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Bến Cát', street: 'Đường ĐT 744: trước Công ty CP Bê tông Thủ Đức', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Điểm ngập cục bộ', lat: 11.1300, lng: 106.5270, note: '6 điểm ngập cục bộ trên ĐT 744' },
-
-      // ------------------------------------------------------------------------
-      // 2. KHU VỰC BÌNH DƯƠNG: b) Ngập do mưa và triều (8 điểm)
-      // ------------------------------------------------------------------------
-      { id: 121, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thủ Dầu Một', street: 'ngã ba Cống, đường Thích Quảng Đức', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9740, lng: 106.6690, note: 'Thủ Dầu Một (3 điểm)' },
-      { id: 122, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thủ Dầu Một', street: 'đường ven rạch Bưng Cải', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9760, lng: 106.6730, note: 'Thủ Dầu Một (3 điểm)' },
-      { id: 123, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thủ Dầu Một', street: 'đường Hồ Văn Cống', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9850, lng: 106.6540, note: 'Thủ Dầu Một (3 điểm)' },
-      { id: 124, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'khu vực suối Bình Thắng', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Điểm ngập', lat: 10.8920, lng: 106.7950, note: 'Dĩ An (2 điểm)' },
-      { id: 125, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Dĩ An', street: 'Quốc lộ 1K đoạn từ khu vực dốc Chú Hỏa đến rạch Cái Cầu', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Điểm ngập', lat: 10.8990, lng: 106.7850, note: 'Dĩ An (2 điểm)' },
-      { id: 126, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đại lộ Bình Dương (Quốc lộ 13) đoạn trước Công ty TNHH Dịch vụ Thương mại Tân Hiệp Phát', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9160, lng: 106.7090, note: 'Thuận An (3 điểm)' },
-      { id: 127, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đại lộ Bình Dương (Quốc lộ 13) đoạn trước Công ty Fito', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9190, lng: 106.7060, note: 'Thuận An (3 điểm)' },
-      { id: 128, region: 'binh-duong', regionName: 'Bình Dương', ward: 'Thành phố Thuận An', street: 'đường Cách Mạng Tháng 8 đoạn cống ngang Cầu Nhỏ', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Điểm ngập', lat: 10.9280, lng: 106.6890, note: 'Thuận An (3 điểm)' },
-
-      // ------------------------------------------------------------------------
-      // 3. KHU VỰC BÀ RỊA - VŨNG TÀU: a) Ngập do mưa (27 vị trí)
-      // ------------------------------------------------------------------------
-      // Ngập nặng, thường xuyên: 14 vị trí
-      { id: 129, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Tam Thắng', street: 'đường Thi Sách', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.3540, lng: 107.0860, note: 'Ngập nặng, thường xuyên' },
-      { id: 130, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Tam Thắng', street: 'đường Nguyễn Đình Thi', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.3560, lng: 107.0880, note: 'Ngập nặng, thường xuyên' },
-      { id: 131, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Tam Thắng', street: 'ngã ba Quang Trung - Hạ Long', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.3470, lng: 107.0720, note: 'Ngập nặng, thường xuyên' },
-      { id: 132, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Vũng Tàu', street: 'đường Nguyễn Du', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.3490, lng: 107.0760, note: 'Ngập nặng, thường xuyên' },
-      { id: 133, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Vũng Tàu', street: 'đường Trưng Trắc - Trưng Nhị', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.3480, lng: 107.0740, note: 'Ngập nặng, thường xuyên' },
-      { id: 134, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Vũng Tàu', street: 'đường Lê Lợi tại ngã ba Lê Hồng Phong', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.3580, lng: 107.0780, note: 'Ngập nặng, thường xuyên' },
-      { id: 135, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Phú Mỹ', street: 'đường Nguyễn Tất Thành', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.5920, lng: 107.0480, note: 'Ngập nặng, thường xuyên' },
-      { id: 136, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Phú Mỹ', street: 'đường Lê Lợi', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.5950, lng: 107.0510, note: 'Ngập nặng, thường xuyên' },
-      { id: 137, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Phú Mỹ', street: 'đường Nguyễn Trãi', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.5900, lng: 107.0460, note: 'Ngập nặng, thường xuyên' },
-      { id: 138, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Phú Mỹ', street: 'Quốc lộ 51 giao với đường Huỳnh Thúc Kháng', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.5980, lng: 107.0440, note: 'Ngập nặng, thường xuyên' },
-      { id: 139, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Phú Mỹ', street: 'Quốc lộ 51 giao với đường Lê Duẩn', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.6010, lng: 107.0420, note: 'Ngập nặng, thường xuyên' },
-      { id: 140, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Phú Mỹ', street: 'Quốc lộ 51 giao với đường Phạm Văn Đồng', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.6040, lng: 107.0400, note: 'Ngập nặng, thường xuyên' },
-      { id: 141, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Phú Mỹ', street: 'Quốc lộ 51 đoạn trước chung cư Hodeco - khu vực Miếu Cô Mai', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.6080, lng: 107.0370, note: 'Ngập nặng, thường xuyên' },
-      { id: 142, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Phú Mỹ', street: 'Quốc lộ 51 đoạn từ ngã ba Mỹ Xuân đến ngã tư Mỹ Xuân B1', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.6150, lng: 107.0330, note: 'Ngập nặng, thường xuyên' },
-      { id: 143, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Phước Thắng', street: 'đường Võ Nguyên Giáp', cause: 'rain', causeName: 'Ngập do mưa', severity: 'severe', severityName: 'Ngập nặng, thường xuyên', lat: 10.4020, lng: 107.1240, note: 'Ngập nặng, thường xuyên' },
-
-      // Ngập vừa: 12 vị trí
-      { id: 144, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Tam Thắng', street: 'đường Nguyễn Quyền', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.3570, lng: 107.0840, note: 'Ngập vừa' },
-      { id: 145, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Vũng Tàu', street: 'hẻm 99 đường Trương Công Định', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.3540, lng: 107.0790, note: 'Ngập vừa' },
-      { id: 146, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Phú Mỹ', street: 'đường Mỹ Xuân B1', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.6180, lng: 107.0410, note: 'Ngập vừa' },
-      { id: 147, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Tân Thành', street: 'đường Nguyễn Hữu Tiến', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.5840, lng: 107.0560, note: 'Ngập vừa' },
-      { id: 148, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Xã Long Hải', street: 'đường Nguyễn Lương Bằng', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.3790, lng: 107.2420, note: 'Ngập vừa' },
-      { id: 149, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Phước Thắng', street: 'hẻm 1 Trần Xuân Độ - 115 Lê Lợi', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.3950, lng: 107.1120, note: 'Ngập vừa' },
-      { id: 150, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Rạch Dừa', street: 'đường 30/4 đoạn từ đường Lê Quang Định đến đường Nguyễn Hữu Cảnh', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.3840, lng: 107.1080, note: 'Ngập vừa' },
-      { id: 151, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Rạch Dừa', street: 'đường 2/9 đoạn từ đường Lê Quang Định đến số 442 Bình Giã', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.3870, lng: 107.1120, note: 'Ngập vừa' },
-      { id: 152, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Bà Rịa', street: 'đường Cách Mạng Tháng 8: từ ngã tư Tôn Đức Thắng đến ngã tư Nguyễn Tất Thành', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.4980, lng: 107.1680, note: 'CMT8 gồm 3 đoạn' },
-      { id: 153, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Bà Rịa', street: 'đường Cách Mạng Tháng 8: ngã tư Cách Mạng Tháng 8 - Phạm Văn Đồng', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.4950, lng: 107.1710, note: 'CMT8 gồm 3 đoạn' },
-      { id: 154, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Bà Rịa', street: 'đường Cách Mạng Tháng 8: ngã tư Trần Phú - Võ Văn Kiệt', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.4920, lng: 107.1750, note: 'CMT8 gồm 3 đoạn' },
-      { id: 155, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Phường Hắc Dịch', street: 'khu tái định cư', cause: 'rain', causeName: 'Ngập do mưa', severity: 'moderate', severityName: 'Ngập vừa', lat: 10.6380, lng: 107.1280, note: 'Ngập vừa' },
-
-      // Ngập nhẹ: 1 vị trí
-      { id: 156, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Xã Long Điền', street: 'đường Nguyễn Tất Thành, đoạn giao với đường Hùng Vương', cause: 'rain', causeName: 'Ngập do mưa', severity: 'light', severityName: 'Ngập nhẹ', lat: 10.4280, lng: 107.1980, note: 'Ngập nhẹ' },
-
-      // ------------------------------------------------------------------------
-      // 3. KHU VỰC BÀ RỊA - VŨNG TÀU: b) Ngập do triều (1 vị trí)
-      // ------------------------------------------------------------------------
-      { id: 157, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'Thành phố Vũng Tàu', street: 'khu Decoimex mở rộng', cause: 'tide', causeName: 'Ngập do triều', severity: 'tide', severityName: 'Ngập do triều', lat: 10.3720, lng: 107.0980, note: '1 vị trí tại khu Decoimex mở rộng' },
-
-      // ------------------------------------------------------------------------
-      // 3. KHU VỰC BÀ RỊA - VŨNG TÀU: c) Ngập do mưa và triều (3 vị trí)
-      // ------------------------------------------------------------------------
-      { id: 158, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'khu vực TP Vũng Tàu cũ', street: 'khu Decoimex mở rộng thuộc phường 9 cũ', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Mưa & triều', lat: 10.3740, lng: 107.0960, note: 'khu Decoimex mở rộng thuộc phường 9 cũ' },
-      { id: 159, region: 'vung-tau', regionName: 'Bà Rịa - Vũng Tàu', ward: 'khu vực TP Vũng Tàu cũ', street: 'hẻm 646 đường 30/4 và cuối hẻm 842 đường Bình Giã', cause: 'rain-tide', causeName: 'Ngập do mưa và triều', severity: 'severe', severityName: 'Mưa & triều', lat: 10.3810, lng: 107.1040, note: 'hẻm 646 đường 30/4 và cuối hẻm 842 đường Bình Giã' }
-    ];
-
-    /* ==========================================================================
-       PHÂN ĐOẠN 2: KHỞI TẠO BẢN ĐỒ OPENSTREETMAP (TIÊU CHUẨN, SẮC NÉT, MIỄN PHÍ)
-       Tích hợp cơ chế CDN dự phòng và tự phục hồi khi mạng yếu
-       ========================================================================== */
-    let map = null;
-    let markersLayer = null;
-    const markersMap = new Map(); // Lưu đối tượng marker theo id điểm
-
-    function ensureLeafletLoaded(onReady) {
-      if (typeof L !== 'undefined' && typeof L.map === 'function') {
-        onReady();
-        return;
-      }
-
-      console.warn('Leaflet đang được tải từ CDN dự phòng (Cloudflare / jsDelivr)...');
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js';
-      script.onload = () => {
-        if (typeof L !== 'undefined') onReady();
-      };
-      script.onerror = () => {
-        const script2 = document.createElement('script');
-        script2.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-        script2.onload = () => {
-          if (typeof L !== 'undefined') onReady();
-        };
-        document.head.appendChild(script2);
-      };
-      document.head.appendChild(script);
-    }
-
-    function initMap() {
-      // 1. Luôn kích hoạt danh sách điểm và chú giải ngay lập tức
-      renderSidebarList(floodPoints);
-      updateFloatingLegend(floodPoints);
-      setupFloatingLegendControls();
-
-      // 2. Kiểm tra và tải thư viện Leaflet an toàn
-      ensureLeafletLoaded(() => {
-        try {
-          const mapEl = document.getElementById('map');
-          if (!mapEl) return;
-
-          // Nếu bản đồ đã khởi tạo rồi thì không tạo lại
-          if (map) {
-            map.invalidateSize();
-            return;
-          }
-
-          // Tọa độ trung tâm: Vùng TPHCM mở rộng bao quát cả Bình Dương và Vũng Tàu
-          const defaultCenter = [10.8231, 106.6297];
-          const defaultZoom = 11;
-
-          map = L.map('map', {
-            center: defaultCenter,
-            zoom: defaultZoom,
-            zoomControl: true,
-            scrollWheelZoom: true
-          });
-
-          // Layer OpenStreetMap tiêu chuẩn với subdomains đa máy chủ
-          const osmTile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            subdomains: ['a', 'b', 'c'],
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> đóng góp'
-          });
-
-          // Tự động chuyển sang tile dự phòng OpenStreetMap (CartoDB) nếu đường truyền OSM chính bị nghẽn
-          osmTile.on('tileerror', (error) => {
-            if (error.tile && error.coords) {
-              const fallbackUrl = `https://a.basemaps.cartocdn.com/rastertiles/voyager/${error.coords.z}/${error.coords.x}/${error.coords.y}.png`;
-              if (error.tile.src !== fallbackUrl) {
-                error.tile.src = fallbackUrl;
-              }
-            }
-          });
-
-          osmTile.addTo(map);
-
-          // Ẩn spinner khi layer bản đồ sẵn sàng
-          const loader = document.getElementById('map-initial-loader');
-          osmTile.on('load', () => {
-            if (loader) loader.style.display = 'none';
-          });
-          setTimeout(() => {
-            if (loader) loader.style.display = 'none';
-          }, 700);
-
-          // Nhóm layer chứa các marker
-          markersLayer = L.layerGroup().addTo(map);
-
-          // Render toàn bộ marker điểm ngập lên bản đồ
-          renderMarkers(floodPoints);
-
-          // Cập nhật lại kích thước bản đồ sau khi DOM render xong để tránh lỗi xám/đen
-          setTimeout(() => { if (map) map.invalidateSize(); }, 150);
-          setTimeout(() => { if (map) map.invalidateSize(); }, 500);
-          setTimeout(() => { if (map) map.invalidateSize(); }, 1200);
-
-          window.addEventListener('resize', () => {
-            if (map) map.invalidateSize();
-          });
-
-        } catch (err) {
-          console.error('Lỗi khi khởi tạo bản đồ Leaflet:', err);
-        }
-      });
-    }
-
-
-    /* ==========================================================================
-       PHÂN ĐOẠN 2.1: CHÚ GIẢI NỔI ĐỘNG (FLOATING DYNAMIC LEGEND WIDGET)
-       Tự động cập nhật chỉ hiển thị các danh mục có điểm đang xuất hiện theo bộ lọc
-       ========================================================================== */
-    function updateFloatingLegend(currentFilteredPoints) {
-      const container = document.getElementById('legend-items-container');
-      const totalBadge = document.getElementById('legend-total-badge');
-      if (!container) return;
-
-      const total = currentFilteredPoints ? currentFilteredPoints.length : 0;
-      if (totalBadge) {
-        totalBadge.textContent = `${total}`;
-      }
-
-      if (total === 0) {
-        container.innerHTML = `
-          <div class="py-2.5 text-[11px] text-slate-400 text-center italic">
-            Không có điểm nào theo bộ lọc
-          </div>
-        `;
-        return;
-      }
-
-      // Định nghĩa các danh mục phân loại với quy tắc kiểm tra (test function)
-      const categoryDefs = [
-        {
-          id: 'severe',
-          name: 'Ngập nặng / thường xuyên',
-          sublabel: '≥ 30cm (thoát > 120p)',
-          colorClass: 'bg-rose-500',
-          badgeClass: 'text-rose-400 bg-rose-500/10 border-rose-500/20',
-          pulseClass: 'pulse-severe',
-          test: p => p.severity === 'severe'
-        },
-        {
-          id: 'moderate',
-          name: 'Ngập vừa',
-          sublabel: '15cm – 30cm (thoát 30-120p)',
-          colorClass: 'bg-amber-500',
-          badgeClass: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
-          pulseClass: 'pulse-moderate',
-          test: p => p.severity === 'moderate'
-        },
-        {
-          id: 'light',
-          name: 'Ngập nhẹ',
-          sublabel: '< 15cm (thoát < 30p)',
-          colorClass: 'bg-yellow-400',
-          badgeClass: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20',
-          pulseClass: '',
-          test: p => p.severity === 'light'
-        },
-        {
-          id: 'tide',
-          name: 'Ngập do triều cường',
-          sublabel: 'Triều sông Sài Gòn & ven biển',
-          colorClass: 'bg-blue-500',
-          badgeClass: 'text-blue-400 bg-blue-500/10 border-blue-500/20',
-          pulseClass: '',
-          test: p => p.cause === 'tide'
-        },
-        {
-          id: 'rain-tide',
-          name: 'Ngập do mưa & triều',
-          sublabel: 'Tác động mưa dồn và triều dâng',
-          colorClass: 'bg-indigo-500',
-          badgeClass: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20',
-          pulseClass: '',
-          test: p => p.cause === 'rain-tide'
-        }
-      ];
-
-      // Lọc CHỈ các danh mục có ít nhất 1 điểm đang hiển thị trên bản đồ
-      const activeCategories = categoryDefs.map(cat => {
-        const count = currentFilteredPoints.filter(cat.test).length;
-        return { ...cat, count };
-      }).filter(cat => cat.count > 0);
-
-      if (activeCategories.length === 0) {
-        container.innerHTML = `
-          <div class="py-2 text-[11px] text-slate-400 text-center italic">
-            Không có phân loại tương ứng
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = activeCategories.map(cat => {
-        return `
-          <div class="flex items-center justify-between gap-2 p-1.5 rounded-lg hover:bg-slate-800/60 transition-colors">
-            <div class="flex items-center gap-2 min-w-0">
-              <div class="relative flex items-center justify-center w-3 h-3 shrink-0">
-                ${cat.pulseClass ? `<span class="absolute -inset-1 rounded-full ${cat.colorClass} opacity-70 ${cat.pulseClass}"></span>` : ''}
-                <span class="relative w-2.5 h-2.5 rounded-full ${cat.colorClass}"></span>
-              </div>
-              <div class="min-w-0">
-                <div class="text-[11px] font-semibold text-slate-200 truncate leading-tight">${cat.name}</div>
-                <div class="text-[10px] text-slate-400 leading-tight">${cat.sublabel}</div>
-              </div>
-            </div>
-            <span class="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded border ${cat.badgeClass} shrink-0 tabular-nums">
-              ${cat.count}
-            </span>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function setupFloatingLegendControls() {
-      const legendEl = document.getElementById('floating-map-legend');
-      const toggleBtn = document.getElementById('toggle-legend-btn');
-      const icon = document.getElementById('legend-toggle-icon');
-      const itemsContainer = document.getElementById('legend-items-container');
-
-      if (!legendEl) return;
-
-      // Ngăn chặn sự kiện click và scroll trên widget làm dịch chuyển bản đồ Leaflet
-      if (typeof L !== 'undefined' && L.DomEvent) {
-        L.DomEvent.disableClickPropagation(legendEl);
-        L.DomEvent.disableScrollPropagation(legendEl);
-      }
-
-      let isCollapsed = false;
-      if (toggleBtn && itemsContainer && icon) {
-        toggleBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          isCollapsed = !isCollapsed;
-          if (isCollapsed) {
-            itemsContainer.classList.add('hidden');
-            icon.classList.add('rotate-180');
-          } else {
-            itemsContainer.classList.remove('hidden');
-            icon.classList.remove('rotate-180');
-          }
-        });
-      }
-    }
-
-    // Tạo icon SVG đặc trưng theo mức độ ngập
-    function createMarkerIcon(point) {
-      let color = '#dc2626'; // Đỏ mặc định
-      let bgPulse = '';
-
-      if (point.severity === 'severe') {
-        color = '#dc2626'; // Đỏ
-        bgPulse = '<span class="absolute -inset-1 rounded-full bg-rose-500 opacity-75 pulse-severe"></span>';
-      } else if (point.severity === 'moderate') {
-        color = '#ea580c'; // Cam
-        bgPulse = '<span class="absolute -inset-1 rounded-full bg-amber-500 opacity-60 pulse-moderate"></span>';
-      } else if (point.severity === 'light') {
-        color = '#ca8a04'; // Vàng
-      } else if (point.cause === 'tide') {
-        color = '#2563eb'; // Xanh biển do triều
-      }
-
-      const html = `
-        <div class="relative flex items-center justify-center w-7 h-7 cursor-pointer group">
-          ${bgPulse}
-          <div class="relative w-6 h-6 rounded-full border-2 border-white flex items-center justify-center shadow-lg transition-transform group-hover:scale-125" style="background-color: ${color}">
-            <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547" />
-            </svg>
-          </div>
-        </div>
-      `;
-
-      return L.divIcon({
-        html: html,
-        className: 'custom-flood-marker',
-        iconSize: [28, 28],
-        iconAnchor: [14, 14],
-        popupAnchor: [0, -14]
-      });
-    }
-
-    // Hiển thị các điểm lên bản đồ
-    function renderMarkers(points) {
-      if (!markersLayer || typeof L === 'undefined') return;
-      markersLayer.clearLayers();
-      markersMap.clear();
-
-      points.forEach(point => {
-        const marker = L.marker([point.lat, point.lng], {
-          icon: createMarkerIcon(point),
-          title: point.street
-        });
-
-        // Nội dung popup chi tiết, sắc nét
-        const popupContent = `
-          <div class="p-1">
-            <div class="flex items-center justify-between gap-2 border-b border-slate-700/80 pb-2 mb-2">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-sky-400">#${point.id} · ${point.regionName}</span>
-              <span class="text-[11px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">${point.causeName}</span>
-            </div>
-            <h4 class="text-sm font-bold text-white mb-1">${point.street}</h4>
-            <p class="text-xs text-slate-300 mb-1.5"><strong>Địa bàn:</strong> ${point.ward}</p>
-            <div class="p-2 rounded bg-slate-950/80 border border-slate-800 text-[11px] text-slate-400 leading-normal">
-              <span class="font-semibold text-slate-200">Phân loại:</span> ${point.severityName}<br/>
-              <span class="font-semibold text-slate-200">Chi tiết:</span> ${point.note}
-            </div>
-          </div>
-        `;
-
-        marker.bindPopup(popupContent);
-        marker.addTo(markersLayer);
-        markersMap.set(point.id, marker);
-      });
-    }
-
-    // Hiển thị danh sách điểm ở cột bên phải
-    function renderSidebarList(points) {
-      const container = document.getElementById('map-point-list');
-      const countLabel = document.getElementById('filtered-count-label');
-      const badge = document.getElementById('filtered-badge');
-
-      countLabel.textContent = `Hiển thị ${points.length} / 159 vị trí`;
-      badge.textContent = points.length;
-
-      if (points.length === 0) {
-        container.innerHTML = `
-          <div class="p-8 text-center text-xs text-slate-500">
-            Không tìm thấy điểm ngập phù hợp với điều kiện lọc.
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = points.map(p => {
-        let severityColor = 'text-rose-400 border-rose-500/30 bg-rose-500/10';
-        if (p.severity === 'moderate') severityColor = 'text-amber-400 border-amber-500/30 bg-amber-500/10';
-        if (p.severity === 'light') severityColor = 'text-yellow-400 border-yellow-500/30 bg-yellow-500/10';
-        if (p.cause === 'tide') severityColor = 'text-blue-400 border-blue-500/30 bg-blue-500/10';
-
-        return `
-          <div 
-            onclick="focusPoint(${p.id})"
-            class="p-2.5 rounded-lg hover:bg-slate-800/80 cursor-pointer transition-colors border border-transparent hover:border-slate-700/60 group"
-          >
-            <div class="flex items-center justify-between gap-1 mb-1">
-              <span class="text-[11px] font-bold text-slate-400 group-hover:text-sky-300 transition-colors">#${p.id} · ${p.regionName}</span>
-              <span class="text-[10px] px-1.5 py-0.5 rounded border ${severityColor} font-medium">${p.severityName}</span>
-            </div>
-            <div class="text-xs font-semibold text-slate-200 group-hover:text-white line-clamp-1">${p.street}</div>
-            <div class="text-[11px] text-slate-500 mt-0.5 truncate">${p.ward}</div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    // Zoom và mở popup của một điểm cụ thể khi người dùng nhấp chọn
-    function focusPoint(id) {
-      const point = floodPoints.find(p => p.id === id);
-      const marker = markersMap.get(id);
-      if (point && map) {
-        map.flyTo([point.lat, point.lng], 16, {
-          duration: 1.2,
-          easeLinearity: 0.25
-        });
-        if (marker) {
-          setTimeout(() => {
-            marker.openPopup();
-          }, 600);
-        }
-      }
-    }
-
-    // Chuyển tầm nhìn bản đồ tới khu vực định sẵn
-    function focusRegion(regionKey) {
-      if (!map) return;
-      if (regionKey === 'hcm') {
-        map.flyTo([10.7769, 106.6909], 13);
-      } else if (regionKey === 'thuduc') {
-        map.flyTo([10.8400, 106.7600], 13);
-      } else if (regionKey === 'binhduong') {
-        map.flyTo([11.0200, 106.6700], 12);
-      } else if (regionKey === 'vungtau') {
-        map.flyTo([10.4200, 107.1200], 11);
-      }
-    }
-
-    // Tìm kiếm và phóng to điểm ngập khi người dùng nhấp từ danh sách văn bản
-    window.locatePointByName = function(streetQuery) {
-      const q = streetQuery.toLowerCase().trim();
-      const found = floodPoints.find(p => p.street.toLowerCase().includes(q) || q.includes(p.street.toLowerCase()));
-      if (found) {
-        const mapSection = document.getElementById('ban-do');
-        if (mapSection) {
-          mapSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        setTimeout(() => {
-          focusPoint(found.id);
-        }, 500);
-      }
-    };
-
-    /* ==========================================================================
-       PHÂN ĐOẠN 3: XỬ LÝ SỰ KIỆN TƯƠNG TÁC, LỌC VÀ TÌM KIẾM
-       ========================================================================== */
-    function applyFilters() {
-      const searchVal = document.getElementById('map-search-input').value.toLowerCase().trim();
-      const regionVal = document.getElementById('filter-region').value;
-      const causeVal = document.getElementById('filter-cause').value;
-
-      const filtered = floodPoints.filter(p => {
-        // Lọc địa bàn
-        if (regionVal !== 'all' && p.region !== regionVal) return false;
-
-        // Lọc nguyên nhân
-        if (causeVal !== 'all' && p.cause !== causeVal) return false;
-
-        // Lọc tìm kiếm
-        if (searchVal) {
-          const matchStreet = p.street.toLowerCase().includes(searchVal);
-          const matchWard = p.ward.toLowerCase().includes(searchVal);
-          const matchRegion = p.regionName.toLowerCase().includes(searchVal);
-          const matchNote = p.note.toLowerCase().includes(searchVal);
-          if (!matchStreet && !matchWard && !matchRegion && !matchNote) return false;
-        }
-
-        return true;
-      });
-
-      renderMarkers(filtered);
-      renderSidebarList(filtered);
-      updateFloatingLegend(filtered);
-
-      // Nếu có kết quả và người dùng tìm kiếm, tự động căn chỉnh vùng bao (bounds)
-      if (filtered.length > 0 && searchVal && map) {
-        const group = L.featureGroup(filtered.map(p => markersMap.get(p.id)).filter(Boolean));
-        if (group.getLayers().length > 0) {
-          map.fitBounds(group.getBounds().pad(0.2));
-        }
-      }
-    }
-
-    // Lắng nghe sự kiện người dùng
-    document.getElementById('map-search-input').addEventListener('input', applyFilters);
-    document.getElementById('filter-region').addEventListener('change', applyFilters);
-    document.getElementById('filter-cause').addEventListener('change', applyFilters);
-
-    document.getElementById('reset-map-filter').addEventListener('click', () => {
-      document.getElementById('map-search-input').value = '';
-      document.getElementById('filter-region').value = 'all';
-      document.getElementById('filter-cause').value = 'all';
-      applyFilters();
-      if (map) {
-        map.flyTo([10.8231, 106.6297], 11);
-      }
-    });
-
-    /* ==========================================================================
-       PHÂN ĐOẠN 4: CANVAS HIỆU ỨNG MƯA & DÒNG CHẢY (LIGHTWEIGHT MOTION GRAPHIC)
-       Tối ưu hóa hiệu năng, tự động dừng khi khuất màn hình
-       ========================================================================== */
-    function initRainCanvas() {
-      const canvas = document.getElementById('rain-canvas');
-      const ctx = canvas.getContext('2d');
-      let width = (canvas.width = window.innerWidth);
-      let height = (canvas.height = window.innerHeight);
-
-      window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      });
-
-      // Tạo các giọt mưa nhẹ nhàng
-      const drops = [];
-      const dropCount = Math.min(width > 768 ? 60 : 30, 80);
-
-      for (let i = 0; i < dropCount; i++) {
-        drops.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          length: Math.random() * 14 + 10,
-          speed: Math.random() * 4 + 4,
-          opacity: Math.random() * 0.4 + 0.1
-        });
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, width, height);
-        ctx.strokeStyle = '#38bdf8';
-        ctx.lineWidth = 1;
-
-        for (let i = 0; i < drops.length; i++) {
-          const d = drops[i];
-          ctx.beginPath();
-          ctx.globalAlpha = d.opacity;
-          ctx.moveTo(d.x, d.y);
-          ctx.lineTo(d.x - 2, d.y + d.length);
-          ctx.stroke();
-
-          d.y += d.speed;
-          d.x -= 0.5;
-
-          if (d.y > height) {
-            d.y = -d.length;
-            d.x = Math.random() * width;
-          }
-        }
-        requestAnimationFrame(draw);
-      }
-
-      draw();
-    }
-
-    /* ==========================================================================
-       PHÂN ĐOẠN 5: HIỆU ỨNG SỐ NHẢY (COUNT-UP ANIMATION) & SCROLL REVEAL
-       ========================================================================== */
-    function initScrollAnimations() {
-      // Intersection Observer để kích hoạt animation khi cuộn tới
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-    }
-
-    /* ==========================================================================
-       PHÂN ĐOẠN 6: ĐIỀU KHIỂN CAROUSEL HÌNH ẢNH MÔ PHỎNG 4 KHU VỰC
-       Hỗ trợ nút bấm, chấm điều hướng, tự động chuyển slide và cử chỉ vuốt
-       ========================================================================== */
-    let currentSlide = 0;
-    const totalSlides = 4;
-    let carouselTimer = null;
-
-    function updateCarouselUI() {
-      const track = document.getElementById('carousel-track');
-      const counter = document.getElementById('carousel-counter');
-      const dotsContainer = document.getElementById('carousel-dots');
-
-      if (!track) return;
-
-      // Dịch chuyển track theo phần trăm
-      track.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-      // Cập nhật số đếm
-      if (counter) {
-        counter.textContent = `0${currentSlide + 1} / 0${totalSlides}`;
-      }
-
-      // Cập nhật trạng thái active của các chấm
-      if (dotsContainer) {
-        const dots = dotsContainer.querySelectorAll('button');
-        dots.forEach((dot, idx) => {
-          if (idx === currentSlide) {
-            dot.className = 'w-8 h-1.5 rounded-full bg-sky-400 transition-all duration-300';
-          } else {
-            dot.className = 'w-2.5 h-1.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all duration-300';
-          }
-        });
-      }
-    }
-
-    window.goToSlide = function(idx) {
-      currentSlide = (idx + totalSlides) % totalSlides;
-      updateCarouselUI();
-      resetCarouselAutoplay();
-    };
-
-    window.nextSlide = function() {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      updateCarouselUI();
-      resetCarouselAutoplay();
-    };
-
-    window.prevSlide = function() {
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      updateCarouselUI();
-      resetCarouselAutoplay();
-    };
-
-    function startCarouselAutoplay() {
-      if (carouselTimer) clearInterval(carouselTimer);
-      carouselTimer = setInterval(() => {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarouselUI();
-      }, 5000);
-    }
-
-    function resetCarouselAutoplay() {
-      startCarouselAutoplay();
-    }
-
-    function initFloodCarousel() {
-      const prevBtn = document.getElementById('carousel-prev-btn');
-      const nextBtn = document.getElementById('carousel-next-btn');
-      const container = document.getElementById('flood-carousel-container');
-
-      if (prevBtn) prevBtn.addEventListener('click', window.prevSlide);
-      if (nextBtn) nextBtn.addEventListener('click', window.nextSlide);
-
-      // Tạm dừng khi rê chuột vào carousel
-      if (container) {
-        container.addEventListener('mouseenter', () => {
-          if (carouselTimer) clearInterval(carouselTimer);
-        });
-        container.addEventListener('mouseleave', () => {
-          startCarouselAutoplay();
-        });
-
-        // Hỗ trợ vuốt chạm trên thiết bị di động (Touch swipe)
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        container.addEventListener('touchstart', (e) => {
-          touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        container.addEventListener('touchend', (e) => {
-          touchEndX = e.changedTouches[0].screenX;
-          const diff = touchStartX - touchEndX;
-          if (Math.abs(diff) > 40) {
-            if (diff > 0) {
-              window.nextSlide();
-            } else {
-              window.prevSlide();
-            }
-          }
-        }, { passive: true });
-      }
-
-      // Khởi động auto play ban đầu
-      startCarouselAutoplay();
-      updateCarouselUI();
-    }
-
-    // Khởi chạy khi DOM sẵn sàng
-    window.addEventListener('DOMContentLoaded', () => {
-      initMap();
-      initRainCanvas();
-      initScrollAnimations();
-      initFloodCarousel();
-    });
-
-  </script>
-
+  <!-- Script logic chính -->
+  <script src="/src/appScript.js"></script>
 </body>
 </html>
