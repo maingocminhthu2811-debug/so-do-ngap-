@@ -9,10 +9,15 @@
   <meta property="og:description" content="Tra cứu và giám sát trực quan 159 vị trí ngập do mưa và triều cường trên nền bản đồ số mở OpenStreetMap." />
 
   <!-- Preconnect & DNS-prefetch để tăng tốc tải tile bản đồ OpenStreetMap ngay lập tức -->
+  <link rel="preconnect" href="https://tile.openstreetmap.de" crossorigin>
+  <link rel="preconnect" href="https://a.tile.openstreetmap.fr" crossorigin>
+  <link rel="preconnect" href="https://b.tile.openstreetmap.fr" crossorigin>
+  <link rel="preconnect" href="https://a.basemaps.cartocdn.com" crossorigin>
+  <link rel="preconnect" href="https://b.basemaps.cartocdn.com" crossorigin>
   <link rel="preconnect" href="https://a.tile.openstreetmap.org" crossorigin>
-  <link rel="preconnect" href="https://b.tile.openstreetmap.org" crossorigin>
-  <link rel="preconnect" href="https://c.tile.openstreetmap.org" crossorigin>
+  <link rel="dns-prefetch" href="https://tile.openstreetmap.de">
   <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
+  <link rel="dns-prefetch" href="https://basemaps.cartocdn.com">
   <link rel="dns-prefetch" href="https://a.tile.openstreetmap.fr">
 
   <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
@@ -20,14 +25,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Leaflet Map CSS & JS (Ưu tiên nạp trực tiếp siêu tốc từ local 0ms) -->
-  <link rel="stylesheet" href="/leaflet/leaflet.css" onerror="this.onerror=null;this.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';" />
+  <!-- Leaflet Map CSS & JS (Nạp trực tiếp siêu tốc từ local 0ms) -->
+  <link rel="stylesheet" href="/leaflet/leaflet.css" />
   <script src="/leaflet/leaflet.js"></script>
-  <script>
-    if (typeof L === 'undefined') {
-      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"><\/script>');
-    }
-  </script>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -209,15 +209,33 @@
         <!-- Bản đồ số OpenStreetMap tiêu chuẩn (Sắc nét, 100% miễn phí, không cần API key) -->
         <div class="lg:col-span-8 rounded-3xl p-2.5 bg-white border border-slate-200/80 shadow-sm relative flex flex-col min-h-[580px] lg:min-h-[680px]">
           
-          <!-- Badge thông báo OpenStreetMap tiêu chuẩn -->
-          
+          <!-- Thanh công cụ OpenStreetMap tiêu chuẩn (100% miễn phí, không cần API key) -->
+          <div class="flex flex-wrap items-center justify-between gap-2 px-1 pb-2.5">
+            <div class="inline-flex items-center gap-2 text-xs text-slate-700 font-medium">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold shadow-xs">
+                <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                OpenStreetMap tiêu chuẩn
+              </span>
+              <span class="text-[11px] text-slate-500 hidden sm:inline">• Sắc nét, 100% miễn phí, không cần API key</span>
+            </div>
 
-          <div id="map" class="w-full h-full flex-1 rounded-2xl overflow-hidden z-10 relative" style="min-height: 560px;">
-            <div id="map-initial-loader" class="absolute inset-0 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm z-0 text-slate-600">
-              <div class="w-8 h-8 border-3 border-sky-500/30 border-t-sky-500 rounded-full animate-spin mb-2.5"></div>
-              <p class="text-xs font-semibold text-slate-700">Đang đồng bộ bản đồ OpenStreetMap tiêu chuẩn...</p>
+            <!-- Chuyển đổi nhanh các kiểu OpenStreetMap -->
+            <div class="flex items-center gap-1 bg-slate-100 p-0.5 rounded-xl border border-slate-200/80 text-[11px] font-medium">
+              <button id="btn-layer-osm-std" onclick="switchMapStyle('standard')" class="px-2.5 py-1 rounded-lg transition-all bg-white text-sky-700 font-bold shadow-xs cursor-pointer">
+                OSM Tiêu chuẩn
+              </button>
+              <button id="btn-layer-osm-fast" onclick="switchMapStyle('fast')" class="px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:text-slate-900 cursor-pointer">
+                OSM Siêu tốc
+              </button>
+              <button id="btn-layer-osm-hot" onclick="switchMapStyle('hot')" class="px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:text-slate-900 cursor-pointer">
+                OSM Nhân đạo (HOT)
+              </button>
             </div>
           </div>
+
+          <div id="map" class="w-full h-full flex-1 rounded-2xl overflow-hidden z-10 relative bg-slate-100" style="min-height: 560px;"></div>
 
           <!-- Chú giải nổi động (Floating Dynamic Legend) tông trắng sạch đẹp -->
           <div id="floating-map-legend" class="absolute top-5 right-5 z-20 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl shadow-xl p-3.5 max-w-[240px] sm:max-w-[280px] text-xs transition-all duration-300">

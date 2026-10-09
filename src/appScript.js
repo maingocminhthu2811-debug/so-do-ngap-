@@ -2320,45 +2320,72 @@ window.quickFilterRegion = quickFilterRegion;
             preferCanvas: true              // Dùng Canvas renderer để tăng tốc độ vẽ hàng trăm marker
           });
 
-          // Layer OpenStreetMap Tiêu chuẩn đa máy chủ song song (a, b, c) tăng tốc tải gấp 3 lần
-          const osmStandardTile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            subdomains: ['a', 'b', 'c'],
-            maxZoom: 19,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> đóng góp',
-            crossOrigin: true,
-            updateWhenIdle: false,          // Tải tile ngay khi rê chuột, không đợi dừng
-            updateWhenZooming: true,        // Tải liên tục khi phóng to/thu nhỏ
-            keepBuffer: 8                   // Giữ bộ nhớ đệm tile trong RAM để lướt mượt mà không phải tải lại
-          });
+          // Biến quản lý layer bản đồ OpenStreetMap hiện tại
+          currentTileLayer = null;
 
-          // Tự động chuyển mirror dự phòng siêu tốc nếu bất kỳ tile nào bị nghẽn
-          osmStandardTile.on('tileerror', (error) => {
-            if (error.tile && error.coords && !error.tile.dataset.hasFallback) {
-              error.tile.dataset.hasFallback = 'true';
-              const { z, x, y } = error.coords;
-              error.tile.src = `https://a.tile.openstreetmap.fr/osmfr/${z}/${x}/${y}.png`;
+          // Hàm chuyển đổi các kiểu bản đồ OpenStreetMap (100% miễn phí, không cần API key)
+          window.switchMapStyle = function(styleKey) {
+            if (!map) return;
+            if (currentTileLayer) {
+              map.removeLayer(currentTileLayer);
             }
-          });
 
-          // Thêm OpenStreetMap tiêu chuẩn làm lớp nền mặc định hiển thị ngay
-          osmStandardTile.addTo(map);
+            const btnStd = document.getElementById('btn-layer-osm-std');
+            const btnFast = document.getElementById('btn-layer-osm-fast');
+            const btnHot = document.getElementById('btn-layer-osm-hot');
 
-          // Ẩn spinner ngay lập tức khi tile đầu tiên sẵn sàng, không bắt người dùng chờ đợi
-          const hideLoader = () => {
-            const loader = document.getElementById('map-initial-loader');
-            if (loader && loader.style.display !== 'none') {
-              loader.style.opacity = '0';
-              loader.style.pointerEvents = 'none';
-              setTimeout(() => {
-                if (loader) loader.style.display = 'none';
-              }, 150);
+            [btnStd, btnFast, btnHot].forEach(btn => {
+              if (btn) btn.className = 'px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:text-slate-900 cursor-pointer';
+            });
+
+            if (styleKey === 'fast') {
+              if (btnFast) btnFast.className = 'px-2.5 py-1 rounded-lg transition-all bg-white text-sky-700 font-bold shadow-xs cursor-pointer';
+              // OpenStreetMap Siêu tốc qua CDN toàn cầu
+              currentTileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                subdomains: ['a', 'b', 'c', 'd'],
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> đóng góp',
+                crossOrigin: true,
+                updateWhenIdle: false,
+                updateWhenZooming: true,
+                keepBuffer: 16
+              });
+            } else if (styleKey === 'hot') {
+              if (btnHot) btnHot.className = 'px-2.5 py-1 rounded-lg transition-all bg-white text-sky-700 font-bold shadow-xs cursor-pointer';
+              // OpenStreetMap Nhân đạo (Humanitarian HOT) - màu sắc tương phản cao
+              currentTileLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+                subdomains: ['a', 'b', 'c'],
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> đóng góp',
+                crossOrigin: true,
+                keepBuffer: 12
+              });
+            } else {
+              // Mặc định: OpenStreetMap tiêu chuẩn (Sắc nét, 100% miễn phí, không cần API key)
+              if (btnStd) btnStd.className = 'px-2.5 py-1 rounded-lg transition-all bg-white text-sky-700 font-bold shadow-xs cursor-pointer';
+              currentTileLayer = L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> đóng góp',
+                crossOrigin: true,
+                keepBuffer: 12
+              });
+
+              // Tự động chuyển qua mirror OpenStreetMap dự phòng nếu mạng gặp trục trặc
+              currentTileLayer.on('tileerror', (error) => {
+                if (error.tile && error.coords && !error.tile.dataset.hasFallback) {
+                  error.tile.dataset.hasFallback = 'true';
+                  const { z, x, y } = error.coords;
+                  error.tile.src = `https://a.tile.openstreetmap.fr/osmfr/${z}/${x}/${y}.png`;
+                }
+              });
             }
+
+            currentTileLayer.addTo(map);
+            if (markersLayer) markersLayer.bringToFront();
           };
 
-          osmStandardTile.on('tileload', hideLoader);
-          osmStandardTile.on('load', hideLoader);
-          // Tự động tắt loader sau tối đa 200ms để bản đồ xuất hiện ngay
-          setTimeout(hideLoader, 200);
+          // Khởi động với OpenStreetMap tiêu chuẩn
+          window.switchMapStyle('standard');
 
           // Nhóm layer chứa các marker
           markersLayer = L.layerGroup().addTo(map);
@@ -2369,7 +2396,6 @@ window.quickFilterRegion = quickFilterRegion;
           // Ngay lập tức tính toán kích cỡ bản đồ
           map.whenReady(() => {
             map.invalidateSize();
-            hideLoader();
           });
           requestAnimationFrame(() => { if (map) map.invalidateSize(); });
           setTimeout(() => { if (map) map.invalidateSize(); }, 150);
@@ -2381,8 +2407,6 @@ window.quickFilterRegion = quickFilterRegion;
 
         } catch (err) {
           console.error('Lỗi khi khởi tạo bản đồ Leaflet:', err);
-          const loader = document.getElementById('map-initial-loader');
-          if (loader) loader.style.display = 'none';
         }
       });
     }
@@ -2529,14 +2553,10 @@ window.quickFilterRegion = quickFilterRegion;
     // Tạo icon SVG đặc trưng theo mức độ ngập
     function createMarkerIcon(point) {
       let color = '#ef4444'; // Đỏ tươi
-      let bgPulse = '';
-
       if (point.severity === 'severe') {
         color = '#ef4444'; // Đỏ tươi
-        bgPulse = '<span class="absolute -inset-1.5 rounded-full bg-rose-400 opacity-60 pulse-severe"></span>';
       } else if (point.severity === 'moderate') {
         color = '#f59e0b'; // Cam nắng ấm
-        bgPulse = '<span class="absolute -inset-1.5 rounded-full bg-amber-400 opacity-50 pulse-moderate"></span>';
       } else if (point.severity === 'light') {
         color = '#10b981'; // Xanh ngọc
       } else if (point.cause === 'tide') {
@@ -2544,9 +2564,8 @@ window.quickFilterRegion = quickFilterRegion;
       }
 
       const html = `
-        <div class="relative flex items-center justify-center w-7 h-7 cursor-pointer group">
-          ${bgPulse}
-          <div class="relative w-6 h-6 rounded-full border-2 border-white flex items-center justify-center shadow-md transition-transform group-hover:scale-125" style="background-color: ${color}">
+        <div class="relative flex items-center justify-center w-6 h-6 cursor-pointer group">
+          <div class="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center shadow-md transition-transform group-hover:scale-125" style="background-color: ${color}">
             <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547" />
             </svg>
@@ -2557,9 +2576,9 @@ window.quickFilterRegion = quickFilterRegion;
       return L.divIcon({
         html: html,
         className: 'custom-flood-marker',
-        iconSize: [28, 28],
-        iconAnchor: [14, 14],
-        popupAnchor: [0, -14]
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
+        popupAnchor: [0, -12]
       });
     }
 
