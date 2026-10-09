@@ -11,7 +11,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.8441,
     "lng": 106.6235,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 2,
@@ -25,7 +25,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.8415,
     "lng": 106.619,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 3,
@@ -39,7 +39,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.8038,
     "lng": 106.7021,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 4,
@@ -53,7 +53,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.8082,
     "lng": 106.7163,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 5,
@@ -67,7 +67,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.812,
     "lng": 106.71,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 6,
@@ -81,7 +81,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.7235,
     "lng": 106.612,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 7,
@@ -95,7 +95,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.751,
     "lng": 106.6295,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 8,
@@ -109,7 +109,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.8465,
     "lng": 106.657,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 9,
@@ -123,7 +123,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.849,
     "lng": 106.671,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 10,
@@ -137,7 +137,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.842,
     "lng": 106.652,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 11,
@@ -151,7 +151,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.8285,
     "lng": 106.638,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 12,
@@ -165,21 +165,21 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.851,
     "lng": 106.645,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 13,
     "region": "hcm-old",
     "regionName": "TPHCM trước đây",
     "ward": "Phường Đông Hưng Thuận",
-    "street": "đường Phan Văn Hớn (đoạn 2)",
+    "street": "đường Phan Văn Hớn",
     "cause": "rain",
     "causeName": "Ngập do mưa",
     "severity": "severe",
     "severityName": "Ngập thường xuyên",
     "lat": 10.843,
     "lng": 106.615,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 14,
@@ -193,7 +193,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.8495,
     "lng": 106.6185,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 15,
@@ -207,7 +207,7 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.768,
     "lng": 106.618,
-    "note": "Lượng mưa 30mm - 50mm, mực triều < 1m"
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
   },
   {
     "id": 16,
@@ -221,7 +221,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.7685,
     "lng": 106.6995,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 17,
@@ -235,35 +235,35 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.766,
     "lng": 106.685,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 18,
     "region": "hcm-old",
     "regionName": "TPHCM trước đây",
     "ward": "Phường Đông Hưng Thuận",
-    "street": "đường Nguyễn Văn Quá (đoạn 2)",
+    "street": "đường Nguyễn Văn Quá",
     "cause": "rain",
     "causeName": "Ngập do mưa",
     "severity": "moderate",
     "severityName": "Ngập vừa",
     "lat": 10.847,
     "lng": 106.626,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 19,
     "region": "hcm-old",
     "regionName": "TPHCM trước đây",
     "ward": "Phường Đông Hưng Thuận",
-    "street": "đường Song hành Quốc lộ 22 (đoạn 2)",
+    "street": "đường Song hành Quốc lộ 22",
     "cause": "rain",
     "causeName": "Ngập do mưa",
     "severity": "moderate",
     "severityName": "Ngập vừa",
     "lat": 10.853,
     "lng": 106.616,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 20,
@@ -277,7 +277,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.738,
     "lng": 106.673,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 21,
@@ -291,7 +291,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.725,
     "lng": 106.661,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 22,
@@ -305,7 +305,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.82,
     "lng": 106.728,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 23,
@@ -319,7 +319,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.806,
     "lng": 106.714,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 24,
@@ -333,7 +333,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.8035,
     "lng": 106.7155,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 25,
@@ -347,7 +347,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.762,
     "lng": 106.624,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 26,
@@ -361,7 +361,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.758,
     "lng": 106.612,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 27,
@@ -375,7 +375,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.742,
     "lng": 106.645,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 28,
@@ -389,7 +389,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.8145,
     "lng": 106.6625,
-    "note": "Độ sâu 10cm - 15cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 29,
@@ -403,7 +403,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.767,
     "lng": 106.688,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 30,
@@ -417,7 +417,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.7745,
     "lng": 106.701,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 31,
@@ -431,7 +431,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.777,
     "lng": 106.702,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 32,
@@ -445,7 +445,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.771,
     "lng": 106.691,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 33,
@@ -459,7 +459,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.7635,
     "lng": 106.6895,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 34,
@@ -473,7 +473,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.769,
     "lng": 106.6915,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 35,
@@ -487,7 +487,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.768,
     "lng": 106.694,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 36,
@@ -501,7 +501,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.7755,
     "lng": 106.6935,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 37,
@@ -515,7 +515,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.7695,
     "lng": 106.6815,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 38,
@@ -529,7 +529,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.7625,
     "lng": 106.704,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 39,
@@ -543,7 +543,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.7595,
     "lng": 106.703,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 40,
@@ -557,7 +557,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.7565,
     "lng": 106.7085,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 41,
@@ -571,7 +571,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.7585,
     "lng": 106.705,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 42,
@@ -585,7 +585,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.7615,
     "lng": 106.708,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 43,
@@ -599,7 +599,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.761,
     "lng": 106.706,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 44,
@@ -613,7 +613,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.7525,
     "lng": 106.682,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 45,
@@ -627,7 +627,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.756,
     "lng": 106.683,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 46,
@@ -641,7 +641,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.754,
     "lng": 106.679,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 47,
@@ -655,7 +655,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.769,
     "lng": 106.673,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 48,
@@ -669,7 +669,7 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.7715,
     "lng": 106.6745,
-    "note": "Độ sâu < 10cm, nước rút < 30 phút"
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
   },
   {
     "id": 49,
@@ -683,7 +683,7 @@ export const floodPoints = [
     "severityName": "Ngập do triều",
     "lat": 10.7675,
     "lng": 106.699,
-    "note": "Tuyến chịu ảnh hưởng triều cường"
+    "note": "Ngập do triều: 9 vị trí"
   },
   {
     "id": 50,
@@ -697,7 +697,7 @@ export const floodPoints = [
     "severityName": "Ngập do triều",
     "lat": 10.825,
     "lng": 106.732,
-    "note": "Tuyến chịu ảnh hưởng triều cường"
+    "note": "Ngập do triều: 9 vị trí"
   },
   {
     "id": 51,
@@ -711,7 +711,7 @@ export const floodPoints = [
     "severityName": "Ngập do triều",
     "lat": 10.7485,
     "lng": 106.711,
-    "note": "Tuyến bờ kênh Tẻ, ảnh hưởng triều cường"
+    "note": "Ngập do triều: 9 vị trí"
   },
   {
     "id": 52,
@@ -725,7 +725,7 @@ export const floodPoints = [
     "severityName": "Ngập do triều",
     "lat": 10.743,
     "lng": 106.734,
-    "note": "Tuyến chịu ảnh hưởng triều cường"
+    "note": "Ngập do triều: 9 vị trí"
   },
   {
     "id": 53,
@@ -739,7 +739,7 @@ export const floodPoints = [
     "severityName": "Ngập do triều",
     "lat": 10.731,
     "lng": 106.705,
-    "note": "Tuyến chịu ảnh hưởng triều cường"
+    "note": "Ngập do triều: 9 vị trí"
   },
   {
     "id": 54,
@@ -753,7 +753,7 @@ export const floodPoints = [
     "severityName": "Ngập do triều",
     "lat": 10.702,
     "lng": 106.712,
-    "note": "Tuyến chịu ảnh hưởng triều cường"
+    "note": "Ngập do triều: 9 vị trí"
   },
   {
     "id": 55,
@@ -767,7 +767,7 @@ export const floodPoints = [
     "severityName": "Ngập do triều",
     "lat": 10.713,
     "lng": 106.726,
-    "note": "Tuyến chịu ảnh hưởng triều cường"
+    "note": "Ngập do triều: 9 vị trí"
   },
   {
     "id": 56,
@@ -781,7 +781,7 @@ export const floodPoints = [
     "severityName": "Ngập do triều",
     "lat": 10.686,
     "lng": 106.724,
-    "note": "Tuyến chịu ảnh hưởng triều cường"
+    "note": "Ngập do triều: 9 vị trí"
   },
   {
     "id": 57,
@@ -795,12 +795,12 @@ export const floodPoints = [
     "severityName": "Ngập do triều",
     "lat": 10.722,
     "lng": 106.66,
-    "note": "Tuyến chịu ảnh hưởng triều cường"
+    "note": "Ngập do triều: 9 vị trí"
   },
   {
     "id": 58,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường An Khánh",
     "street": "đường Nguyễn Văn Hưởng",
     "cause": "rain-tide",
@@ -809,12 +809,12 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.812,
     "lng": 106.734,
-    "note": "Ngập thường xuyên do mưa và triều"
+    "note": "Ngập thường xuyên: 10 vị trí"
   },
   {
     "id": 59,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường An Khánh",
     "street": "đường Quốc Hương",
     "cause": "rain-tide",
@@ -823,12 +823,12 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.804,
     "lng": 106.735,
-    "note": "Ngập thường xuyên do mưa và triều"
+    "note": "Ngập thường xuyên: 10 vị trí"
   },
   {
     "id": 60,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường An Khánh",
     "street": "đường Thảo Điền",
     "cause": "rain-tide",
@@ -837,12 +837,12 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.806,
     "lng": 106.732,
-    "note": "Ngập thường xuyên do mưa và triều"
+    "note": "Ngập thường xuyên: 10 vị trí"
   },
   {
     "id": 61,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Tam Bình",
     "street": "đường Lê Thị Hoa",
     "cause": "rain-tide",
@@ -851,12 +851,12 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.875,
     "lng": 106.741,
-    "note": "Ngập thường xuyên do mưa và triều"
+    "note": "Ngập thường xuyên: 10 vị trí"
   },
   {
     "id": 62,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Tam Bình",
     "street": "đường Tỉnh lộ 43",
     "cause": "rain-tide",
@@ -865,12 +865,12 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.879,
     "lng": 106.743,
-    "note": "Ngập thường xuyên do mưa và triều"
+    "note": "Ngập thường xuyên: 10 vị trí"
   },
   {
     "id": 63,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Thủ Đức",
     "street": "đường Dương Văn Cam",
     "cause": "rain-tide",
@@ -879,12 +879,12 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.852,
     "lng": 106.76,
-    "note": "Ngập thường xuyên do mưa và triều"
+    "note": "Ngập thường xuyên: 10 vị trí"
   },
   {
     "id": 64,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Thủ Đức",
     "street": "đường Kha Vạn Cân",
     "cause": "rain-tide",
@@ -893,12 +893,12 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.854,
     "lng": 106.762,
-    "note": "Ngập thường xuyên do mưa và triều"
+    "note": "Ngập thường xuyên: 10 vị trí"
   },
   {
     "id": 65,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Thủ Đức",
     "street": "đường Tam Tam Xã",
     "cause": "rain-tide",
@@ -907,12 +907,12 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.851,
     "lng": 106.758,
-    "note": "Ngập thường xuyên do mưa và triều"
+    "note": "Ngập thường xuyên: 10 vị trí"
   },
   {
     "id": 66,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Thủ Đức",
     "street": "đường Tô Ngọc Vân",
     "cause": "rain-tide",
@@ -921,12 +921,12 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.857,
     "lng": 106.759,
-    "note": "Ngập thường xuyên do mưa và triều"
+    "note": "Ngập thường xuyên: 10 vị trí"
   },
   {
     "id": 67,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Thủ Đức",
     "street": "đường Đặng Thị Rành",
     "cause": "rain-tide",
@@ -935,12 +935,12 @@ export const floodPoints = [
     "severityName": "Ngập thường xuyên",
     "lat": 10.853,
     "lng": 106.7595,
-    "note": "Ngập thường xuyên do mưa và triều"
+    "note": "Ngập thường xuyên: 10 vị trí"
   },
   {
     "id": 68,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Bình Trưng",
     "street": "đường Nguyễn Duy Trinh",
     "cause": "rain-tide",
@@ -949,12 +949,12 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.792,
     "lng": 106.776,
-    "note": "Ngập vừa do mưa và triều"
+    "note": "Ngập vừa: 8 vị trí"
   },
   {
     "id": 69,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Hiệp Bình",
     "street": "đường Hiệp Bình",
     "cause": "rain-tide",
@@ -963,12 +963,12 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.838,
     "lng": 106.725,
-    "note": "Ngập vừa do mưa và triều"
+    "note": "Ngập vừa: 8 vị trí"
   },
   {
     "id": 70,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Hiệp Bình",
     "street": "Quốc lộ 13",
     "cause": "rain-tide",
@@ -977,12 +977,12 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.835,
     "lng": 106.721,
-    "note": "Ngập vừa do mưa và triều"
+    "note": "Ngập vừa: 8 vị trí"
   },
   {
     "id": 71,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Phước Long",
     "street": "đường Dương Đình Hội",
     "cause": "rain-tide",
@@ -991,12 +991,12 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.824,
     "lng": 106.772,
-    "note": "Ngập vừa do mưa và triều"
+    "note": "Ngập vừa: 8 vị trí"
   },
   {
     "id": 72,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Phước Long",
     "street": "đường Đỗ Xuân Hợp",
     "cause": "rain-tide",
@@ -1005,12 +1005,12 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.821,
     "lng": 106.776,
-    "note": "Ngập vừa do mưa và triều"
+    "note": "Ngập vừa: 8 vị trí"
   },
   {
     "id": 73,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Tam Bình",
     "street": "đường Đỗ Mười (Quốc lộ 1)",
     "cause": "rain-tide",
@@ -1019,12 +1019,12 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.868,
     "lng": 106.735,
-    "note": "Ngập vừa do mưa và triều"
+    "note": "Ngập vừa: 8 vị trí"
   },
   {
     "id": 74,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Thủ Đức",
     "street": "đường Hồ Văn Tư",
     "cause": "rain-tide",
@@ -1033,12 +1033,12 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.855,
     "lng": 106.764,
-    "note": "Ngập vừa do mưa và triều"
+    "note": "Ngập vừa: 8 vị trí"
   },
   {
     "id": 75,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Tăng Nhơn Phú",
     "street": "đường Lã Xuân Oai",
     "cause": "rain-tide",
@@ -1047,12 +1047,12 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.839,
     "lng": 106.788,
-    "note": "Ngập vừa do mưa và triều"
+    "note": "Ngập vừa: 8 vị trí"
   },
   {
     "id": 76,
     "region": "thu-duc",
-    "regionName": "TP Thủ Đức",
+    "regionName": "Khu vực Thủ Đức",
     "ward": "Phường Tăng Nhơn Phú",
     "street": "đường Lê Văn Việt",
     "cause": "rain-tide",
@@ -1061,13 +1061,13 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.846,
     "lng": 106.782,
-    "note": "Ngập nhẹ do mưa và triều"
+    "note": "Ngập nhẹ: 1 vị trí."
   },
   {
     "id": 77,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thủ Dầu Một",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
     "street": "đại lộ Bình Dương, đoạn trước Trường Đại học Bình Dương",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1080,8 +1080,8 @@ export const floodPoints = [
   {
     "id": 78,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thủ Dầu Một",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
     "street": "đường Nguyễn Văn Thành (ĐT 741)",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1094,8 +1094,8 @@ export const floodPoints = [
   {
     "id": 79,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thủ Dầu Một",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
     "street": "ngã ba đường Đoàn Trần Nghiệp - đường Hai Bà Trưng",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1108,8 +1108,8 @@ export const floodPoints = [
   {
     "id": 80,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thủ Dầu Một",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
     "street": "đường Nguyễn Tri Phương",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1122,8 +1122,8 @@ export const floodPoints = [
   {
     "id": 81,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thủ Dầu Một",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
     "street": "đường Nguyễn Đức Thuận",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1136,8 +1136,8 @@ export const floodPoints = [
   {
     "id": 82,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "đường số 5 tại khu dân cư Nhị Đồng 1 (chợ Bà Diệp)",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1150,8 +1150,8 @@ export const floodPoints = [
   {
     "id": 83,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "đường số 7 tại khu dân cư Nhị Đồng 1 (chợ Bà Diệp)",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1164,8 +1164,8 @@ export const floodPoints = [
   {
     "id": 84,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "đường Phạm Ngũ Lão - Phan Huy Ích",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1178,8 +1178,8 @@ export const floodPoints = [
   {
     "id": 85,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "đường An Bình tại phường An Bình",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1192,8 +1192,8 @@ export const floodPoints = [
   {
     "id": 86,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "đường Bế Văn Đàn tại phường An Bình",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1206,8 +1206,8 @@ export const floodPoints = [
   {
     "id": 87,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "khu vực tổ 11 tại phường Hiệp Thắng",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1220,8 +1220,8 @@ export const floodPoints = [
   {
     "id": 88,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "khu dân cư Tràng An",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1234,8 +1234,8 @@ export const floodPoints = [
   {
     "id": 89,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "đường ĐT 743B",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1248,8 +1248,8 @@ export const floodPoints = [
   {
     "id": 90,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "đường ĐT 747B",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1262,8 +1262,8 @@ export const floodPoints = [
   {
     "id": 91,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "mương dọc đường sắt Bắc - Nam, khu dân cư Đông Hòa",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1276,8 +1276,8 @@ export const floodPoints = [
   {
     "id": 92,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đường Bùi Hữu Nghĩa",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1290,8 +1290,8 @@ export const floodPoints = [
   {
     "id": 93,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đại lộ Bình Dương (Quốc lộ 13) đoạn giáp suối Cát",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1304,8 +1304,8 @@ export const floodPoints = [
   {
     "id": 94,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đại lộ Bình Dương (Quốc lộ 13) đoạn trước Trường Dạy nghề Việt Nam - Singapore",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1318,8 +1318,8 @@ export const floodPoints = [
   {
     "id": 95,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đại lộ Bình Dương (Quốc lộ 13) đoạn trước siêu thị Lotte Thuận An",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1332,8 +1332,8 @@ export const floodPoints = [
   {
     "id": 96,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đường ĐT 743A",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1346,8 +1346,8 @@ export const floodPoints = [
   {
     "id": 97,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đường Bùi Thị Xuân",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1360,8 +1360,8 @@ export const floodPoints = [
   {
     "id": 98,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đường Lê Thị Trung",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1374,8 +1374,8 @@ export const floodPoints = [
   {
     "id": 99,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đường Thuận An Hòa",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1388,8 +1388,8 @@ export const floodPoints = [
   {
     "id": 100,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đường Thuận Giao 19",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1402,8 +1402,8 @@ export const floodPoints = [
   {
     "id": 101,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Tân Uyên",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Tân Uyên",
     "street": "đường ĐT 747B",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1416,8 +1416,8 @@ export const floodPoints = [
   {
     "id": 102,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "1 đoạn trên đường ĐT 741",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1425,27 +1425,27 @@ export const floodPoints = [
     "severityName": "Điểm ngập",
     "lat": 11.142,
     "lng": 106.645,
-    "note": "Bến Cát (19 điểm ngập)"
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
   },
   {
     "id": 103,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
-    "street": "1 đoạn trên đường ĐT 741 (đoạn 2)",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "1 đoạn trên đường ĐT 741",
     "cause": "rain",
     "causeName": "Ngập do mưa",
     "severity": "severe",
     "severityName": "Điểm ngập",
     "lat": 11.146,
     "lng": 106.649,
-    "note": "Bến Cát (19 điểm ngập)"
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
   },
   {
     "id": 104,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Đường 2-8-9",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1453,13 +1453,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập",
     "lat": 11.129,
     "lng": 106.608,
-    "note": "Bến Cát (19 điểm ngập)"
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
   },
   {
     "id": 105,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Quốc lộ 13, đoạn cổng Khu công nghiệp Hoàng Gia Tân Định",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1467,13 +1467,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập",
     "lat": 11.082,
     "lng": 106.634,
-    "note": "Bến Cát (19 điểm ngập)"
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
   },
   {
     "id": 106,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Quốc lộ 13, đoạn trước Trường Tiểu học Tân Định",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1481,13 +1481,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập",
     "lat": 11.087,
     "lng": 106.632,
-    "note": "Bến Cát (19 điểm ngập)"
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
   },
   {
     "id": 107,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Quốc lộ 13: trước UBND phường Mỹ Phước",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1495,13 +1495,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.134,
     "lng": 106.612,
-    "note": "7 điểm ngập cục bộ trên QL13"
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
   },
   {
     "id": 108,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Quốc lộ 13: trước chợ Mỹ Hạnh",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1509,13 +1509,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.139,
     "lng": 106.61,
-    "note": "7 điểm ngập cục bộ trên QL13"
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
   },
   {
     "id": 109,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Quốc lộ 13: trước khu dân cư Mỹ Phước 4",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1523,13 +1523,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.125,
     "lng": 106.618,
-    "note": "7 điểm ngập cục bộ trên QL13"
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
   },
   {
     "id": 110,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Quốc lộ 13: khu vực gần bến Chà Vi",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1537,13 +1537,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.145,
     "lng": 106.605,
-    "note": "7 điểm ngập cục bộ trên QL13"
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
   },
   {
     "id": 111,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Quốc lộ 13: trước Nghĩa trang Liệt sĩ Bến Cát",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1551,13 +1551,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.118,
     "lng": 106.622,
-    "note": "7 điểm ngập cục bộ trên QL13"
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
   },
   {
     "id": 112,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Quốc lộ 13: ngã ba cầu Suối Tre",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1565,13 +1565,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.152,
     "lng": 106.602,
-    "note": "7 điểm ngập cục bộ trên QL13"
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
   },
   {
     "id": 113,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Quốc lộ 13: trước Công an thị xã Bến Cát",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1579,13 +1579,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.131,
     "lng": 106.614,
-    "note": "7 điểm ngập cục bộ trên QL13"
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
   },
   {
     "id": 114,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Đường ĐT 748",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1593,13 +1593,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập",
     "lat": 11.155,
     "lng": 106.575,
-    "note": "Bến Cát (19 điểm ngập)"
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
   },
   {
     "id": 115,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Đường ĐT 744: trước xã Phú An",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1607,13 +1607,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.112,
     "lng": 106.545,
-    "note": "6 điểm ngập cục bộ trên ĐT 744"
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
   },
   {
     "id": 116,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Đường ĐT 744: tiệm rửa xe Minh Tâm",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1621,13 +1621,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.115,
     "lng": 106.542,
-    "note": "6 điểm ngập cục bộ trên ĐT 744"
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
   },
   {
     "id": 117,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Đường ĐT 744: trước Công ty CP Greentech",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1635,13 +1635,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.119,
     "lng": 106.538,
-    "note": "6 điểm ngập cục bộ trên ĐT 744"
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
   },
   {
     "id": 118,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Đường ĐT 744: trước Công ty TNHH Nhạc cụ Quang Hợp",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1649,13 +1649,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.122,
     "lng": 106.535,
-    "note": "6 điểm ngập cục bộ trên ĐT 744"
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
   },
   {
     "id": 119,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Đường ĐT 744: trước cửa hàng xăng dầu Hồ Bửu",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1663,13 +1663,13 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.126,
     "lng": 106.531,
-    "note": "6 điểm ngập cục bộ trên ĐT 744"
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
   },
   {
     "id": 120,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Bến Cát",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
     "street": "Đường ĐT 744: trước Công ty CP Bê tông Thủ Đức",
     "cause": "rain",
     "causeName": "Ngập do mưa",
@@ -1677,119 +1677,119 @@ export const floodPoints = [
     "severityName": "Điểm ngập cục bộ",
     "lat": 11.13,
     "lng": 106.527,
-    "note": "6 điểm ngập cục bộ trên ĐT 744"
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
   },
   {
     "id": 121,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thủ Dầu Một",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
     "street": "ngã ba Cống, đường Thích Quảng Đức",
     "cause": "rain-tide",
     "causeName": "Ngập do mưa và triều",
     "severity": "severe",
-    "severityName": "Mưa & triều",
-    "lat": 10.975,
-    "lng": 106.666,
-    "note": "Ngập do mưa và triều (Thủ Dầu Một)"
+    "severityName": "Điểm ngập",
+    "lat": 10.974,
+    "lng": 106.669,
+    "note": "Khu vực Thủ Dầu Một (3 điểm)"
   },
   {
     "id": 122,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thủ Dầu Một",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
     "street": "đường ven rạch Bưng Cải",
     "cause": "rain-tide",
     "causeName": "Ngập do mưa và triều",
     "severity": "severe",
-    "severityName": "Mưa & triều",
-    "lat": 10.972,
-    "lng": 106.658,
-    "note": "Ngập do mưa và triều (Thủ Dầu Một)"
+    "severityName": "Điểm ngập",
+    "lat": 10.976,
+    "lng": 106.673,
+    "note": "Khu vực Thủ Dầu Một (3 điểm)"
   },
   {
     "id": 123,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thủ Dầu Một",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
     "street": "đường Hồ Văn Cống",
     "cause": "rain-tide",
     "causeName": "Ngập do mưa và triều",
     "severity": "severe",
-    "severityName": "Mưa & triều",
-    "lat": 10.963,
-    "lng": 106.651,
-    "note": "Ngập do mưa và triều (Thủ Dầu Một)"
+    "severityName": "Điểm ngập",
+    "lat": 10.985,
+    "lng": 106.654,
+    "note": "Khu vực Thủ Dầu Một (3 điểm)"
   },
   {
     "id": 124,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "khu vực suối Bình Thắng",
     "cause": "rain-tide",
     "causeName": "Ngập do mưa và triều",
     "severity": "severe",
-    "severityName": "Mưa & triều",
-    "lat": 10.884,
-    "lng": 106.786,
-    "note": "Ngập do mưa và triều (Dĩ An)"
+    "severityName": "Điểm ngập",
+    "lat": 10.892,
+    "lng": 106.795,
+    "note": "Khu vực Dĩ An (2 điểm)"
   },
   {
     "id": 125,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Dĩ An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
     "street": "Quốc lộ 1K đoạn từ khu vực dốc Chú Hỏa đến rạch Cái Cầu",
     "cause": "rain-tide",
     "causeName": "Ngập do mưa và triều",
     "severity": "severe",
-    "severityName": "Mưa & triều",
-    "lat": 10.882,
-    "lng": 106.793,
-    "note": "Ngập do mưa và triều (Dĩ An)"
+    "severityName": "Điểm ngập",
+    "lat": 10.899,
+    "lng": 106.785,
+    "note": "Khu vực Dĩ An (2 điểm)"
   },
   {
     "id": 126,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đại lộ Bình Dương (Quốc lộ 13) đoạn trước Công ty TNHH Dịch vụ Thương mại Tân Hiệp Phát",
     "cause": "rain-tide",
     "causeName": "Ngập do mưa và triều",
     "severity": "severe",
-    "severityName": "Mưa & triều",
-    "lat": 10.912,
-    "lng": 106.713,
-    "note": "Ngập do mưa và triều (Thuận An)"
+    "severityName": "Điểm ngập",
+    "lat": 10.916,
+    "lng": 106.709,
+    "note": "Khu vực Thuận An (3 điểm)"
   },
   {
     "id": 127,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đại lộ Bình Dương (Quốc lộ 13) đoạn trước Công ty Fito",
     "cause": "rain-tide",
     "causeName": "Ngập do mưa và triều",
     "severity": "severe",
-    "severityName": "Mưa & triều",
-    "lat": 10.908,
-    "lng": 106.716,
-    "note": "Ngập do mưa và triều (Thuận An)"
+    "severityName": "Điểm ngập",
+    "lat": 10.919,
+    "lng": 106.706,
+    "note": "Khu vực Thuận An (3 điểm)"
   },
   {
     "id": 128,
     "region": "binh-duong",
-    "regionName": "Bình Dương",
-    "ward": "Thành phố Thuận An",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
     "street": "đường Cách Mạng Tháng 8 đoạn cống ngang Cầu Nhỏ",
     "cause": "rain-tide",
     "causeName": "Ngập do mưa và triều",
     "severity": "severe",
-    "severityName": "Mưa & triều",
-    "lat": 10.916,
-    "lng": 106.697,
-    "note": "Ngập do mưa và triều (Thuận An)"
+    "severityName": "Điểm ngập",
+    "lat": 10.928,
+    "lng": 106.689,
+    "note": "Khu vực Thuận An (3 điểm)"
   },
   {
     "id": 129,
@@ -1803,7 +1803,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.354,
     "lng": 107.086,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 130,
@@ -1817,7 +1817,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.356,
     "lng": 107.088,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 131,
@@ -1831,7 +1831,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.347,
     "lng": 107.072,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 132,
@@ -1845,7 +1845,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.349,
     "lng": 107.076,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 133,
@@ -1859,7 +1859,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.348,
     "lng": 107.074,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 134,
@@ -1873,7 +1873,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.358,
     "lng": 107.078,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 135,
@@ -1887,7 +1887,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.592,
     "lng": 107.048,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 136,
@@ -1901,7 +1901,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.595,
     "lng": 107.051,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 137,
@@ -1915,7 +1915,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.59,
     "lng": 107.046,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 138,
@@ -1929,7 +1929,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.598,
     "lng": 107.044,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 139,
@@ -1943,7 +1943,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.601,
     "lng": 107.042,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 140,
@@ -1957,21 +1957,21 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.604,
     "lng": 107.04,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 141,
     "region": "vung-tau",
     "regionName": "Bà Rịa - Vũng Tàu",
     "ward": "Phường Phú Mỹ",
-    "street": "Quốc lộ 51 đoạn trước chung cư Hodeco - khu vực Miếu Cô Mai và từ ngã ba Mỹ Xuân đến ngã tư Mỹ Xuân B1",
+    "street": "Quốc lộ 51 đoạn trước chung cư Hodeco - khu vực Miếu Cô Mai, Quốc lộ 51 đoạn từ ngã ba Mỹ Xuân đến ngã tư Mỹ Xuân B1",
     "cause": "rain",
     "causeName": "Ngập do mưa",
     "severity": "severe",
     "severityName": "Ngập nặng, thường xuyên",
-    "lat": 10.612,
-    "lng": 107.035,
-    "note": "Ngập nặng, thường xuyên trên QL51"
+    "lat": 10.608,
+    "lng": 107.037,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 142,
@@ -1985,7 +1985,7 @@ export const floodPoints = [
     "severityName": "Ngập nặng, thường xuyên",
     "lat": 10.402,
     "lng": 107.124,
-    "note": "Ngập nặng, thường xuyên"
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
   },
   {
     "id": 143,
@@ -1999,7 +1999,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.357,
     "lng": 107.084,
-    "note": "Ngập vừa"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 144,
@@ -2013,7 +2013,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.354,
     "lng": 107.079,
-    "note": "Ngập vừa"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 145,
@@ -2027,7 +2027,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.618,
     "lng": 107.041,
-    "note": "Ngập vừa"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 146,
@@ -2041,7 +2041,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.584,
     "lng": 107.056,
-    "note": "Ngập vừa"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 147,
@@ -2055,7 +2055,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.379,
     "lng": 107.242,
-    "note": "Ngập vừa"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 148,
@@ -2069,7 +2069,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.395,
     "lng": 107.112,
-    "note": "Ngập vừa"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 149,
@@ -2083,7 +2083,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.384,
     "lng": 107.108,
-    "note": "Ngập vừa"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 150,
@@ -2097,49 +2097,49 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.387,
     "lng": 107.112,
-    "note": "Ngập vừa"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 151,
     "region": "vung-tau",
     "regionName": "Bà Rịa - Vũng Tàu",
     "ward": "Phường Bà Rịa",
-    "street": "đường Cách Mạng Tháng 8: từ ngã tư Tôn Đức Thắng đến ngã tư Nguyễn Tất Thành",
+    "street": "đường Cách Mạng Tháng 8 gồm 3 đoạn: từ ngã tư Tôn Đức Thắng đến ngã tư Nguyễn Tất Thành",
     "cause": "rain",
     "causeName": "Ngập do mưa",
     "severity": "moderate",
     "severityName": "Ngập vừa",
     "lat": 10.498,
     "lng": 107.168,
-    "note": "CMT8 gồm 3 đoạn"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 152,
     "region": "vung-tau",
     "regionName": "Bà Rịa - Vũng Tàu",
     "ward": "Phường Bà Rịa",
-    "street": "đường Cách Mạng Tháng 8: ngã tư Cách Mạng Tháng 8 - Phạm Văn Đồng",
+    "street": "đường Cách Mạng Tháng 8 gồm 3 đoạn: ngã tư Cách Mạng Tháng 8 - Phạm Văn Đồng",
     "cause": "rain",
     "causeName": "Ngập do mưa",
     "severity": "moderate",
     "severityName": "Ngập vừa",
     "lat": 10.495,
     "lng": 107.171,
-    "note": "CMT8 gồm 3 đoạn"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 153,
     "region": "vung-tau",
     "regionName": "Bà Rịa - Vũng Tàu",
     "ward": "Phường Bà Rịa",
-    "street": "đường Cách Mạng Tháng 8: ngã tư Trần Phú - Võ Văn Kiệt",
+    "street": "đường Cách Mạng Tháng 8 gồm 3 đoạn: ngã tư Trần Phú - Võ Văn Kiệt",
     "cause": "rain",
     "causeName": "Ngập do mưa",
     "severity": "moderate",
     "severityName": "Ngập vừa",
     "lat": 10.492,
     "lng": 107.175,
-    "note": "CMT8 gồm 3 đoạn"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 154,
@@ -2153,7 +2153,7 @@ export const floodPoints = [
     "severityName": "Ngập vừa",
     "lat": 10.638,
     "lng": 107.128,
-    "note": "Khu tái định cư Hắc Dịch (Ngập vừa)"
+    "note": "Ngập vừa 12 vị trí"
   },
   {
     "id": 155,
@@ -2167,13 +2167,13 @@ export const floodPoints = [
     "severityName": "Ngập nhẹ",
     "lat": 10.428,
     "lng": 107.198,
-    "note": "Ngập nhẹ"
+    "note": "Ngập nhẹ: 1 vị trí."
   },
   {
     "id": 156,
     "region": "vung-tau",
     "regionName": "Bà Rịa - Vũng Tàu",
-    "ward": "Thành phố Vũng Tàu",
+    "ward": "Bà Rịa - Vũng Tàu",
     "street": "khu Decoimex mở rộng",
     "cause": "tide",
     "causeName": "Ngập do triều",
@@ -2187,21 +2187,21 @@ export const floodPoints = [
     "id": 157,
     "region": "vung-tau",
     "regionName": "Bà Rịa - Vũng Tàu",
-    "ward": "Thành phố Vũng Tàu",
-    "street": "khu Decoimex mở rộng (phường 9)",
+    "ward": "Bà Rịa - Vũng Tàu",
+    "street": "khu Decoimex mở rộng",
     "cause": "rain-tide",
     "causeName": "Ngập do mưa và triều",
     "severity": "severe",
     "severityName": "Mưa & triều",
     "lat": 10.374,
     "lng": 107.096,
-    "note": "Khu Decoimex mở rộng thuộc phường 9"
+    "note": "3 vị trí tại khu Decoimex mở rộng, hẻm 646 đường 30/4 và cuối hẻm 842 đường Bình Giã"
   },
   {
     "id": 158,
     "region": "vung-tau",
     "regionName": "Bà Rịa - Vũng Tàu",
-    "ward": "Thành phố Vũng Tàu",
+    "ward": "Bà Rịa - Vũng Tàu",
     "street": "hẻm 646 đường 30/4",
     "cause": "rain-tide",
     "causeName": "Ngập do mưa và triều",
@@ -2209,13 +2209,13 @@ export const floodPoints = [
     "severityName": "Mưa & triều",
     "lat": 10.381,
     "lng": 107.104,
-    "note": "Hẻm 646 đường 30/4"
+    "note": "3 vị trí tại khu Decoimex mở rộng, hẻm 646 đường 30/4 và cuối hẻm 842 đường Bình Giã"
   },
   {
     "id": 159,
     "region": "vung-tau",
     "regionName": "Bà Rịa - Vũng Tàu",
-    "ward": "Thành phố Vũng Tàu",
+    "ward": "Bà Rịa - Vũng Tàu",
     "street": "cuối hẻm 842 đường Bình Giã",
     "cause": "rain-tide",
     "causeName": "Ngập do mưa và triều",
@@ -2223,6 +2223,6 @@ export const floodPoints = [
     "severityName": "Mưa & triều",
     "lat": 10.384,
     "lng": 107.107,
-    "note": "Cuối hẻm 842 đường Bình Giã"
+    "note": "3 vị trí tại khu Decoimex mở rộng, hẻm 646 đường 30/4 và cuối hẻm 842 đường Bình Giã"
   }
 ];

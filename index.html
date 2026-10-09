@@ -1,34 +1,28 @@
 <!DOCTYPE html>
-<html lang="vi" class="h-full bg-[#f1f5f9] text-slate-800 antialiased selection:bg-sky-500 selection:text-white scroll-smooth">
+<html lang="vi" class="scroll-smooth">
 <head>
+  <!-- ==========================================================================
+       THÔNG TIN META & SEO CƠ BẢN
+       ========================================================================== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bản Đồ Số 159 Điểm Ngập: TPHCM, Thủ Đức, Bình Dương, Bà Rịa - Vũng Tàu</title>
-  <meta name="description" content="Hệ thống GIS tương tác và thống kê 159 điểm ngập đô thị tại TPHCM, Thủ Đức, Bình Dương và Bà Rịa - Vũng Tàu theo dữ liệu của Sở Xây dựng." />
-  <meta property="og:title" content="Bản Đồ Số 159 Điểm Ngập: TPHCM, Bình Dương, Bà Rịa - Vũng Tàu" />
-  <meta property="og:description" content="Tra cứu và giám sát trực quan 159 vị trí ngập do mưa và triều cường trên nền bản đồ số mở OpenStreetMap." />
+  <title>Danh Sách 159 Điểm Ngập: TPHCM, Bình Dương, Bà Rịa - Vũng Tàu</title>
+  <meta name="description" content="Danh sách và bản đồ số hóa 159 vị trí ngập tại Khu vực I (TPHCM trước đây), Khu vực II (Bình Dương trước đây) và Khu vực III (Bà Rịa - Vũng Tàu)." />
+  <meta name="keywords" content="159 điểm ngập, TPHCM trước đây, Bình Dương trước đây, Bà Rịa Vũng Tàu, bản đồ ngập, điểm ngập lụt" />
+  <meta property="og:title" content="Danh Sách 159 Điểm Ngập: TPHCM, Bình Dương, Bà Rịa - Vũng Tàu" />
+  <meta property="og:description" content="Theo dõi 159 vị trí ngập do mưa, ngập do triều và ngập do mưa kết hợp triều trên nền bản đồ OpenStreetMap." />
+  <meta property="og:type" content="website" />
 
-  <!-- Preconnect & DNS-prefetch để tăng tốc tải tile bản đồ OpenStreetMap ngay lập tức -->
-  <link rel="preconnect" href="https://tile.openstreetmap.de" crossorigin>
-  <link rel="preconnect" href="https://a.tile.openstreetmap.fr" crossorigin>
-  <link rel="preconnect" href="https://b.tile.openstreetmap.fr" crossorigin>
-  <link rel="preconnect" href="https://a.basemaps.cartocdn.com" crossorigin>
-  <link rel="preconnect" href="https://b.basemaps.cartocdn.com" crossorigin>
-  <link rel="preconnect" href="https://a.tile.openstreetmap.org" crossorigin>
-  <link rel="dns-prefetch" href="https://tile.openstreetmap.de">
-  <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
-  <link rel="dns-prefetch" href="https://basemaps.cartocdn.com">
-  <link rel="dns-prefetch" href="https://a.tile.openstreetmap.fr">
-
-  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <!-- FONTS & THƯ VIỆN BÊN NGOÀI -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Leaflet Map CSS & JS (Nạp trực tiếp siêu tốc từ local 0ms) -->
-  <link rel="stylesheet" href="/leaflet/leaflet.css" />
-  <script src="/leaflet/leaflet.js"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <!-- Leaflet Map JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -36,16 +30,14 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ["\"Plus Jakarta Sans\"", "system-ui", "-apple-system", "sans-serif"],
-            mono: ["\"JetBrains Mono\"", "monospace"],
+            sans: ['"Be Vietnam Pro"', 'system-ui', '-apple-system', 'sans-serif'],
           },
           colors: {
-            brand: {
-              50: '#f0f9ff',
-              100: '#e0f2fe',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              700: '#0369a1',
+            flood: {
+              severe: '#dc2626',   // Đỏ: Ngập nặng/thường xuyên
+              moderate: '#ea580c', // Cam: Ngập vừa
+              light: '#ca8a04',    // Vàng: Ngập nhẹ
+              tide: '#2563eb',     // Xanh biển: Ngập do triều
             }
           }
         }
@@ -54,257 +46,2958 @@
   </script>
 
   <style>
-    * { box-sizing: border-box; }
-    html {
-      scroll-behavior: smooth;
+    * {
+      box-sizing: border-box;
     }
     body {
-      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-      background-color: #f1f5f9;
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      background-color: #f8fafc;
       color: #1e293b;
       overflow-x: hidden;
-    }
-    .font-mono-num {
-      font-family: "JetBrains Mono", monospace;
-      font-variant-numeric: tabular-nums;
+      min-height: 100vh;
     }
 
-    /* Pulse effect cho marker */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+    }
+
     @keyframes pulse-ring {
       0% { transform: scale(0.9); opacity: 0.9; }
       80% { transform: scale(2.2); opacity: 0; }
       100% { transform: scale(2.4); opacity: 0; }
     }
-    .pulse-severe { animation: pulse-ring 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite; }
-    .pulse-moderate { animation: pulse-ring 2.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite; }
+    .pulse-severe {
+      animation: pulse-ring 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    }
+    .pulse-moderate {
+      animation: pulse-ring 2.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    }
 
-    /* Custom Leaflet Light & Neumorphic UI */
     .leaflet-popup-content-wrapper {
-      background: #ffffff !important;
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
       color: #0f172a !important;
-      border: 1px solid #e2e8f0 !important;
+      border: 1px solid rgba(226, 232, 240, 0.9) !important;
       border-radius: 16px !important;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04) !important;
+      box-shadow: 0 20px 35px -5px rgba(15, 23, 42, 0.12) !important;
       padding: 0 !important;
     }
     .leaflet-popup-content {
       margin: 14px 16px !important;
       line-height: 1.5 !important;
       font-size: 13px !important;
-      font-family: "Plus Jakarta Sans", sans-serif !important;
+      font-family: 'Be Vietnam Pro', sans-serif !important;
     }
     .leaflet-popup-tip {
-      background: #ffffff !important;
+      background: rgba(255, 255, 255, 0.95) !important;
     }
     .leaflet-container {
-      font-family: "Plus Jakarta Sans", sans-serif !important;
-      background-color: #e2e8f0 !important;
+      font-family: 'Be Vietnam Pro', sans-serif !important;
+      background-color: #f1f5f9 !important;
     }
 
-    /* Tối ưu độ sắc nét cho tile bản đồ OpenStreetMap trên mọi màn hình */
-    .leaflet-tile {
-      image-rendering: -webkit-optimize-contrast;
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
     }
-    .leaflet-control-layers {
-      border-radius: 14px !important;
-      border: 1px solid #cbd5e1 !important;
-      background: rgba(255, 255, 255, 0.96) !important;
-      backdrop-filter: blur(8px) !important;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07) !important;
-      font-size: 11.5px !important;
-      font-weight: 600 !important;
-      color: #1e293b !important;
-      padding: 6px 12px !important;
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
     }
-    .leaflet-bar {
-      border-radius: 12px !important;
-      border: 1px solid #cbd5e1 !important;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
     }
-    .leaflet-bar a {
-      background-color: #ffffff !important;
-      color: #334155 !important;
-      border-bottom: 1px solid #f1f5f9 !important;
-    }
-    .leaflet-bar a:hover {
-      background-color: #f0f9ff !important;
-      color: #0284c7 !important;
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
     }
 
-    /* Scrollbars thanh lịch */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #f1f5f9; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    .data-kicker {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0284c7;
+    }
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 
-<body class="min-h-full flex flex-col bg-[#f1f5f9] text-slate-800">
+<body class="selection:bg-sky-500 selection:text-white bg-slate-50 min-h-screen text-slate-800 relative">
 
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+  <!-- LỚP ÁNH SÁNG NỀN -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-32 -left-32 w-[650px] h-[650px] rounded-full bg-gradient-to-br from-sky-300/40 via-cyan-200/35 to-blue-200/20 blur-[120px]"></div>
+    <div class="absolute top-[18%] -right-32 w-[620px] h-[620px] rounded-full bg-gradient-to-bl from-indigo-200/35 via-sky-200/30 to-purple-100/20 blur-[130px]"></div>
+    <div class="absolute top-[48%] left-[5%] w-[580px] h-[580px] rounded-full bg-gradient-to-tr from-teal-200/30 via-emerald-100/30 to-sky-200/25 blur-[120px]"></div>
+    <div class="absolute top-[72%] -right-20 w-[680px] h-[680px] rounded-full bg-gradient-to-tl from-blue-200/30 via-sky-200/25 to-indigo-100/20 blur-[140px]"></div>
+  </div>
 
-    <!-- Tiêu đề trang -->
-    <div class="pb-1">
-      <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-        Danh sách 159 điểm ngập
-      </h1>
-    </div>
+  <canvas id="rain-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-35"></canvas>
 
-    <!-- BẢN ĐỒ TƯƠNG TÁC + BỘ LỌC + DANH SÁCH ĐIỂM NGẬP -->
-    <section id="ban-do" class="space-y-4">
-      
-      <!-- Thanh công cụ Tìm kiếm & Bộ lọc (Thẻ trắng sạch sẽ phong cách Neumorphic) -->
-      <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+    <main class="relative z-10 min-h-screen py-6 sm:py-8">
+
+    <!-- BẢN ĐỒ TƯƠNG TÁC OPENSTREETMAP -->
+    <section id="ban-do">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Search Input -->
-        <div class="md:col-span-4 relative">
-          <input 
-            type="text" 
-            id="map-search-input" 
-            placeholder="Tìm theo tên đường (VD: Nguyễn Văn Quá, QL13, Calmette...)" 
-            class="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all pl-9"
-          />
-          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </div>
-
-        <!-- Filter Region -->
-        <div class="md:col-span-3">
-          <select id="filter-region" class="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3 py-2.5 text-xs text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all cursor-pointer">
-            <option value="all">Tất cả địa bàn (159 điểm)</option>
-            <option value="hcm-old">TPHCM trước đây (57 điểm)</option>
-            <option value="thu-duc">TP Thủ Đức (19 điểm)</option>
-            <option value="binh-duong">Bình Dương (52 điểm)</option>
-            <option value="vung-tau">Bà Rịa - Vũng Tàu (31 điểm)</option>
-          </select>
-        </div>
-
-        <!-- Filter Cause -->
-        <div class="md:col-span-3">
-          <select id="filter-cause" class="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-3 py-2.5 text-xs text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all cursor-pointer">
-            <option value="all">Tất cả nguyên nhân</option>
-            <option value="rain">Ngập do mưa (119)</option>
-            <option value="tide">Ngập do triều (10)</option>
-            <option value="rain-tide">Ngập do mưa và triều (30)</option>
-          </select>
-        </div>
-
-        <!-- Reset Button (Nút tươi sáng bo tròn) -->
-        <div class="md:col-span-2 flex items-center justify-end">
-          <button id="reset-map-filter" class="w-full md:w-auto px-4 py-2.5 text-xs font-semibold text-slate-700 hover:text-sky-700 bg-slate-100 hover:bg-sky-50 border border-slate-200 hover:border-sky-300 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap cursor-pointer shadow-xs">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
-            Đặt lại lọc
-          </button>
-        </div>
-
-      </div>
-
-      <!-- Không gian làm việc: Bản đồ (Trái) + Danh sách tra cứu (Phải) -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
-        
-        <!-- Bản đồ số OpenStreetMap tiêu chuẩn (Sắc nét, 100% miễn phí, không cần API key) -->
-        <div class="lg:col-span-8 rounded-3xl p-2.5 bg-white border border-slate-200/80 shadow-sm relative flex flex-col min-h-[580px] lg:min-h-[680px]">
-          
-          <!-- Thanh công cụ OpenStreetMap tiêu chuẩn (100% miễn phí, không cần API key) -->
-          <div class="flex flex-wrap items-center justify-between gap-2 px-1 pb-2.5">
-            <div class="inline-flex items-center gap-2 text-xs text-slate-700 font-medium">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold shadow-xs">
-                <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                OpenStreetMap tiêu chuẩn
-              </span>
-              <span class="text-[11px] text-slate-500 hidden sm:inline">• Sắc nét, 100% miễn phí, không cần API key</span>
-            </div>
-
-            <!-- Chuyển đổi nhanh các kiểu OpenStreetMap -->
-            <div class="flex items-center gap-1 bg-slate-100 p-0.5 rounded-xl border border-slate-200/80 text-[11px] font-medium">
-              <button id="btn-layer-osm-std" onclick="switchMapStyle('standard')" class="px-2.5 py-1 rounded-lg transition-all bg-white text-sky-700 font-bold shadow-xs cursor-pointer">
-                OSM Tiêu chuẩn
-              </button>
-              <button id="btn-layer-osm-fast" onclick="switchMapStyle('fast')" class="px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:text-slate-900 cursor-pointer">
-                OSM Siêu tốc
-              </button>
-              <button id="btn-layer-osm-hot" onclick="switchMapStyle('hot')" class="px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:text-slate-900 cursor-pointer">
-                OSM Nhân đạo (HOT)
-              </button>
-            </div>
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
+              <span class="w-3 h-3 rounded-full bg-sky-500 inline-block animate-pulse"></span>
+              Bản đồ 159 điểm ngập tại TPHCM
+            </h1>
           </div>
 
-          <div id="map" class="w-full h-full flex-1 rounded-2xl overflow-hidden z-10 relative bg-slate-100" style="min-height: 560px;"></div>
+          
+        </div>
 
-          <!-- Chú giải nổi động (Floating Dynamic Legend) tông trắng sạch đẹp -->
-          <div id="floating-map-legend" class="absolute top-5 right-5 z-20 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl shadow-xl p-3.5 max-w-[240px] sm:max-w-[280px] text-xs transition-all duration-300">
-            <div class="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-slate-100">
-              <div class="flex items-center gap-1.5 min-w-0">
-                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 shrink-0"></span>
-                <span class="font-bold text-slate-800 tracking-tight text-[11px] uppercase truncate">Chú giải phân loại</span>
-              </div>
-              <div class="flex items-center gap-1.5 shrink-0">
-                <span id="legend-total-badge" class="font-mono-num text-[10px] text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full border border-sky-200 font-bold" title="Số điểm đang hiển thị">159</span>
-                <button id="toggle-legend-btn" aria-label="Thu gọn hoặc mở rộng chú giải" class="text-slate-400 hover:text-slate-700 p-0.5 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
-                  <svg id="legend-toggle-icon" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
+        <!-- Khung tìm kiếm & Bộ lọc -->
+        <div class="bg-white/80 border border-white/90 backdrop-blur-md rounded-2xl p-4 mb-6 grid grid-cols-1 md:grid-cols-12 gap-3 items-center shadow-lg shadow-slate-900/5">
+          
+          <div class="md:col-span-4 relative">
+            <input 
+              type="text" 
+              id="map-search-input" 
+              placeholder="Tìm theo tên đường (VD: Nguyễn Văn Quá, QL13, Calmette...)" 
+              class="w-full bg-slate-50/80 border border-slate-200 rounded-xl px-3.5 py-2 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 transition-all pl-9"
+            />
+            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+
+          <!-- Bộ lọc Địa bàn -->
+          <div class="md:col-span-3">
+            <select id="filter-region" class="w-full bg-slate-50/80 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-700 focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 transition-all">
+              <option value="all">Tất cả địa bàn (159 vị trí)</option>
+              <option value="hcm-old">TPHCM trước đây (57 vị trí)</option>
+              <option value="thu-duc">Khu vực Thủ Đức (19 vị trí)</option>
+              <option value="binh-duong">Bình Dương trước đây (52 vị trí)</option>
+              <option value="vung-tau">Bà Rịa - Vũng Tàu (31 vị trí)</option>
+            </select>
+          </div>
+
+          <!-- Bộ lọc Nguyên nhân -->
+          <div class="md:col-span-3">
+            <select id="filter-cause" class="w-full bg-slate-50/80 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-700 focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 transition-all">
+              <option value="all">Tất cả nguyên nhân</option>
+              <option value="rain">Ngập do mưa</option>
+              <option value="tide">Ngập do triều</option>
+              <option value="rain-tide">Ngập do mưa và triều</option>
+            </select>
+          </div>
+
+          <!-- Nút Reset -->
+          <div class="md:col-span-2 flex items-center justify-end">
+            <button id="reset-map-filter" class="w-full md:w-auto px-4 py-2 text-xs font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/90 border border-slate-200 rounded-xl transition-all flex items-center justify-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              Đặt lại lọc
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Bố cục Bản đồ + Danh sách -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          <div class="lg:col-span-8 rounded-2xl overflow-hidden border border-white/90 relative bg-white shadow-2xl min-h-[550px] lg:min-h-[640px] flex flex-col">
+            <div id="map" class="w-full h-full flex-1 z-10 relative" style="min-height: 550px;">
+              <div id="map-initial-loader" class="absolute inset-0 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm z-0 text-slate-600">
+                <div class="w-9 h-9 border-2 border-sky-400/30 border-t-sky-500 rounded-full animate-spin mb-2.5"></div>
+                <p class="text-xs font-medium text-slate-600">Đang kết nối bản đồ OpenStreetMap...</p>
               </div>
             </div>
             
-            <div id="legend-items-container" class="space-y-1 transition-all duration-300 overflow-hidden">
-              <!-- Tự động cập nhật qua JS -->
+            <!-- Floating Dynamic Legend Widget on Map -->
+            <div id="floating-map-legend" class="absolute top-3 right-3 z-20 bg-white/92 backdrop-blur-md border border-slate-200/90 rounded-2xl shadow-xl p-3.5 max-w-[230px] sm:max-w-[270px] text-xs transition-all duration-300">
+              <div class="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-slate-200/80">
+                <div class="flex items-center gap-1.5 min-w-0">
+                
+                  <span class="font-bold text-slate-800 tracking-tight text-[11px] uppercase truncate">Chú thích</span>
+                </div>
+                <div class="flex items-center gap-1.5 shrink-0">
+                  <span id="legend-total-badge" class="font-mono text-[10px] text-sky-600 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200 tabular-nums font-semibold" title="Số điểm đang hiển thị">159</span>
+                  <button id="toggle-legend-btn" aria-label="Thu gọn hoặc mở rộng chú giải" class="text-slate-500 hover:text-slate-800 p-0.5 rounded hover:bg-slate-100 transition-colors">
+                    <svg id="legend-toggle-icon" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              
+              <div id="legend-items-container" class="space-y-1.5 transition-all duration-300 overflow-hidden">
+              </div>
+            </div>
+
+            <!-- Floating Quick Navigation buttons on Map -->
+            <div class="absolute bottom-4 left-4 z-20 flex flex-wrap gap-2">
+              <button onclick="focusRegion('hcm')" class="px-3 py-1.5 text-xs font-semibold bg-white/90 text-sky-700 hover:bg-white rounded-lg border border-slate-200/90 backdrop-blur-md shadow-sm transition-colors">
+                TPHCM trước đây
+              </button>
+              <button onclick="focusRegion('thuduc')" class="px-3 py-1.5 text-xs font-semibold bg-white/90 text-indigo-700 hover:bg-white rounded-lg border border-slate-200/90 backdrop-blur-md shadow-sm transition-colors">
+                Thủ Đức
+              </button>
+              <button onclick="focusRegion('binhduong')" class="px-3 py-1.5 text-xs font-semibold bg-white/90 text-amber-700 hover:bg-white rounded-lg border border-slate-200/90 backdrop-blur-md shadow-sm transition-colors">
+                Bình Dương 
+              </button>
+              <button onclick="focusRegion('vungtau')" class="px-3 py-1.5 text-xs font-semibold bg-white/90 text-emerald-700 hover:bg-white rounded-lg border border-slate-200/90 backdrop-blur-md shadow-sm transition-colors">
+                Bà Rịa - Vũng Tàu
+              </button>
             </div>
           </div>
 
-          <!-- Nút di chuyển nhanh đến 4 khu vực (Floating bottom pill buttons) -->
-          <div class="absolute bottom-5 left-5 z-20 flex flex-wrap gap-2">
-            <button onclick="focusRegion('hcm')" class="px-3.5 py-1.5 text-xs font-semibold bg-white/95 text-slate-800 hover:text-sky-600 hover:bg-sky-50 rounded-full border border-slate-200/90 backdrop-blur shadow-md transition-all cursor-pointer">
-              TPHCM trước đây
-            </button>
-            <button onclick="focusRegion('thuduc')" class="px-3.5 py-1.5 text-xs font-semibold bg-white/95 text-slate-800 hover:text-sky-600 hover:bg-sky-50 rounded-full border border-slate-200/90 backdrop-blur shadow-md transition-all cursor-pointer">
-              TP Thủ Đức
-            </button>
-            <button onclick="focusRegion('binhduong')" class="px-3.5 py-1.5 text-xs font-semibold bg-white/95 text-slate-800 hover:text-sky-600 hover:bg-sky-50 rounded-full border border-slate-200/90 backdrop-blur shadow-md transition-all cursor-pointer">
-              Bình Dương
-            </button>
-            <button onclick="focusRegion('vungtau')" class="px-3.5 py-1.5 text-xs font-semibold bg-white/95 text-slate-800 hover:text-sky-600 hover:bg-sky-50 rounded-full border border-slate-200/90 backdrop-blur shadow-md transition-all cursor-pointer">
-              Vũng Tàu
-            </button>
-          </div>
-        </div>
-
-        <!-- Danh sách điểm ngập kết quả lọc (Cột bên phải với thẻ trắng tinh tế) -->
-        <div class="lg:col-span-4 rounded-3xl border border-slate-200/80 bg-white shadow-sm flex flex-col max-h-[680px] overflow-hidden">
-          
-          <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
-            <div>
-              <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Danh sách điểm ngập</h3>
-              <p class="text-[11px] text-slate-500 mt-0.5" id="filtered-count-label">Hiển thị 159 / 159 vị trí</p>
+          <!-- Cột Danh mục điểm bên phải -->
+          <div class="lg:col-span-4 rounded-2xl border border-white/90 bg-white/80 backdrop-blur-md shadow-xl flex flex-col max-h-[640px] overflow-hidden">
+            
+            <div class="p-4 border-b border-slate-200/80 flex items-center justify-between">
+              <div>
+                <h3 class="text-sm font-bold text-slate-900">Điểm ngập phù hợp</h3>
+                <p class="text-xs text-slate-500 mt-0.5" id="filtered-count-label">Hiển thị 159 / 159 vị trí</p>
+              </div>
+              <span class="text-xs px-2 py-0.5 rounded-md bg-sky-50 text-sky-700 border border-sky-200 font-mono font-semibold" id="filtered-badge">159</span>
             </div>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200 font-mono-num font-bold" id="filtered-badge">159</span>
-          </div>
 
-          <!-- Scrollable List -->
-          <div id="map-point-list" class="flex-1 overflow-y-auto p-2.5 space-y-1.5">
-            <!-- Render tự động bởi JS -->
-          </div>
+            <div id="map-point-list" class="flex-1 overflow-y-auto divide-y divide-slate-100 p-2 space-y-1">
+            </div>
 
-          <div class="p-3 bg-slate-50 border-t border-slate-100 text-[11px] text-slate-500 font-medium text-center">
-            Nhấp vào bất kỳ điểm nào để tự động định vị & xem thông tin
+            <div class="p-3 bg-slate-50/80 border-t border-slate-200/80 text-[11px] text-slate-500 text-center">
+              Nhấp vào một điểm để phóng to và xem chi tiết trên bản đồ
+            </div>
+
           </div>
 
         </div>
 
       </div>
-
     </section>
 
   </main>
 
-  <!-- Script logic chính -->
-  <script src="/src/appScript.js"></script>
+  <!-- TOÀN BỘ LOGIC JAVASCRIPT -->
+  <script>
+    const floodPoints = [
+  {
+    "id": 1,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Đông Hưng Thuận",
+    "street": "đường Nguyễn Văn Quá",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.8441,
+    "lng": 106.6235,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 2,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Đông Hưng Thuận",
+    "street": "đường Phan Văn Hớn",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.8415,
+    "lng": 106.619,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 3,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Thạnh Mỹ Tây",
+    "street": "đường Bạch Đằng",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.8038,
+    "lng": 106.7021,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 4,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Thạnh Mỹ Tây",
+    "street": "đường Ung Văn Khiêm",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.8082,
+    "lng": 106.7163,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 5,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Thạnh Mỹ Tây",
+    "street": "đường Đinh Bộ Lĩnh",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.812,
+    "lng": 106.71,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 6,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường An Lạc",
+    "street": "đường Hồ Học Lãm",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.7235,
+    "lng": 106.612,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 7,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Phú Lâm",
+    "street": "đường An Dương Vương",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.751,
+    "lng": 106.6295,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 8,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Thông Tây Hội, An Hội Đông",
+    "street": "đường Lê Văn Thọ",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.8465,
+    "lng": 106.657,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 9,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Thông Tây Hội, An Hội Đông",
+    "street": "đường Lê Đức Thọ",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.849,
+    "lng": 106.671,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 10,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Thông Tây Hội, An Hội Đông",
+    "street": "đường Nguyễn Văn Khối",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.842,
+    "lng": 106.652,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 11,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Thông Tây Hội, An Hội Đông",
+    "street": "đường Phan Huy Ích",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.8285,
+    "lng": 106.638,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 12,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Thông Tây Hội, An Hội Đông",
+    "street": "đường Phạm Văn Chiêu",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.851,
+    "lng": 106.645,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 13,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Đông Hưng Thuận",
+    "street": "đường Phan Văn Hớn",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.843,
+    "lng": 106.615,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 14,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Đông Hưng Thuận",
+    "street": "đường Song hành Quốc lộ 22",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.8495,
+    "lng": 106.6185,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 15,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bình Trị Đông",
+    "street": "đường Phan Anh",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.768,
+    "lng": 106.618,
+    "note": "Lượng mưa từ 30mm đến 50mm, mực triều dưới 1m"
+  },
+  {
+    "id": 16,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bến Nghé",
+    "street": "đường Calmette",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.7685,
+    "lng": 106.6995,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 17,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bến Nghé",
+    "street": "đường Phạm Viết Chánh",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.766,
+    "lng": 106.685,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 18,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Đông Hưng Thuận",
+    "street": "đường Nguyễn Văn Quá",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.847,
+    "lng": 106.626,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 19,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Đông Hưng Thuận",
+    "street": "đường Song hành Quốc lộ 22",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.853,
+    "lng": 106.616,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 20,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bình Hưng",
+    "street": "đường Phạm Hùng",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.738,
+    "lng": 106.673,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 21,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bình Hưng",
+    "street": "Quốc lộ 50",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.725,
+    "lng": 106.661,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 22,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Thạnh Mỹ Tây, Bình Quới",
+    "street": "đường Bình Quới",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.82,
+    "lng": 106.728,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 23,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Thạnh Mỹ Tây, Bình Quới",
+    "street": "đường D5",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.806,
+    "lng": 106.714,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 24,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Thạnh Mỹ Tây, Bình Quới",
+    "street": "đường Nguyễn Gia Trí",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.8035,
+    "lng": 106.7155,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 25,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bình Trị Đông, Bình Hưng",
+    "street": "đường Tân Hòa Đông",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.762,
+    "lng": 106.624,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 26,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bình Trị Đông, Bình Hưng",
+    "street": "đường Tỉnh lộ 10",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.758,
+    "lng": 106.612,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 27,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bình Trị Đông, Bình Hưng",
+    "street": "đường Võ Văn Kiệt",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.742,
+    "lng": 106.645,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 28,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Tân Sơn Nhất",
+    "street": "đường Trường Sơn",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.8145,
+    "lng": 106.6625,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập từ 10cm đến 15cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 29,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bến Nghé",
+    "street": "đường Cống Quỳnh",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.767,
+    "lng": 106.688,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 30,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bến Nghé",
+    "street": "đường Lê Lợi",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.7745,
+    "lng": 106.701,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 31,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bến Nghé",
+    "street": "đường Lê Thánh Tôn",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.777,
+    "lng": 106.702,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 32,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bến Nghé",
+    "street": "đường Lê Thị Riêng",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.771,
+    "lng": 106.691,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 33,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bến Nghé",
+    "street": "đường Nguyễn Cư Trinh",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.7635,
+    "lng": 106.6895,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 34,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bến Nghé",
+    "street": "đường Nguyễn Trãi",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.769,
+    "lng": 106.6915,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 35,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bến Nghé",
+    "street": "đường Phạm Ngũ Lão",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.768,
+    "lng": 106.694,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 36,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bến Nghé",
+    "street": "đường Trương Định",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.7755,
+    "lng": 106.6935,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 37,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bàn Cờ",
+    "street": "đường Nguyễn Thiện Thuật",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.7695,
+    "lng": 106.6815,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 38,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Khánh Hội",
+    "street": "đường Hoàng Diệu",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.7625,
+    "lng": 106.704,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 39,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Khánh Hội",
+    "street": "đường Tân Vĩnh",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.7595,
+    "lng": 106.703,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 40,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Khánh Hội",
+    "street": "đường Tôn Thất Thuyết",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.7565,
+    "lng": 106.7085,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 41,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Khánh Hội",
+    "street": "đường Vĩnh Hội",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.7585,
+    "lng": 106.705,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 42,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Khánh Hội",
+    "street": "đường Xóm Chiếu",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.7615,
+    "lng": 106.708,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 43,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Khánh Hội",
+    "street": "đường Đoàn Văn Bơ",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.761,
+    "lng": 106.706,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 44,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Chợ Quán",
+    "street": "đường Nguyễn Biểu",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.7525,
+    "lng": 106.682,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 45,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Chợ Quán",
+    "street": "đường Nguyễn Văn Cừ",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.756,
+    "lng": 106.683,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 46,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Chợ Quán",
+    "street": "đường Trần Hưng Đạo",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.754,
+    "lng": 106.679,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 47,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Diên Hồng",
+    "street": "đường Lê Hồng Phong",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.769,
+    "lng": 106.673,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 48,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Diên Hồng",
+    "street": "đường 3/2",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.7715,
+    "lng": 106.6745,
+    "note": "Ngập trong thời gian mưa, độ sâu ngập dưới 10cm, thời gian nước rút dưới 30 phút"
+  },
+  {
+    "id": 49,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bến Nghé (1 tuyến)",
+    "street": "đường Calmette",
+    "cause": "tide",
+    "causeName": "Ngập do triều",
+    "severity": "tide",
+    "severityName": "Ngập do triều",
+    "lat": 10.7675,
+    "lng": 106.699,
+    "note": "Ngập do triều: 9 vị trí"
+  },
+  {
+    "id": 50,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bình Quới (1 tuyến)",
+    "street": "đường Bình Quới",
+    "cause": "tide",
+    "causeName": "Ngập do triều",
+    "severity": "tide",
+    "severityName": "Ngập do triều",
+    "lat": 10.825,
+    "lng": 106.732,
+    "note": "Ngập do triều: 9 vị trí"
+  },
+  {
+    "id": 51,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Tân Thuận, Phú Thuận (2 tuyến)",
+    "street": "đường Trần Xuân Soạn",
+    "cause": "tide",
+    "causeName": "Ngập do triều",
+    "severity": "tide",
+    "severityName": "Ngập do triều",
+    "lat": 10.7485,
+    "lng": 106.711,
+    "note": "Ngập do triều: 9 vị trí"
+  },
+  {
+    "id": 52,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Tân Thuận, Phú Thuận (2 tuyến)",
+    "street": "đường Huỳnh Tấn Phát",
+    "cause": "tide",
+    "causeName": "Ngập do triều",
+    "severity": "tide",
+    "severityName": "Ngập do triều",
+    "lat": 10.743,
+    "lng": 106.734,
+    "note": "Ngập do triều: 9 vị trí"
+  },
+  {
+    "id": 53,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Tân Thuận, Tân Mỹ, Nhà Bè (4 tuyến)",
+    "street": "đường Lê Văn Lương",
+    "cause": "tide",
+    "causeName": "Ngập do triều",
+    "severity": "tide",
+    "severityName": "Ngập do triều",
+    "lat": 10.731,
+    "lng": 106.705,
+    "note": "Ngập do triều: 9 vị trí"
+  },
+  {
+    "id": 54,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Tân Thuận, Tân Mỹ, Nhà Bè (4 tuyến)",
+    "street": "đường Đào Sư Tích",
+    "cause": "tide",
+    "causeName": "Ngập do triều",
+    "severity": "tide",
+    "severityName": "Ngập do triều",
+    "lat": 10.702,
+    "lng": 106.712,
+    "note": "Ngập do triều: 9 vị trí"
+  },
+  {
+    "id": 55,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Tân Thuận, Tân Mỹ, Nhà Bè (4 tuyến)",
+    "street": "đường Phạm Hữu Lầu",
+    "cause": "tide",
+    "causeName": "Ngập do triều",
+    "severity": "tide",
+    "severityName": "Ngập do triều",
+    "lat": 10.713,
+    "lng": 106.726,
+    "note": "Ngập do triều: 9 vị trí"
+  },
+  {
+    "id": 56,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Tân Thuận, Tân Mỹ, Nhà Bè (4 tuyến)",
+    "street": "đường Nguyễn Bình",
+    "cause": "tide",
+    "causeName": "Ngập do triều",
+    "severity": "tide",
+    "severityName": "Ngập do triều",
+    "lat": 10.686,
+    "lng": 106.724,
+    "note": "Ngập do triều: 9 vị trí"
+  },
+  {
+    "id": 57,
+    "region": "hcm-old",
+    "regionName": "TPHCM trước đây",
+    "ward": "Phường Bình Hưng (1 tuyến)",
+    "street": "Quốc lộ 50",
+    "cause": "tide",
+    "causeName": "Ngập do triều",
+    "severity": "tide",
+    "severityName": "Ngập do triều",
+    "lat": 10.722,
+    "lng": 106.66,
+    "note": "Ngập do triều: 9 vị trí"
+  },
+  {
+    "id": 58,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường An Khánh",
+    "street": "đường Nguyễn Văn Hưởng",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.812,
+    "lng": 106.734,
+    "note": "Ngập thường xuyên: 10 vị trí"
+  },
+  {
+    "id": 59,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường An Khánh",
+    "street": "đường Quốc Hương",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.804,
+    "lng": 106.735,
+    "note": "Ngập thường xuyên: 10 vị trí"
+  },
+  {
+    "id": 60,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường An Khánh",
+    "street": "đường Thảo Điền",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.806,
+    "lng": 106.732,
+    "note": "Ngập thường xuyên: 10 vị trí"
+  },
+  {
+    "id": 61,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Tam Bình",
+    "street": "đường Lê Thị Hoa",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.875,
+    "lng": 106.741,
+    "note": "Ngập thường xuyên: 10 vị trí"
+  },
+  {
+    "id": 62,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Tam Bình",
+    "street": "đường Tỉnh lộ 43",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.879,
+    "lng": 106.743,
+    "note": "Ngập thường xuyên: 10 vị trí"
+  },
+  {
+    "id": 63,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Thủ Đức",
+    "street": "đường Dương Văn Cam",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.852,
+    "lng": 106.76,
+    "note": "Ngập thường xuyên: 10 vị trí"
+  },
+  {
+    "id": 64,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Thủ Đức",
+    "street": "đường Kha Vạn Cân",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.854,
+    "lng": 106.762,
+    "note": "Ngập thường xuyên: 10 vị trí"
+  },
+  {
+    "id": 65,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Thủ Đức",
+    "street": "đường Tam Tam Xã",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.851,
+    "lng": 106.758,
+    "note": "Ngập thường xuyên: 10 vị trí"
+  },
+  {
+    "id": 66,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Thủ Đức",
+    "street": "đường Tô Ngọc Vân",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.857,
+    "lng": 106.759,
+    "note": "Ngập thường xuyên: 10 vị trí"
+  },
+  {
+    "id": 67,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Thủ Đức",
+    "street": "đường Đặng Thị Rành",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Ngập thường xuyên",
+    "lat": 10.853,
+    "lng": 106.7595,
+    "note": "Ngập thường xuyên: 10 vị trí"
+  },
+  {
+    "id": 68,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Bình Trưng",
+    "street": "đường Nguyễn Duy Trinh",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.792,
+    "lng": 106.776,
+    "note": "Ngập vừa: 8 vị trí"
+  },
+  {
+    "id": 69,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Hiệp Bình",
+    "street": "đường Hiệp Bình",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.838,
+    "lng": 106.725,
+    "note": "Ngập vừa: 8 vị trí"
+  },
+  {
+    "id": 70,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Hiệp Bình",
+    "street": "Quốc lộ 13",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.835,
+    "lng": 106.721,
+    "note": "Ngập vừa: 8 vị trí"
+  },
+  {
+    "id": 71,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Phước Long",
+    "street": "đường Dương Đình Hội",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.824,
+    "lng": 106.772,
+    "note": "Ngập vừa: 8 vị trí"
+  },
+  {
+    "id": 72,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Phước Long",
+    "street": "đường Đỗ Xuân Hợp",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.821,
+    "lng": 106.776,
+    "note": "Ngập vừa: 8 vị trí"
+  },
+  {
+    "id": 73,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Tam Bình",
+    "street": "đường Đỗ Mười (Quốc lộ 1)",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.868,
+    "lng": 106.735,
+    "note": "Ngập vừa: 8 vị trí"
+  },
+  {
+    "id": 74,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Thủ Đức",
+    "street": "đường Hồ Văn Tư",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.855,
+    "lng": 106.764,
+    "note": "Ngập vừa: 8 vị trí"
+  },
+  {
+    "id": 75,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Tăng Nhơn Phú",
+    "street": "đường Lã Xuân Oai",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.839,
+    "lng": 106.788,
+    "note": "Ngập vừa: 8 vị trí"
+  },
+  {
+    "id": 76,
+    "region": "thu-duc",
+    "regionName": "Khu vực Thủ Đức",
+    "ward": "Phường Tăng Nhơn Phú",
+    "street": "đường Lê Văn Việt",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.846,
+    "lng": 106.782,
+    "note": "Ngập nhẹ: 1 vị trí."
+  },
+  {
+    "id": 77,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
+    "street": "đại lộ Bình Dương, đoạn trước Trường Đại học Bình Dương",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.981,
+    "lng": 106.671,
+    "note": "Khu vực Thủ Dầu Một (5 điểm)"
+  },
+  {
+    "id": 78,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
+    "street": "đường Nguyễn Văn Thành (ĐT 741)",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 11.025,
+    "lng": 106.698,
+    "note": "Khu vực Thủ Dầu Một (5 điểm)"
+  },
+  {
+    "id": 79,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
+    "street": "ngã ba đường Đoàn Trần Nghiệp - đường Hai Bà Trưng",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.978,
+    "lng": 106.657,
+    "note": "Khu vực Thủ Dầu Một (5 điểm)"
+  },
+  {
+    "id": 80,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
+    "street": "đường Nguyễn Tri Phương",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.971,
+    "lng": 106.662,
+    "note": "Khu vực Thủ Dầu Một (5 điểm)"
+  },
+  {
+    "id": 81,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
+    "street": "đường Nguyễn Đức Thuận",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.992,
+    "lng": 106.668,
+    "note": "Khu vực Thủ Dầu Một (5 điểm)"
+  },
+  {
+    "id": 82,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "đường số 5 tại khu dân cư Nhị Đồng 1 (chợ Bà Diệp)",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.902,
+    "lng": 106.762,
+    "note": "Khu vực Dĩ An (10 điểm)"
+  },
+  {
+    "id": 83,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "đường số 7 tại khu dân cư Nhị Đồng 1 (chợ Bà Diệp)",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.904,
+    "lng": 106.764,
+    "note": "Khu vực Dĩ An (10 điểm)"
+  },
+  {
+    "id": 84,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "đường Phạm Ngũ Lão - Phan Huy Ích",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.898,
+    "lng": 106.769,
+    "note": "Khu vực Dĩ An (10 điểm)"
+  },
+  {
+    "id": 85,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "đường An Bình tại phường An Bình",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.887,
+    "lng": 106.758,
+    "note": "Khu vực Dĩ An (10 điểm)"
+  },
+  {
+    "id": 86,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "đường Bế Văn Đàn tại phường An Bình",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.889,
+    "lng": 106.7595,
+    "note": "Khu vực Dĩ An (10 điểm)"
+  },
+  {
+    "id": 87,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "khu vực tổ 11 tại phường Hiệp Thắng",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.895,
+    "lng": 106.792,
+    "note": "Khu vực Dĩ An (10 điểm)"
+  },
+  {
+    "id": 88,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "khu dân cư Tràng An",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.912,
+    "lng": 106.778,
+    "note": "Khu vực Dĩ An (10 điểm)"
+  },
+  {
+    "id": 89,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "đường ĐT 743B",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.915,
+    "lng": 106.765,
+    "note": "Khu vực Dĩ An (10 điểm)"
+  },
+  {
+    "id": 90,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "đường ĐT 747B",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.932,
+    "lng": 106.781,
+    "note": "Khu vực Dĩ An (10 điểm)"
+  },
+  {
+    "id": 91,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "mương dọc đường sắt Bắc - Nam, khu dân cư Đông Hòa",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.893,
+    "lng": 106.775,
+    "note": "Khu vực Dĩ An (10 điểm)"
+  },
+  {
+    "id": 92,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đường Bùi Hữu Nghĩa",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.923,
+    "lng": 106.702,
+    "note": "Khu vực Thuận An (9 điểm)"
+  },
+  {
+    "id": 93,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đại lộ Bình Dương (Quốc lộ 13) đoạn giáp suối Cát",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.942,
+    "lng": 106.685,
+    "note": "Khu vực Thuận An (9 điểm)"
+  },
+  {
+    "id": 94,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đại lộ Bình Dương (Quốc lộ 13) đoạn trước Trường Dạy nghề Việt Nam - Singapore",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.931,
+    "lng": 106.698,
+    "note": "Khu vực Thuận An (9 điểm)"
+  },
+  {
+    "id": 95,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đại lộ Bình Dương (Quốc lộ 13) đoạn trước siêu thị Lotte Thuận An",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.926,
+    "lng": 106.703,
+    "note": "Khu vực Thuận An (9 điểm)"
+  },
+  {
+    "id": 96,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đường ĐT 743A",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.918,
+    "lng": 106.721,
+    "note": "Khu vực Thuận An (9 điểm)"
+  },
+  {
+    "id": 97,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đường Bùi Thị Xuân",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.945,
+    "lng": 106.732,
+    "note": "Khu vực Thuận An (9 điểm)"
+  },
+  {
+    "id": 98,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đường Lê Thị Trung",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.951,
+    "lng": 106.715,
+    "note": "Khu vực Thuận An (9 điểm)"
+  },
+  {
+    "id": 99,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đường Thuận An Hòa",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.938,
+    "lng": 106.71,
+    "note": "Khu vực Thuận An (9 điểm)"
+  },
+  {
+    "id": 100,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đường Thuận Giao 19",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.952,
+    "lng": 106.708,
+    "note": "Khu vực Thuận An (9 điểm)"
+  },
+  {
+    "id": 101,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Tân Uyên",
+    "street": "đường ĐT 747B",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập cục bộ",
+    "lat": 11.045,
+    "lng": 106.782,
+    "note": "Khu vực Tân Uyên (1 điểm ngập cục bộ)"
+  },
+  {
+    "id": 102,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "1 đoạn trên đường ĐT 741",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 11.142,
+    "lng": 106.645,
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
+  },
+  {
+    "id": 103,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "1 đoạn trên đường ĐT 741",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 11.146,
+    "lng": 106.649,
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
+  },
+  {
+    "id": 104,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Đường 2-8-9",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 11.129,
+    "lng": 106.608,
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
+  },
+  {
+    "id": 105,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Quốc lộ 13, đoạn cổng Khu công nghiệp Hoàng Gia Tân Định",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 11.082,
+    "lng": 106.634,
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
+  },
+  {
+    "id": 106,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Quốc lộ 13, đoạn trước Trường Tiểu học Tân Định",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 11.087,
+    "lng": 106.632,
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
+  },
+  {
+    "id": 107,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Quốc lộ 13: trước UBND phường Mỹ Phước",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.134,
+    "lng": 106.612,
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
+  },
+  {
+    "id": 108,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Quốc lộ 13: trước chợ Mỹ Hạnh",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.139,
+    "lng": 106.61,
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
+  },
+  {
+    "id": 109,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Quốc lộ 13: trước khu dân cư Mỹ Phước 4",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.125,
+    "lng": 106.618,
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
+  },
+  {
+    "id": 110,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Quốc lộ 13: khu vực gần bến Chà Vi",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.145,
+    "lng": 106.605,
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
+  },
+  {
+    "id": 111,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Quốc lộ 13: trước Nghĩa trang Liệt sĩ Bến Cát",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.118,
+    "lng": 106.622,
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
+  },
+  {
+    "id": 112,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Quốc lộ 13: ngã ba cầu Suối Tre",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.152,
+    "lng": 106.602,
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
+  },
+  {
+    "id": 113,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Quốc lộ 13: trước Công an thị xã Bến Cát",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.131,
+    "lng": 106.614,
+    "note": "7 điểm ngập cục bộ trên Quốc lộ 13"
+  },
+  {
+    "id": 114,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Đường ĐT 748",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 11.155,
+    "lng": 106.575,
+    "note": "Khu vực Bến Cát (19 điểm ngập)"
+  },
+  {
+    "id": 115,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Đường ĐT 744: trước xã Phú An",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.112,
+    "lng": 106.545,
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
+  },
+  {
+    "id": 116,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Đường ĐT 744: tiệm rửa xe Minh Tâm",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.115,
+    "lng": 106.542,
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
+  },
+  {
+    "id": 117,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Đường ĐT 744: trước Công ty CP Greentech",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.119,
+    "lng": 106.538,
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
+  },
+  {
+    "id": 118,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Đường ĐT 744: trước Công ty TNHH Nhạc cụ Quang Hợp",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.122,
+    "lng": 106.535,
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
+  },
+  {
+    "id": 119,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Đường ĐT 744: trước cửa hàng xăng dầu Hồ Bửu",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.126,
+    "lng": 106.531,
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
+  },
+  {
+    "id": 120,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Bến Cát",
+    "street": "Đường ĐT 744: trước Công ty CP Bê tông Thủ Đức",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Điểm ngập cục bộ",
+    "lat": 11.13,
+    "lng": 106.527,
+    "note": "6 điểm ngập cục bộ trên đường ĐT 744"
+  },
+  {
+    "id": 121,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
+    "street": "ngã ba Cống, đường Thích Quảng Đức",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.974,
+    "lng": 106.669,
+    "note": "Khu vực Thủ Dầu Một (3 điểm)"
+  },
+  {
+    "id": 122,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
+    "street": "đường ven rạch Bưng Cải",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.976,
+    "lng": 106.673,
+    "note": "Khu vực Thủ Dầu Một (3 điểm)"
+  },
+  {
+    "id": 123,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thủ Dầu Một",
+    "street": "đường Hồ Văn Cống",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.985,
+    "lng": 106.654,
+    "note": "Khu vực Thủ Dầu Một (3 điểm)"
+  },
+  {
+    "id": 124,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "khu vực suối Bình Thắng",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.892,
+    "lng": 106.795,
+    "note": "Khu vực Dĩ An (2 điểm)"
+  },
+  {
+    "id": 125,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Dĩ An",
+    "street": "Quốc lộ 1K đoạn từ khu vực dốc Chú Hỏa đến rạch Cái Cầu",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.899,
+    "lng": 106.785,
+    "note": "Khu vực Dĩ An (2 điểm)"
+  },
+  {
+    "id": 126,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đại lộ Bình Dương (Quốc lộ 13) đoạn trước Công ty TNHH Dịch vụ Thương mại Tân Hiệp Phát",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.916,
+    "lng": 106.709,
+    "note": "Khu vực Thuận An (3 điểm)"
+  },
+  {
+    "id": 127,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đại lộ Bình Dương (Quốc lộ 13) đoạn trước Công ty Fito",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.919,
+    "lng": 106.706,
+    "note": "Khu vực Thuận An (3 điểm)"
+  },
+  {
+    "id": 128,
+    "region": "binh-duong",
+    "regionName": "Bình Dương trước đây",
+    "ward": "Khu vực Thuận An",
+    "street": "đường Cách Mạng Tháng 8 đoạn cống ngang Cầu Nhỏ",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Điểm ngập",
+    "lat": 10.928,
+    "lng": 106.689,
+    "note": "Khu vực Thuận An (3 điểm)"
+  },
+  {
+    "id": 129,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Tam Thắng",
+    "street": "đường Thi Sách",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.354,
+    "lng": 107.086,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 130,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Tam Thắng",
+    "street": "đường Nguyễn Đình Thi",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.356,
+    "lng": 107.088,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 131,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Tam Thắng",
+    "street": "ngã ba Quang Trung - Hạ Long",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.347,
+    "lng": 107.072,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 132,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Vũng Tàu",
+    "street": "đường Nguyễn Du",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.349,
+    "lng": 107.076,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 133,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Vũng Tàu",
+    "street": "đường Trưng Trắc - Trưng Nhị",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.348,
+    "lng": 107.074,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 134,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Vũng Tàu",
+    "street": "đường Lê Lợi tại ngã ba Lê Hồng Phong",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.358,
+    "lng": 107.078,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 135,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Phú Mỹ",
+    "street": "đường Nguyễn Tất Thành",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.592,
+    "lng": 107.048,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 136,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Phú Mỹ",
+    "street": "đường Lê Lợi",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.595,
+    "lng": 107.051,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 137,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Phú Mỹ",
+    "street": "đường Nguyễn Trãi",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.59,
+    "lng": 107.046,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 138,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Phú Mỹ",
+    "street": "Quốc lộ 51 giao với đường Huỳnh Thúc Kháng",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.598,
+    "lng": 107.044,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 139,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Phú Mỹ",
+    "street": "Quốc lộ 51 giao với đường Lê Duẩn",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.601,
+    "lng": 107.042,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 140,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Phú Mỹ",
+    "street": "Quốc lộ 51 giao với đường Phạm Văn Đồng",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.604,
+    "lng": 107.04,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 141,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Phú Mỹ",
+    "street": "Quốc lộ 51 đoạn trước chung cư Hodeco - khu vực Miếu Cô Mai, Quốc lộ 51 đoạn từ ngã ba Mỹ Xuân đến ngã tư Mỹ Xuân B1",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.608,
+    "lng": 107.037,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 142,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Phước Thắng",
+    "street": "đường Võ Nguyên Giáp",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "severe",
+    "severityName": "Ngập nặng, thường xuyên",
+    "lat": 10.402,
+    "lng": 107.124,
+    "note": "Ngập nặng, thường xuyên 14 vị trí"
+  },
+  {
+    "id": 143,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Tam Thắng",
+    "street": "đường Nguyễn Quyền",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.357,
+    "lng": 107.084,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 144,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Vũng Tàu",
+    "street": "hẻm 99 đường Trương Công Định",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.354,
+    "lng": 107.079,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 145,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Phú Mỹ",
+    "street": "đường Mỹ Xuân B1",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.618,
+    "lng": 107.041,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 146,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Tân Thành",
+    "street": "đường Nguyễn Hữu Tiến",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.584,
+    "lng": 107.056,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 147,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Xã Long Hải",
+    "street": "đường Nguyễn Lương Bằng",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.379,
+    "lng": 107.242,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 148,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Phước Thắng",
+    "street": "hẻm 1 Trần Xuân Độ - 115 Lê Lợi",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.395,
+    "lng": 107.112,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 149,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Rạch Dừa",
+    "street": "đường 30/4 đoạn từ đường Lê Quang Định đến đường Nguyễn Hữu Cảnh",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.384,
+    "lng": 107.108,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 150,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Rạch Dừa",
+    "street": "đường 2/9 đoạn từ đường Lê Quang Định đến số 442 Bình Giã",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.387,
+    "lng": 107.112,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 151,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Bà Rịa",
+    "street": "đường Cách Mạng Tháng 8 gồm 3 đoạn: từ ngã tư Tôn Đức Thắng đến ngã tư Nguyễn Tất Thành",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.498,
+    "lng": 107.168,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 152,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Bà Rịa",
+    "street": "đường Cách Mạng Tháng 8 gồm 3 đoạn: ngã tư Cách Mạng Tháng 8 - Phạm Văn Đồng",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.495,
+    "lng": 107.171,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 153,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Bà Rịa",
+    "street": "đường Cách Mạng Tháng 8 gồm 3 đoạn: ngã tư Trần Phú - Võ Văn Kiệt",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.492,
+    "lng": 107.175,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 154,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Phường Hắc Dịch",
+    "street": "khu tái định cư",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "moderate",
+    "severityName": "Ngập vừa",
+    "lat": 10.638,
+    "lng": 107.128,
+    "note": "Ngập vừa 12 vị trí"
+  },
+  {
+    "id": 155,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Xã Long Điền",
+    "street": "đường Nguyễn Tất Thành, đoạn giao với đường Hùng Vương",
+    "cause": "rain",
+    "causeName": "Ngập do mưa",
+    "severity": "light",
+    "severityName": "Ngập nhẹ",
+    "lat": 10.428,
+    "lng": 107.198,
+    "note": "Ngập nhẹ: 1 vị trí."
+  },
+  {
+    "id": 156,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Bà Rịa - Vũng Tàu",
+    "street": "khu Decoimex mở rộng",
+    "cause": "tide",
+    "causeName": "Ngập do triều",
+    "severity": "tide",
+    "severityName": "Ngập do triều",
+    "lat": 10.372,
+    "lng": 107.098,
+    "note": "1 vị trí tại khu Decoimex mở rộng"
+  },
+  {
+    "id": 157,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Bà Rịa - Vũng Tàu",
+    "street": "khu Decoimex mở rộng",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Mưa & triều",
+    "lat": 10.374,
+    "lng": 107.096,
+    "note": "3 vị trí tại khu Decoimex mở rộng, hẻm 646 đường 30/4 và cuối hẻm 842 đường Bình Giã"
+  },
+  {
+    "id": 158,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Bà Rịa - Vũng Tàu",
+    "street": "hẻm 646 đường 30/4",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Mưa & triều",
+    "lat": 10.381,
+    "lng": 107.104,
+    "note": "3 vị trí tại khu Decoimex mở rộng, hẻm 646 đường 30/4 và cuối hẻm 842 đường Bình Giã"
+  },
+  {
+    "id": 159,
+    "region": "vung-tau",
+    "regionName": "Bà Rịa - Vũng Tàu",
+    "ward": "Bà Rịa - Vũng Tàu",
+    "street": "cuối hẻm 842 đường Bình Giã",
+    "cause": "rain-tide",
+    "causeName": "Ngập do mưa và triều",
+    "severity": "severe",
+    "severityName": "Mưa & triều",
+    "lat": 10.384,
+    "lng": 107.107,
+    "note": "3 vị trí tại khu Decoimex mở rộng, hẻm 646 đường 30/4 và cuối hẻm 842 đường Bình Giã"
+  }
+];
+
+    let map = null;
+    let markersLayer = null;
+    const markersMap = new Map();
+
+    function ensureLeafletLoaded(onReady) {
+      if (typeof L !== 'undefined' && typeof L.map === 'function') {
+        onReady();
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js';
+      script.onload = () => {
+        if (typeof L !== 'undefined') onReady();
+      };
+      script.onerror = () => {
+        const script2 = document.createElement('script');
+        script2.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        script2.onload = () => {
+          if (typeof L !== 'undefined') onReady();
+        };
+        document.head.appendChild(script2);
+      };
+      document.head.appendChild(script);
+    }
+
+    function initMap() {
+      renderSidebarList(floodPoints);
+      updateFloatingLegend(floodPoints);
+      setupFloatingLegendControls();
+
+      ensureLeafletLoaded(() => {
+        try {
+          const mapEl = document.getElementById('map');
+          if (!mapEl) return;
+
+          if (map) {
+            map.invalidateSize();
+            return;
+          }
+
+          const defaultCenter = [10.8231, 106.6297];
+          const defaultZoom = 11;
+
+          map = L.map('map', {
+            center: defaultCenter,
+            zoom: defaultZoom,
+            zoomControl: true,
+            scrollWheelZoom: true
+          });
+
+          const osmTile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            subdomains: ['a', 'b', 'c'],
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
+          });
+
+          osmTile.on('tileerror', (error) => {
+            if (error.tile && error.coords) {
+              const fallbackUrl = `https://a.basemaps.cartocdn.com/rastertiles/voyager/${error.coords.z}/${error.coords.x}/${error.coords.y}.png`;
+              if (error.tile.src !== fallbackUrl) {
+                error.tile.src = fallbackUrl;
+              }
+            }
+          });
+
+          osmTile.addTo(map);
+
+          const loader = document.getElementById('map-initial-loader');
+          osmTile.on('load', () => {
+            if (loader) loader.style.display = 'none';
+          });
+          setTimeout(() => {
+            if (loader) loader.style.display = 'none';
+          }, 700);
+
+          markersLayer = L.layerGroup().addTo(map);
+
+          renderMarkers(floodPoints);
+
+          setTimeout(() => { if (map) map.invalidateSize(); }, 150);
+          setTimeout(() => { if (map) map.invalidateSize(); }, 500);
+          setTimeout(() => { if (map) map.invalidateSize(); }, 1200);
+
+          window.addEventListener('resize', () => {
+            if (map) map.invalidateSize();
+          });
+
+        } catch (err) {
+          console.error('Lỗi khi khởi tạo bản đồ Leaflet:', err);
+        }
+      });
+    }
+
+    function updateFloatingLegend(currentFilteredPoints) {
+      const container = document.getElementById('legend-items-container');
+      const totalBadge = document.getElementById('legend-total-badge');
+      if (!container) return;
+
+      const total = currentFilteredPoints ? currentFilteredPoints.length : 0;
+      if (totalBadge) {
+        totalBadge.textContent = `${total}`;
+      }
+
+      if (total === 0) {
+        container.innerHTML = `
+          <div class="py-2.5 text-[11px] text-slate-400 text-center italic">
+            Không có điểm nào theo bộ lọc
+          </div>
+        `;
+        return;
+      }
+
+      const categoryDefs = [
+        {
+          id: 'severe',
+          name: 'Ngập thường xuyên / nặng',
+          sublabel: 'Lượng mưa 30-50mm, triều < 1m',
+          colorClass: 'bg-rose-500',
+          badgeClass: 'text-rose-700 bg-rose-50 border-rose-200',
+          pulseClass: 'pulse-severe',
+          test: p => p.severity === 'severe'
+        },
+        {
+          id: 'moderate',
+          name: 'Ngập vừa',
+          sublabel: 'Sâu 10-15cm, rút < 30p',
+          colorClass: 'bg-amber-500',
+          badgeClass: 'text-amber-800 bg-amber-50 border-amber-200',
+          pulseClass: 'pulse-moderate',
+          test: p => p.severity === 'moderate'
+        },
+        {
+          id: 'light',
+          name: 'Ngập nhẹ',
+          sublabel: 'Sâu < 10cm, rút < 30p',
+          colorClass: 'bg-yellow-400',
+          badgeClass: 'text-yellow-800 bg-yellow-50 border-yellow-200',
+          pulseClass: '',
+          test: p => p.severity === 'light'
+        },
+        {
+          id: 'tide',
+          name: 'Ngập do triều',
+          sublabel: 'Ảnh hưởng triều cường',
+          colorClass: 'bg-blue-500',
+          badgeClass: 'text-blue-700 bg-blue-50 border-blue-200',
+          pulseClass: '',
+          test: p => p.cause === 'tide'
+        },
+        {
+          id: 'rain-tide',
+          name: 'Ngập do mưa và triều',
+          sublabel: 'Kết hợp mưa và triều',
+          colorClass: 'bg-indigo-500',
+          badgeClass: 'text-indigo-700 bg-indigo-50 border-indigo-200',
+          pulseClass: '',
+          test: p => p.cause === 'rain-tide'
+        }
+      ];
+
+      const activeCategories = categoryDefs.map(cat => {
+        const count = currentFilteredPoints.filter(cat.test).length;
+        return { ...cat, count };
+      }).filter(cat => cat.count > 0);
+
+      if (activeCategories.length === 0) {
+        container.innerHTML = `
+          <div class="py-2 text-[11px] text-slate-400 text-center italic">
+            Không có phân loại tương ứng
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = activeCategories.map(cat => {
+        return `
+          <div class="flex items-center justify-between gap-2 p-1.5 rounded-lg hover:bg-slate-100 transition-colors">
+            <div class="flex items-center gap-2 min-w-0">
+              <div class="relative flex items-center justify-center w-3 h-3 shrink-0">
+                ${cat.pulseClass ? `<span class="absolute -inset-1 rounded-full ${cat.colorClass} opacity-70 ${cat.pulseClass}"></span>` : ''}
+                <span class="relative w-2.5 h-2.5 rounded-full ${cat.colorClass}"></span>
+              </div>
+              <div class="min-w-0">
+                <div class="text-[11px] font-semibold text-slate-800 truncate leading-tight">${cat.name}</div>
+                <div class="text-[10px] text-slate-500 leading-tight">${cat.sublabel}</div>
+              </div>
+            </div>
+            <span class="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded border ${cat.badgeClass} shrink-0 tabular-nums">
+              ${cat.count}
+            </span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setupFloatingLegendControls() {
+      const legendEl = document.getElementById('floating-map-legend');
+      const toggleBtn = document.getElementById('toggle-legend-btn');
+      const icon = document.getElementById('legend-toggle-icon');
+      const itemsContainer = document.getElementById('legend-items-container');
+
+      if (!legendEl) return;
+
+      if (typeof L !== 'undefined' && L.DomEvent) {
+        L.DomEvent.disableClickPropagation(legendEl);
+        L.DomEvent.disableScrollPropagation(legendEl);
+      }
+
+      let isCollapsed = false;
+      if (toggleBtn && itemsContainer && icon) {
+        toggleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          isCollapsed = !isCollapsed;
+          if (isCollapsed) {
+            itemsContainer.classList.add('hidden');
+            icon.classList.add('rotate-180');
+          } else {
+            itemsContainer.classList.remove('hidden');
+            icon.classList.remove('rotate-180');
+          }
+        });
+      }
+    }
+
+    function createMarkerIcon(point) {
+      let color = '#dc2626';
+      let bgPulse = '';
+
+      if (point.severity === 'severe') {
+        color = '#dc2626';
+        bgPulse = '<span class="absolute -inset-1 rounded-full bg-rose-500 opacity-75 pulse-severe"></span>';
+      } else if (point.severity === 'moderate') {
+        color = '#ea580c';
+        bgPulse = '<span class="absolute -inset-1 rounded-full bg-amber-500 opacity-60 pulse-moderate"></span>';
+      } else if (point.severity === 'light') {
+        color = '#ca8a04';
+      } else if (point.cause === 'tide') {
+        color = '#2563eb';
+      }
+
+      const html = `
+        <div class="relative flex items-center justify-center w-7 h-7 cursor-pointer group">
+          ${bgPulse}
+          <div class="relative w-6 h-6 rounded-full border-2 border-white flex items-center justify-center shadow-lg transition-transform group-hover:scale-125" style="background-color: ${color}">
+            <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547" />
+            </svg>
+          </div>
+        </div>
+      `;
+
+      return L.divIcon({
+        html: html,
+        className: 'custom-flood-marker',
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+        popupAnchor: [0, -14]
+      });
+    }
+
+    function renderMarkers(points) {
+      if (!markersLayer) return;
+      markersLayer.clearLayers();
+      markersMap.clear();
+
+      points.forEach(point => {
+        const marker = L.marker([point.lat, point.lng], {
+          icon: createMarkerIcon(point),
+          title: point.street
+        });
+
+        const streetName = point.street ? (point.street.charAt(0).toUpperCase() + point.street.slice(1)) : '';
+
+        const popupContent = `
+          <div class="p-1 min-w-[210px]">
+            <div class="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-slate-100">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-sky-600">${point.regionName}</span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">#${point.id}</span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1 first-letter:uppercase">${streetName}</h4>
+            <div class="text-xs text-slate-600 mb-2">${point.ward}</div>
+            
+            <div class="space-y-1 text-[11px] pt-2 border-t border-slate-100">
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500">Nguyên nhân:</span>
+                <span class="font-semibold text-slate-800">${point.causeName}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500">Mức độ:</span>
+                <span class="font-semibold text-slate-800">${point.severityName}</span>
+              </div>
+              <div class="text-[11px] text-slate-500 mt-1 italic">${point.note}</div>
+            </div>
+          </div>
+        `;
+
+        marker.bindPopup(popupContent);
+        markersLayer.addLayer(marker);
+        markersMap.set(point.id, marker);
+      });
+    }
+
+    function renderSidebarList(points) {
+      const container = document.getElementById('map-point-list');
+      const countLabel = document.getElementById('filtered-count-label');
+      const badge = document.getElementById('filtered-badge');
+
+      if (countLabel) countLabel.textContent = `Hiển thị ${points.length} / ${floodPoints.length} vị trí`;
+      if (badge) badge.textContent = `${points.length}`;
+
+      if (!container) return;
+
+      if (points.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center text-slate-400 text-xs">
+            <svg class="w-8 h-8 mx-auto mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Không tìm thấy điểm ngập nào phù hợp
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = points.map(p => {
+        const streetName = p.street ? (p.street.charAt(0).toUpperCase() + p.street.slice(1)) : '';
+
+        return `
+          <div 
+            onclick="focusPoint(${p.id})"
+            class="p-2.5 rounded-xl hover:bg-white hover:shadow-sm cursor-pointer transition-all border border-transparent hover:border-slate-200/80 group"
+          >
+            <div class="flex items-start justify-between gap-2">
+              <div class="min-w-0 flex-1">
+                <div class="mb-0.5">
+                  <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider truncate">${p.ward}</span>
+                </div>
+                <h4 class="text-xs font-bold text-slate-800 group-hover:text-sky-600 transition-colors leading-snug first-letter:uppercase">${streetName}</h4>
+                <div class="text-[10px] text-slate-500 mt-0.5">${p.causeName}</div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function focusPoint(id) {
+      const p = floodPoints.find(item => item.id === id);
+      if (p && map) {
+        map.flyTo([p.lat, p.lng], 16, { duration: 1.2 });
+        const marker = markersMap.get(id);
+        if (marker) {
+          setTimeout(() => {
+            marker.openPopup();
+          }, 600);
+        }
+      }
+    }
+
+    function focusRegion(regionKey) {
+      if (!map) return;
+      if (regionKey === 'hcm') {
+        map.flyTo([10.7769, 106.6909], 13);
+      } else if (regionKey === 'thuduc') {
+        map.flyTo([10.8400, 106.7600], 13);
+      } else if (regionKey === 'binhduong') {
+        map.flyTo([11.0200, 106.6700], 12);
+      } else if (regionKey === 'vungtau') {
+        map.flyTo([10.4200, 107.1200], 11);
+      }
+    }
+
+    function applyFilters() {
+      const searchVal = document.getElementById('map-search-input').value.toLowerCase().trim();
+      const regionVal = document.getElementById('filter-region').value;
+      const causeVal = document.getElementById('filter-cause').value;
+
+      const filtered = floodPoints.filter(p => {
+        const matchSearch = !searchVal || 
+          p.street.toLowerCase().includes(searchVal) || 
+          p.ward.toLowerCase().includes(searchVal) ||
+          p.regionName.toLowerCase().includes(searchVal);
+
+        const matchRegion = regionVal === 'all' || p.region === regionVal;
+
+        const matchCause = causeVal === 'all' || p.cause === causeVal;
+
+        return matchSearch && matchRegion && matchCause;
+      });
+
+      renderMarkers(filtered);
+      renderSidebarList(filtered);
+      updateFloatingLegend(filtered);
+
+      if (filtered.length > 0 && map) {
+        const bounds = L.latLngBounds(filtered.map(p => [p.lat, p.lng]));
+        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
+      }
+    }
+
+    const searchInput = document.getElementById('map-search-input');
+    const regionSelect = document.getElementById('filter-region');
+    const causeSelect = document.getElementById('filter-cause');
+    const resetBtn = document.getElementById('reset-map-filter');
+
+    if (searchInput) searchInput.addEventListener('input', applyFilters);
+    if (regionSelect) regionSelect.addEventListener('change', applyFilters);
+    if (causeSelect) causeSelect.addEventListener('change', applyFilters);
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        if (regionSelect) regionSelect.value = 'all';
+        if (causeSelect) causeSelect.value = 'all';
+        applyFilters();
+      });
+    }
+
+    // HIỆU ỨNG MƯA TRÊN CANVAS
+    function initRainCanvas() {
+      const canvas = document.getElementById('rain-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const drops = [];
+      const dropCount = Math.min(Math.floor(width / 25), 45);
+
+      for (let i = 0; i < dropCount; i++) {
+        drops.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          length: Math.random() * 16 + 8,
+          speed: Math.random() * 5 + 6,
+          opacity: Math.random() * 0.25 + 0.1
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.strokeStyle = '#0284c7';
+        ctx.lineWidth = 1.2;
+
+        drops.forEach(d => {
+          ctx.beginPath();
+          ctx.globalAlpha = d.opacity;
+          ctx.moveTo(d.x, d.y);
+          ctx.lineTo(d.x - 2, d.y + d.length);
+          ctx.stroke();
+
+          d.y += d.speed;
+          d.x -= 0.5;
+
+          if (d.y > height) {
+            d.y = -20;
+            d.x = Math.random() * width;
+          }
+        });
+
+        requestAnimationFrame(draw);
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initMap();
+      initRainCanvas();
+    });
+
+  </script>
+
 </body>
 </html>
