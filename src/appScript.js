@@ -2264,15 +2264,14 @@ window.quickFilterRegion = quickFilterRegion;
         return;
       }
 
-      console.warn('Leaflet đang được tải từ CDN dự phòng (Cloudflare / jsDelivr)...');
       const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js';
+      script.src = '/leaflet/leaflet.js';
       script.onload = () => {
         if (typeof L !== 'undefined') onReady();
       };
       script.onerror = () => {
         const script2 = document.createElement('script');
-        script2.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        script2.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
         script2.onload = () => {
           if (typeof L !== 'undefined') onReady();
         };
@@ -2282,12 +2281,12 @@ window.quickFilterRegion = quickFilterRegion;
     }
 
     function initMap() {
-      // 1. Luôn kích hoạt danh sách điểm và chú giải ngay lập tức
+      // 1. Luôn kích hoạt danh sách điểm và chú giải ngay lập tức (0ms delay)
       renderSidebarList(floodPoints);
       updateFloatingLegend(floodPoints);
       setupFloatingLegendControls();
 
-      // 2. Kiểm tra và tải thư viện Leaflet an toàn
+      // 2. Khởi tạo bản đồ Leaflet tức thì
       ensureLeafletLoaded(() => {
         try {
           const mapEl = document.getElementById('map');
@@ -2304,7 +2303,6 @@ window.quickFilterRegion = quickFilterRegion;
           const defaultZoom = 11;
 
           // Khóa khu vực hiển thị trong phạm vi khu vực Miền Nam (Tây Nam Bộ & Đông Nam Bộ)
-          // Giới hạn địa lý: từ cực Nam Cà Mau/Kiên Giang đến giáp Tây Nguyên/Duyên Hải Nam Trung Bộ
           const southVietnamBounds = L.latLngBounds(
             [8.4, 104.0],  // Điểm cực Tây Nam (Cà Mau, Phú Quốc, Kiên Giang)
             [12.4, 108.4]  // Điểm cực Đông Bắc (Bình Phước, Đồng Nai, BR-VT, Bình Thuận)
@@ -2313,44 +2311,54 @@ window.quickFilterRegion = quickFilterRegion;
           map = L.map('map', {
             center: defaultCenter,
             zoom: defaultZoom,
-            minZoom: 9,                     // Giới hạn thu nhỏ: không cho phép thu nhỏ bản đồ ra khỏi khu vực Miền Nam
-            maxZoom: 18,                    // Cho phép phóng to tối đa mức 18 để nhìn rõ từng ngõ phố, tên đường sắc nét
-            maxBounds: southVietnamBounds,  // Khóa khu vực hiển thị trong phạm vi khu vực Miền Nam
-            maxBoundsViscosity: 1.0,        // Giữ chặt 100%, chống kéo hoặc dịch chuyển bản đồ ra ngoài phạm vi Miền Nam
+            minZoom: 9,                     // Giới hạn thu nhỏ trong phạm vi Miền Nam
+            maxZoom: 18,                    // Phóng to chi tiết ngõ phố
+            maxBounds: southVietnamBounds,  // Khóa phạm vi hiển thị
+            maxBoundsViscosity: 1.0,
             zoomControl: true,
-            scrollWheelZoom: true
+            scrollWheelZoom: true,
+            preferCanvas: true              // Dùng Canvas renderer để tăng tốc độ vẽ hàng trăm marker
           });
 
-          // Layer OpenStreetMap Tiêu chuẩn (Standard OSM: Sắc nét, 100% Miễn phí, Hoàn toàn không cần API key)
-          const osmStandardTile = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          // Layer OpenStreetMap Tiêu chuẩn đa máy chủ song song (a, b, c) tăng tốc tải gấp 3 lần
+          const osmStandardTile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            subdomains: ['a', 'b', 'c'],
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> đóng góp',
-            crossOrigin: true
+            crossOrigin: true,
+            updateWhenIdle: false,          // Tải tile ngay khi rê chuột, không đợi dừng
+            updateWhenZooming: true,        // Tải liên tục khi phóng to/thu nhỏ
+            keepBuffer: 8                   // Giữ bộ nhớ đệm tile trong RAM để lướt mượt mà không phải tải lại
           });
 
-          // Cơ chế tự động thử lại với subdomain khi cần
+          // Tự động chuyển mirror dự phòng siêu tốc nếu bất kỳ tile nào bị nghẽn
           osmStandardTile.on('tileerror', (error) => {
-            if (error.tile && error.coords) {
-              const mirrors = ['a', 'b', 'c'];
-              const sub = mirrors[(error.coords.x + error.coords.y) % 3];
-              const mirrorUrl = `https://${sub}.tile.openstreetmap.org/${error.coords.z}/${error.coords.x}/${error.coords.y}.png`;
-              if (error.tile.src !== mirrorUrl) {
-                error.tile.src = mirrorUrl;
-              }
+            if (error.tile && error.coords && !error.tile.dataset.hasFallback) {
+              error.tile.dataset.hasFallback = 'true';
+              const { z, x, y } = error.coords;
+              error.tile.src = `https://a.tile.openstreetmap.fr/osmfr/${z}/${x}/${y}.png`;
             }
           });
 
           // Thêm OpenStreetMap tiêu chuẩn làm lớp nền mặc định hiển thị ngay
           osmStandardTile.addTo(map);
 
-          // Ẩn spinner khi layer bản đồ sẵn sàng
-          const loader = document.getElementById('map-initial-loader');
-          osmStandardTile.on('load', () => {
-            if (loader) loader.style.display = 'none';
-          });
-          setTimeout(() => {
-            if (loader) loader.style.display = 'none';
-          }, 700);
+          // Ẩn spinner ngay lập tức khi tile đầu tiên sẵn sàng, không bắt người dùng chờ đợi
+          const hideLoader = () => {
+            const loader = document.getElementById('map-initial-loader');
+            if (loader && loader.style.display !== 'none') {
+              loader.style.opacity = '0';
+              loader.style.pointerEvents = 'none';
+              setTimeout(() => {
+                if (loader) loader.style.display = 'none';
+              }, 150);
+            }
+          };
+
+          osmStandardTile.on('tileload', hideLoader);
+          osmStandardTile.on('load', hideLoader);
+          // Tự động tắt loader sau tối đa 200ms để bản đồ xuất hiện ngay
+          setTimeout(hideLoader, 200);
 
           // Nhóm layer chứa các marker
           markersLayer = L.layerGroup().addTo(map);
@@ -2358,10 +2366,14 @@ window.quickFilterRegion = quickFilterRegion;
           // Render toàn bộ marker điểm ngập lên bản đồ
           renderMarkers(floodPoints);
 
-          // Cập nhật lại kích thước bản đồ sau khi DOM render xong để tránh lỗi xám/đen
+          // Ngay lập tức tính toán kích cỡ bản đồ
+          map.whenReady(() => {
+            map.invalidateSize();
+            hideLoader();
+          });
+          requestAnimationFrame(() => { if (map) map.invalidateSize(); });
           setTimeout(() => { if (map) map.invalidateSize(); }, 150);
-          setTimeout(() => { if (map) map.invalidateSize(); }, 500);
-          setTimeout(() => { if (map) map.invalidateSize(); }, 1200);
+          setTimeout(() => { if (map) map.invalidateSize(); }, 600);
 
           window.addEventListener('resize', () => {
             if (map) map.invalidateSize();
@@ -2369,6 +2381,8 @@ window.quickFilterRegion = quickFilterRegion;
 
         } catch (err) {
           console.error('Lỗi khi khởi tạo bản đồ Leaflet:', err);
+          const loader = document.getElementById('map-initial-loader');
+          if (loader) loader.style.display = 'none';
         }
       });
     }
@@ -2920,12 +2934,18 @@ window.quickFilterRegion = quickFilterRegion;
       }
     }
 
-    // Khởi chạy khi DOM sẵn sàng
-    window.addEventListener('DOMContentLoaded', () => {
+    // Khởi chạy ngay lập tức, không chờ đợi nếu DOM đã sẵn sàng
+    function startApp() {
       initMap();
       initRainCanvas();
       initScrollAnimations();
       initSmoothScrollWithStickyHeaderOffset();
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', startApp);
+    } else {
+      startApp();
+    }
 
   
