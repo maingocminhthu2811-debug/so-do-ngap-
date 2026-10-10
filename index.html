@@ -2565,7 +2565,7 @@
           }
 
           const defaultCenter = [10.8231, 106.6297];
-          const defaultZoom = 8;
+          const defaultZoom = 11;
 
           // Giới hạn phạm vi hiển thị khu vực TPHCM và phụ cận
           const hcmBounds = L.latLngBounds(
@@ -2577,9 +2577,9 @@
             center: defaultCenter,
             zoom: defaultZoom,
             minZoom: 10,              // Giới hạn thu nhỏ: không thể thu nhỏ ra ngoài khu vực
-            maxZoom: 18,             // Giới hạn phóng to: tối đa mức đường phố
+            maxZoom: 16,             // Giới hạn phóng to: tối đa mức đường phố
             maxBounds: hcmBounds,    // Khóa khu vực hiển thị theo tọa độ Tây Nam (10.0, 105.8) và Đông Bắc (11.7, 108.0)
-            maxBoundsViscosity: 0.3, // Cố định chặt, ngăn kéo lệch ra ngoài phạm vi
+            maxBoundsViscosity: 0.1, // Cố định chặt, ngăn kéo lệch ra ngoài phạm vi
             zoomControl: true,
             scrollWheelZoom: true
           });
@@ -2590,7 +2590,7 @@
 
           const osmTile = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             minZoom: 10,
-            maxZoom: 18,
+            maxZoom: 16,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
           });
 
