@@ -2565,21 +2565,21 @@
           }
 
           const defaultCenter = [10.8231, 106.6297];
-          const defaultZoom = 11;
+          const defaultZoom = 8;
 
-          // Giới hạn phạm vi hiển thị khu vực Miền Nam
-          const mienNamBounds = L.latLngBounds(
-            L.latLng(8.3, 104.0),  // Điểm cực Tây Nam (Cà Mau, Kiên Giang)
-            L.latLng(12.3, 108.5)  // Điểm cực Đông Bắc (Bình Phước, Đồng Nai, Bà Rịa - Vũng Tàu)
+          // Giới hạn phạm vi hiển thị khu vực TPHCM và phụ cận
+          const hcmBounds = L.latLngBounds(
+            L.latLng(10.0, 105.8),  // Góc Tây Nam: rìa Vĩnh Long, Bến Tre và biên giới Tây Ninh
+            L.latLng(11.7, 108.0)   // Góc Đông Bắc: khu vực Bảo Lộc (Lâm Đồng) và La Gi (Bình Thuận)
           );
 
           map = L.map('map', {
             center: defaultCenter,
             zoom: defaultZoom,
-            minZoom: 9,              // Giới hạn thu nhỏ: không thể thu nhỏ ra ngoài khu vực
+            minZoom: 10,              // Giới hạn thu nhỏ: không thể thu nhỏ ra ngoài khu vực
             maxZoom: 18,             // Giới hạn phóng to: tối đa mức đường phố
-            maxBounds: mienNamBounds, // Khóa khu vực hiển thị, chỉ cho phép kéo trong Miền Nam
-            maxBoundsViscosity: 1.0, // Cố định chặt, ngăn kéo lệch ra ngoài phạm vi
+            maxBounds: hcmBounds,    // Khóa khu vực hiển thị theo tọa độ Tây Nam (10.0, 105.8) và Đông Bắc (11.7, 108.0)
+            maxBoundsViscosity: 0.3, // Cố định chặt, ngăn kéo lệch ra ngoài phạm vi
             zoomControl: true,
             scrollWheelZoom: true
           });
@@ -2589,7 +2589,7 @@
           }
 
           const osmTile = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            minZoom: 9,
+            minZoom: 10,
             maxZoom: 18,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
           });
