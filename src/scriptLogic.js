@@ -144,39 +144,20 @@
         return;
       }
 
-      // Định nghĩa các danh mục phân loại với quy tắc kiểm tra (test function)
       const categoryDefs = [
         {
-          id: 'severe',
-          name: 'Ngập nặng / thường xuyên',
-          sublabel: '≥ 30cm (thoát > 120p)',
+          id: 'rain',
+          name: 'Ngập do mưa',
+          sublabel: 'Lượng mưa vượt khả năng thoát',
           colorClass: 'bg-rose-500',
           badgeClass: 'text-rose-400 bg-rose-500/10 border-rose-500/20',
           pulseClass: 'pulse-severe',
-          test: p => p.severity === 'severe'
-        },
-        {
-          id: 'moderate',
-          name: 'Ngập vừa',
-          sublabel: '15cm – 30cm (thoát 30-120p)',
-          colorClass: 'bg-amber-500',
-          badgeClass: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
-          pulseClass: 'pulse-moderate',
-          test: p => p.severity === 'moderate'
-        },
-        {
-          id: 'light',
-          name: 'Ngập nhẹ',
-          sublabel: '< 15cm (thoát < 30p)',
-          colorClass: 'bg-yellow-400',
-          badgeClass: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20',
-          pulseClass: '',
-          test: p => p.severity === 'light'
+          test: p => p.cause === 'rain'
         },
         {
           id: 'tide',
-          name: 'Ngập do triều cường',
-          sublabel: 'Triều sông Sài Gòn & ven biển',
+          name: 'Ngập do triều',
+          sublabel: 'Ảnh hưởng bởi triều cường',
           colorClass: 'bg-blue-500',
           badgeClass: 'text-blue-400 bg-blue-500/10 border-blue-500/20',
           pulseClass: '',
@@ -184,10 +165,10 @@
         },
         {
           id: 'rain-tide',
-          name: 'Ngập do mưa & triều',
-          sublabel: 'Tác động mưa dồn và triều dâng',
-          colorClass: 'bg-indigo-500',
-          badgeClass: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20',
+          name: 'Ngập do mưa và triều',
+          sublabel: 'Kết hợp mưa lớn và đỉnh triều',
+          colorClass: 'bg-orange-500',
+          badgeClass: 'text-orange-400 bg-orange-500/10 border-orange-500/20',
           pulseClass: '',
           test: p => p.cause === 'rain-tide'
         }
@@ -259,21 +240,22 @@
       }
     }
 
-    // Tạo icon SVG đặc trưng theo mức độ ngập
     function createMarkerIcon(point) {
-      let color = '#dc2626'; // Đỏ mặc định
+      let color = '#f43f5e'; // Ngập do mưa (rose-500)
       let bgPulse = '';
 
-      if (point.severity === 'severe') {
-        color = '#dc2626'; // Đỏ
-        bgPulse = '<span class="absolute -inset-1 rounded-full bg-rose-500 opacity-75 pulse-severe"></span>';
-      } else if (point.severity === 'moderate') {
-        color = '#ea580c'; // Cam
-        bgPulse = '<span class="absolute -inset-1 rounded-full bg-amber-500 opacity-60 pulse-moderate"></span>';
-      } else if (point.severity === 'light') {
-        color = '#ca8a04'; // Vàng
-      } else if (point.cause === 'tide') {
-        color = '#2563eb'; // Xanh biển do triều
+      if (point.cause === 'tide') {
+        color = '#2563eb'; // Ngập do triều (xanh dương - blue-600)
+        bgPulse = '<span class="absolute -inset-1 rounded-full bg-blue-500 opacity-60 pulse-moderate"></span>';
+      } else if (point.cause === 'rain-tide') {
+        color = '#ea580c'; // Ngập do mưa và triều (màu cam - orange-600)
+        bgPulse = '<span class="absolute -inset-1 rounded-full bg-orange-500 opacity-60 pulse-moderate"></span>';
+      } else {
+        // Ngập do mưa
+        color = '#f43f5e';
+        if (point.severity === 'severe') {
+          bgPulse = '<span class="absolute -inset-1 rounded-full bg-rose-500 opacity-75 pulse-severe"></span>';
+        }
       }
 
       const html = `
@@ -309,6 +291,16 @@
         });
 
         // Nội dung popup chi tiết, sắc nét
+        const hasValidSeverity = point.severityName && 
+          point.severityName.trim() !== '' && 
+          point.severityName !== 'Điểm ngập' && 
+          point.severityName !== 'Chưa xác định' &&
+          point.severityName !== 'Không có' &&
+          point.severityName.toLowerCase() !== (point.causeName || '').toLowerCase() &&
+          !point.severityName.toLowerCase().includes('triều');
+
+        const severityLine = hasValidSeverity ? `<span class="font-semibold text-slate-200">Mức độ:</span> ${point.severityName}<br/>` : '';
+
         const popupContent = `
           <div class="p-1">
             <div class="flex items-center justify-between gap-2 border-b border-slate-700/80 pb-2 mb-2">
@@ -318,7 +310,7 @@
             <h4 class="text-sm font-bold text-white mb-1">${point.street}</h4>
             <p class="text-xs text-slate-300 mb-1.5"><strong>Địa bàn:</strong> ${point.ward}</p>
             <div class="p-2 rounded bg-slate-950/80 border border-slate-800 text-[11px] text-slate-400 leading-normal">
-              <span class="font-semibold text-slate-200">Phân loại:</span> ${point.severityName}<br/>
+              ${severityLine}
               <span class="font-semibold text-slate-200">Chi tiết:</span> ${point.note}
             </div>
           </div>
